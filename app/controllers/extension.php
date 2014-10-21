@@ -6,7 +6,7 @@ class Extension extends \Forge\Controller
 	protected static $extra_telephone_features = 'extra_telephone_features';
 	protected static $telephony_management = 'telephony_management';	
 	
-	public function index()
+	public static function index()
 	{
 		$res_dailplans 	 = DailplanModel::getAll(5);
 		$res_callpickups = CallpickupModel::getAll(5);
@@ -21,7 +21,7 @@ class Extension extends \Forge\Controller
 		$data['callplans']   = $res_callplans['rows'];
 		$data['musiconhold'] = $res_musiconhold['rows'];
 		
-		return Blade::make(self::$module.'.'.self::$extension_management.'.extensions')->with('data', $data);
+		return $data;
 	}
 	
 	public static function render() {

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!--[if lte IE 7]><html class="oldie"><![endif]-->
+<!--[if lte IE 8]><html class="ie"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+<head>
+<title>Tpad Web</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<!-- Optimized mobile viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<?php echo $__env->make('assets.css', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('assets.scripts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php echo $__env->yieldContent('extra_assets'); ?>
+</head>
+<body>
+<?php echo $__env->yieldContent('content'); ?>
+
+<?php echo $__env->make('assets.main_scripts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</body>
+</html>

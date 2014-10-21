@@ -1,0 +1,159 @@
+[21-Oct-2014 09:44:39+0100] #916150 System->call_user_func() expects parameter 1 to be a valid callback, class '\callgroup' not found->#0 [internal function]: {closure}(2, 'call_user_func(...', 'C:\\wamp\\www\\Tpa...', 14, Array)
+#1 C:\wamp\www\TpadPBX\app\controllers\main.php(14): call_user_func('\\callgroup::ind...')
+#2 C:\wamp\www\TpadPBX\app\controllers\main.php(30): Main::call(Array)
+#3 C:\wamp\www\TpadPBX\app\routes.php(5): Main::show(Array)
+#4 [internal function]: Forge\Core::{closure}(Array)
+#5 C:\wamp\www\TpadPBX\forge\router.php(153): call_user_func(Object(Closure), Array)
+#6 C:\wamp\www\TpadPBX\forge\router.php(233): Forge\Router::route_page('~^([^/]+)$~', Array)
+#7 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#8 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#9 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#10 {main}
+
+[21-Oct-2014 09:45:06+0100] #931593 System->call_user_func() expects parameter 1 to be a valid callback, class '\callgroup' not found->#0 [internal function]: {closure}(2, 'call_user_func(...', 'C:\\wamp\\www\\Tpa...', 14, Array)
+#1 C:\wamp\www\TpadPBX\app\controllers\main.php(14): call_user_func('\\callgroup::ind...')
+#2 C:\wamp\www\TpadPBX\app\controllers\main.php(30): Main::call(Array)
+#3 C:\wamp\www\TpadPBX\app\routes.php(5): Main::show(Array)
+#4 [internal function]: Forge\Core::{closure}(Array)
+#5 C:\wamp\www\TpadPBX\forge\router.php(153): call_user_func(Object(Closure), Array)
+#6 C:\wamp\www\TpadPBX\forge\router.php(233): Forge\Router::route_page('~^([^/]+)$~', Array)
+#7 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#8 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#9 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#10 {main}
+
+[21-Oct-2014 10:47:07+0100] #943846 System->Undefined variable: url_path->#0 C:\wamp\www\TpadPBX\forge\router.php(159): {closure}(8, 'Undefined varia...', 'C:\\wamp\\www\\Tpa...', 159, Array)
+#1 C:\wamp\www\TpadPBX\forge\router.php(204): Forge\Router::route_page()
+#2 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#3 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#4 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#5 {main}
+
+[21-Oct-2014 11:11:50+0100] #907786 System->Undefined variable: page->#0 C:\wamp\www\TpadPBX\app\controllers\extension.php(11): {closure}(8, 'Undefined varia...', 'C:\\wamp\\www\\Tpa...', 11, Array)
+#1 C:\wamp\www\TpadPBX\forge\router.php(262): Extension->index(Array)
+#2 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#3 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#4 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#5 {main}
+
+[21-Oct-2014 11:12:03+0100] #950801 System->Undefined variable: customer->#0 C:\wamp\www\TpadPBX\app\models\dailplanmodel.php(25): {closure}(8, 'Undefined varia...', 'C:\\wamp\\www\\Tpa...', 25, Array)
+#1 C:\wamp\www\TpadPBX\app\controllers\extension.php(11): DailplanModel::getAll(5)
+#2 C:\wamp\www\TpadPBX\forge\router.php(262): Extension->index(Array)
+#3 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#4 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#5 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#6 {main}
+
+[21-Oct-2014 11:12:31+0100] #911733 System->Undefined variable: announcement_id->#0 C:\wamp\www\TpadPBX\app\ad\pbx\dialplanad.php(39): {closure}(8, 'Undefined varia...', 'C:\\wamp\\www\\Tpa...', 39, Array)
+#1 C:\wamp\www\TpadPBX\app\models\dailplanmodel.php(25): AD\Pbx\DialplanAD::getAll(5, '', Array)
+#2 C:\wamp\www\TpadPBX\app\controllers\extension.php(11): DailplanModel::getAll(5)
+#3 C:\wamp\www\TpadPBX\forge\router.php(262): Extension->index(Array)
+#4 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#5 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#6 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#7 {main}
+
+[21-Oct-2014 11:13:08+0100] #953676 System->Undefined index: status->#0 C:\wamp\www\TpadPBX\app\models\dailplanmodel.php(27): {closure}(8, 'Undefined index...', 'C:\\wamp\\www\\Tpa...', 27, Array)
+#1 C:\wamp\www\TpadPBX\app\controllers\extension.php(11): DailplanModel::getAll(5)
+#2 C:\wamp\www\TpadPBX\forge\router.php(262): Extension->index(Array)
+#3 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#4 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#5 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#6 {main}
+
+[21-Oct-2014 11:15:43+0100] #960953 System->PDOException was thrown when trying to get dial plan: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE customer_id = ?' at line 1->#0 C:\wamp\www\TpadPBX\app\models\dailplanmodel.php(25): AD\Pbx\DialplanAD::getAll(5, '', Array)
+#1 C:\wamp\www\TpadPBX\app\controllers\extension.php(11): DailplanModel::getAll(5)
+#2 C:\wamp\www\TpadPBX\forge\router.php(262): Extension->index(Array)
+#3 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#4 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#5 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#6 {main}
+
+[21-Oct-2014 12:00:05+0100] #944569 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\wamp\www\TpadPBX\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\\wamp\\www\\Tpa...', 36, Array)
+#1 C:\wamp\www\TpadPBX\forge\router.php(267): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#3 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#4 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#5 {main}
+
+[21-Oct-2014 12:01:05+0100] #946437 System->Undefined variable: res_phonemodels->#0 C:\wamp\www\TpadPBX\app\controllers\extension.php(14): {closure}(8, 'Undefined varia...', 'C:\\wamp\\www\\Tpa...', 14, Array)
+#1 C:\wamp\www\TpadPBX\forge\router.php(262): Extension->index(Array)
+#2 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#3 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#4 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#5 {main}
+
+[21-Oct-2014 12:01:44+0100] #928982 System->PDOException was thrown when trying to get call group count: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'callpickup_id' in 'field list'->#0 C:\wamp\www\TpadPBX\app\ad\pbx\phonemodelad.php(60): AD\Pbx\PhonemodelAD::getTotalRows('tp_phonemodel', ' WHERE user_key...', Array)
+#1 C:\wamp\www\TpadPBX\app\models\phonemodel.php(25): AD\Pbx\PhonemodelAD::getAll(5, '', Array)
+#2 C:\wamp\www\TpadPBX\app\controllers\extension.php(13): PhoneModel::getAll(5)
+#3 C:\wamp\www\TpadPBX\forge\router.php(262): Extension->index(Array)
+#4 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#5 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#6 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#7 {main}
+
+[21-Oct-2014 12:02:21+0100] #935724 System->PDOException was thrown when trying to get phone model count: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'callpickup_id' in 'field list'->#0 C:\wamp\www\TpadPBX\app\ad\pbx\phonemodelad.php(60): AD\Pbx\PhonemodelAD::getTotalRows('tp_phonemodel', ' WHERE user_key...', Array)
+#1 C:\wamp\www\TpadPBX\app\models\phonemodel.php(25): AD\Pbx\PhonemodelAD::getAll(5, '', Array)
+#2 C:\wamp\www\TpadPBX\app\controllers\extension.php(13): PhoneModel::getAll(5)
+#3 C:\wamp\www\TpadPBX\forge\router.php(262): Extension->index(Array)
+#4 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#5 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#6 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#7 {main}
+
+[21-Oct-2014 12:04:04+0100] #909642 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\wamp\www\TpadPBX\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\\wamp\\www\\Tpa...', 36, Array)
+#1 C:\wamp\www\TpadPBX\forge\router.php(267): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#3 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#4 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#5 {main}
+
+[21-Oct-2014 12:08:29+0100] #915059 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\wamp\www\TpadPBX\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\\wamp\\www\\Tpa...', 36, Array)
+#1 C:\wamp\www\TpadPBX\forge\router.php(267): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#3 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#4 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#5 {main}
+
+[21-Oct-2014 12:12:22+0100] #923725 System->PDOException was thrown when trying to get music on hold: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'not in ('default','custom') AND customer_id=?' at line 1->#0 C:\wamp\www\TpadPBX\app\models\musiconholdmodel.php(25): AD\Pbx\MusiconholdAD::getAll(5, '', Array)
+#1 C:\wamp\www\TpadPBX\app\controllers\extension.php(14): MusiconholdModel::getAll(5)
+#2 C:\wamp\www\TpadPBX\forge\router.php(262): Extension->index(Array)
+#3 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#4 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#5 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#6 {main}
+
+[21-Oct-2014 12:44:19+0100] #982599 System->Non-static method ExtensionModel::getAll() should not be called statically->#0 C:\wamp\www\TpadPBX\app\controllers\pbxmanagement.php(71): {closure}(2048, 'Non-static meth...', 'C:\\wamp\\www\\Tpa...', 71, Array)
+#1 C:\wamp\www\TpadPBX\app\controllers\pbxmanagement.php(71): ExtensionModel::getAll()
+#2 C:\wamp\www\TpadPBX\forge\router.php(262): Pbxmanagement::getFailoverApp(Array)
+#3 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#4 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#5 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#6 {main}
+
+[21-Oct-2014 12:44:35+0100] #913217 System->Non-static method ExtensionModel::getAll() should not be called statically->#0 C:\wamp\www\TpadPBX\app\controllers\pbxmanagement.php(71): {closure}(2048, 'Non-static meth...', 'C:\\wamp\\www\\Tpa...', 71, Array)
+#1 C:\wamp\www\TpadPBX\app\controllers\pbxmanagement.php(71): ExtensionModel::getAll()
+#2 C:\wamp\www\TpadPBX\forge\router.php(262): Pbxmanagement::getFailoverApp(Array)
+#3 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#4 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#5 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#6 {main}
+
+[21-Oct-2014 13:04:23+0100] #905327 System->PDOException was thrown when trying to get voice mail count: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ringgroup_id' in 'field list'->#0 C:\wamp\www\TpadPBX\app\ad\pbx\voicemailad.php(60): AD\Pbx\VoicemailAD::getTotalRows('as_voicemail', ' WHERE customer...', Array)
+#1 C:\wamp\www\TpadPBX\app\models\voicemailmodel.php(25): AD\Pbx\VoicemailAD::getAll(5, '', Array)
+#2 C:\wamp\www\TpadPBX\app\controllers\pbxmanagement.php(80): VoicemailModel::getAll(5)
+#3 C:\wamp\www\TpadPBX\forge\router.php(262): Pbxmanagement::getFailoverApp(Array)
+#4 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#5 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#6 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#7 {main}
+
+[21-Oct-2014 13:04:26+0100] #991832 System->PDOException was thrown when trying to get voice mail count: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ringgroup_id' in 'field list'->#0 C:\wamp\www\TpadPBX\app\ad\pbx\voicemailad.php(60): AD\Pbx\VoicemailAD::getTotalRows('as_voicemail', ' WHERE customer...', Array)
+#1 C:\wamp\www\TpadPBX\app\models\voicemailmodel.php(25): AD\Pbx\VoicemailAD::getAll(5, '', Array)
+#2 C:\wamp\www\TpadPBX\app\controllers\pbxmanagement.php(80): VoicemailModel::getAll(5)
+#3 C:\wamp\www\TpadPBX\forge\router.php(262): Pbxmanagement::getFailoverApp(Array)
+#4 C:\wamp\www\TpadPBX\forge\core.php(100): Forge\Router::call()
+#5 C:\wamp\www\TpadPBX\engine.php(111): Forge\Core::startup()
+#6 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#7 {main}
+

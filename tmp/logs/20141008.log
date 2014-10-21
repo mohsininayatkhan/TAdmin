@@ -1,0 +1,48 @@
+[08-Oct-2014 10:15:19+0100] #766868 System->call_user_func() expects parameter 1 to be a valid callback, class '\img' not found->#0 [internal function]: {closure}(2, 'call_user_func(...', 'C:\\wamp\\www\\tap...', 14, Array)
+#1 C:\wamp\www\tapd\app\controllers\main.php(14): call_user_func('\\img::favicon.i...')
+#2 C:\wamp\www\tapd\app\controllers\main.php(29): Main::call(Array)
+#3 C:\wamp\www\tapd\app\routes.php(5): Main::show(Array)
+#4 [internal function]: Forge\Core::{closure}(Array)
+#5 C:\wamp\www\tapd\forge\router.php(153): call_user_func(Object(Closure), Array)
+#6 C:\wamp\www\tapd\forge\router.php(233): Forge\Router::route_page('~^([^/]+)/([^/]...', Array)
+#7 C:\wamp\www\tapd\forge\core.php(100): Forge\Router::call()
+#8 C:\wamp\www\tapd\engine.php(111): Forge\Core::startup()
+#9 C:\wamp\www\tapd\public\index.php(18): require_once('C:\\wamp\\www\\tap...')
+#10 {main}
+
+[08-Oct-2014 10:15:19+0100] #775668 System->call_user_func() expects parameter 1 to be a valid callback, class '\img' not found->#0 [internal function]: {closure}(2, 'call_user_func(...', 'C:\\wamp\\www\\tap...', 14, Array)
+#1 C:\wamp\www\tapd\app\controllers\main.php(14): call_user_func('\\img::favicon.i...')
+#2 C:\wamp\www\tapd\app\controllers\main.php(29): Main::call(Array)
+#3 C:\wamp\www\tapd\app\routes.php(5): Main::show(Array)
+#4 [internal function]: Forge\Core::{closure}(Array)
+#5 C:\wamp\www\tapd\forge\router.php(153): call_user_func(Object(Closure), Array)
+#6 C:\wamp\www\tapd\forge\router.php(233): Forge\Router::route_page('~^([^/]+)/([^/]...', Array)
+#7 C:\wamp\www\tapd\forge\core.php(100): Forge\Router::call()
+#8 C:\wamp\www\tapd\engine.php(111): Forge\Core::startup()
+#9 C:\wamp\www\tapd\public\index.php(18): require_once('C:\\wamp\\www\\tap...')
+#10 {main}
+
+[08-Oct-2014 10:33:43+0100] #823589 System->call_user_func() expects parameter 1 to be a valid callback, class '\favicon.ico' not found->#0 [internal function]: {closure}(2, 'call_user_func(...', 'C:\\wamp\\www\\tap...', 14, Array)
+#1 C:\wamp\www\tapd\app\controllers\main.php(14): call_user_func('\\favicon.ico::i...')
+#2 C:\wamp\www\tapd\app\controllers\main.php(29): Main::call(Array)
+#3 C:\wamp\www\tapd\app\routes.php(5): Main::show(Array)
+#4 [internal function]: Forge\Core::{closure}(Array)
+#5 C:\wamp\www\tapd\forge\router.php(153): call_user_func(Object(Closure), Array)
+#6 C:\wamp\www\tapd\forge\router.php(233): Forge\Router::route_page('~^([^/]+)$~', Array)
+#7 C:\wamp\www\tapd\forge\core.php(100): Forge\Router::call()
+#8 C:\wamp\www\tapd\engine.php(111): Forge\Core::startup()
+#9 C:\wamp\www\tapd\public\index.php(18): require_once('C:\\wamp\\www\\tap...')
+#10 {main}
+
+[08-Oct-2014 10:33:43+0100] #827790 System->call_user_func() expects parameter 1 to be a valid callback, class '\favicon.ico' not found->#0 [internal function]: {closure}(2, 'call_user_func(...', 'C:\\wamp\\www\\tap...', 14, Array)
+#1 C:\wamp\www\tapd\app\controllers\main.php(14): call_user_func('\\favicon.ico::i...')
+#2 C:\wamp\www\tapd\app\controllers\main.php(29): Main::call(Array)
+#3 C:\wamp\www\tapd\app\routes.php(5): Main::show(Array)
+#4 [internal function]: Forge\Core::{closure}(Array)
+#5 C:\wamp\www\tapd\forge\router.php(153): call_user_func(Object(Closure), Array)
+#6 C:\wamp\www\tapd\forge\router.php(233): Forge\Router::route_page('~^([^/]+)$~', Array)
+#7 C:\wamp\www\tapd\forge\core.php(100): Forge\Router::call()
+#8 C:\wamp\www\tapd\engine.php(111): Forge\Core::startup()
+#9 C:\wamp\www\tapd\public\index.php(18): require_once('C:\\wamp\\www\\tap...')
+#10 {main}
+

@@ -1,0 +1,30 @@
+
+        php_flag error_reporting E_ALL
+        php_flag display_errors on
+        php_flag log_errors on
+        php_value error_log "../../logs/runtime.log"
+
+
+
+<IfModule mod_rewrite.c>
+
+	Options +FollowSymLinks
+	RewriteEngine On
+
+</IfModule>
+
+# For all files not found in the file system, reroute the request to the
+# "index.php" front controller, keeping the query string intact
+
+<IfModule mod_rewrite.c>
+#	RewriteCond %{REQUEST_URI} favicon.ico$
+#	RewriteRule (.*) http://%{HTTP_HOST}/_static/admin/%{REQUEST_URI} [L]
+
+
+        RewriteCond %{REQUEST_FILENAME} !-f 
+        RewriteCond %{REQUEST_FILENAME} !-d 
+        RewriteRule ^(.*)$ index.php/$1 [L,QSA] 
+</IfModule>
+
+
+

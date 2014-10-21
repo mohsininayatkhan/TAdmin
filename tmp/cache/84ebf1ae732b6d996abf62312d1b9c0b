@@ -1,0 +1,37 @@
+<?php $__env->startSection('form_title'); ?>
+	<h2 class="what">Edit Call Group</h2>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('form_content'); ?>
+	
+	<section class="tab_wrap no_tab">
+	
+		<div class="tab_content_pad active">
+			
+			<?php echo $__env->make('layout.sfield_open', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				
+				<!-- Callgroup Form -->
+				<form name="frmCallgroup" id="frmCallgroup">
+				<input type="hidden" name="callpickup_id" id="callpickup_id" value="" />
+				<div class="col_wide">
+					<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Name', 'id' => 'name'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Description', 'id' => 'description'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Call Pickup Code', 'id' => 'code'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				</div>
+				
+				
+			<?php echo $__env->make('layout.sfield_close', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				
+			<span class="button_wrap topspace">
+				<input id="sbtBtn" name="sbtBtn" type="button" value="Save">
+				<input type="button" value="Cancel" class="gray" onclick="hidePopup()">
+			</span>
+			</form>
+			<!-- End of Callgroup Form -->
+			
+			<div class="clearfix"></div>
+		</div>
+		
+	</section>
+	
+<?php $__env->stopSection(); ?>

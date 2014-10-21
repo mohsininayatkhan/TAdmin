@@ -1,0 +1,1 @@
+<footer class="bottom_tools">

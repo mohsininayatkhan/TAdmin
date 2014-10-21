@@ -1,0 +1,183 @@
+
+<?php $__env->startSection('main_content'); ?>
+
+	<div class="centered">
+		
+		<h2 class="title">Administration</h2>
+		
+		<div class="blue_box">
+			
+			<div class="blue_box_pad">
+				<h2 class="blue_box_title icon_arrow_blue">User Admin</h2>
+				
+				<ul class="grid_wrap">
+					<li>
+						<a href="" class="icon_ad_users">
+							<h2 class="grid_title">Lorem Ipsum</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="icon_ad_access">
+							<h2 class="grid_title">User Access</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="icon_ad_menu">
+							<h2 class="grid_title">Menu Admin</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+				</ul>
+				
+				<div class="clearfix"></div>
+				
+			</div>
+			
+		</div>
+		
+		<hr class="hr_gray" />
+		
+		<div class="blue_box">
+			
+			<div class="blue_box_pad">
+				<h2 class="blue_box_title icon_arrow_blue">BLF</h2>
+				
+				<ul class="grid_wrap">
+					<li>
+						<a href="" class="icon_ad_clients">
+							<h2 class="grid_title">BLF Clients</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="icon_ad_servers">
+							<h2 class="grid_title">BLF Servers</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="icon_ad_panel">
+							<h2 class="grid_title">Extend Panel Access Groups</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="icon_ad_admin_access">
+							<h2 class="grid_title">BLF Admin Access Groups</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+				</ul>
+				
+				<div class="clearfix"></div>
+				
+			</div>
+			
+		</div>
+		
+		<hr class="hr_gray" />
+		
+		<div class="blue_box">
+			
+			<div class="blue_box_pad">
+				<h2 class="blue_box_title icon_arrow_blue">Tenant</h2>
+				
+				<ul class="grid_wrap">
+					<li>
+						<a href="" class="icon_ad_provider">
+							<h2 class="grid_title">Provider</h2>
+							<p class="grid_desc">Lorem ipsum is simply dummy text of the priting</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="icon_ad_trunk">
+							<h2 class="grid_title">Trunk</h2>
+							<p class="grid_desc">Lorem ipsum is simply dummy text of the priting</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="icon_ad_trunk_group">
+							<h2 class="grid_title">Trunk Group</h2>
+							<p class="grid_desc">Lorem ipsum is simply dummy text of the priting</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="icon_ad_call">
+							<h2 class="grid_title">Call Plan</h2>
+							<p class="grid_desc">Lorem ipsum is simply dummy text of the priting</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="icon_ad_rate">
+							<h2 class="grid_title">Rate Plan</h2>
+							<p class="grid_desc">Lorem ipsum is simply dummy text of the priting</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="icon_ad_rates">
+							<h2 class="grid_title">Rates</h2>
+							<p class="grid_desc">Lorem ipsum is simply dummy text of the priting</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="icon_ad_period">
+							<h2 class="grid_title">Rate Period</h2>
+							<p class="grid_desc">Lorem ipsum is simply dummy text of the priting</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="icon_ad_discount">
+							<h2 class="grid_title">Discount Period</h2>
+							<p class="grid_desc">Lorem ipsum is simply dummy text of the priting</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="icon_ad_patterns">
+							<h2 class="grid_title">Dial Patterns</h2>
+							<p class="grid_desc">Lorem ipsum is simply dummy text of the priting</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="icon_ad_pattern_group">
+							<h2 class="grid_title">Dial Pattern Groups</h2>
+							<p class="grid_desc">Lorem ipsum is simply dummy text of the priting</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="icon_ad_tenants">
+							<h2 class="grid_title">Tenant</h2>
+							<p class="grid_desc">Lorem ipsum is simply dummy text of the priting</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="icon_ad_credit">
+							<h2 class="grid_title">Credit Management</h2>
+							<p class="grid_desc">Lorem ipsum is simply dummy text of the priting</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="icon_ad_parking">
+							<h2 class="grid_title">Parking Management</h2>
+							<p class="grid_desc">Lorem ipsum is simply dummy text of the priting</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="icon_ad_email">
+							<h2 class="grid_title">Email Management</h2>
+							<p class="grid_desc">Lorem ipsum is simply dummy text of the priting</p>
+						</a>
+					</li>
+				</ul>
+				
+				<div class="clearfix"></div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

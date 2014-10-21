@@ -1,0 +1,72 @@
+[14-Oct-2014 15:04:21+0100] #295732 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\wamp\www\tpad\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\\wamp\\www\\tpa...', 36, Array)
+#1 C:\wamp\www\tpad\forge\router.php(157): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\wamp\www\tpad\forge\router.php(233): Forge\Router::route_page('~^([^/]+)/([^/]...', Array)
+#3 C:\wamp\www\tpad\forge\core.php(100): Forge\Router::call()
+#4 C:\wamp\www\tpad\engine.php(111): Forge\Core::startup()
+#5 C:\wamp\www\tpad\public\index.php(18): require_once('C:\\wamp\\www\\tpa...')
+#6 {main}
+
+[14-Oct-2014 15:05:37+0100] #296243 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\wamp\www\tpad\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\\wamp\\www\\tpa...', 36, Array)
+#1 C:\wamp\www\tpad\forge\router.php(157): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\wamp\www\tpad\forge\router.php(233): Forge\Router::route_page('~^([^/]+)/([^/]...', Array)
+#3 C:\wamp\www\tpad\forge\core.php(100): Forge\Router::call()
+#4 C:\wamp\www\tpad\engine.php(111): Forge\Core::startup()
+#5 C:\wamp\www\tpad\public\index.php(18): require_once('C:\\wamp\\www\\tpa...')
+#6 {main}
+
+[14-Oct-2014 15:06:35+0100] #343635 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\wamp\www\tpad\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\\wamp\\www\\tpa...', 36, Array)
+#1 C:\wamp\www\tpad\forge\router.php(157): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\wamp\www\tpad\forge\router.php(233): Forge\Router::route_page('~^([^/]+)/([^/]...', Array)
+#3 C:\wamp\www\tpad\forge\core.php(100): Forge\Router::call()
+#4 C:\wamp\www\tpad\engine.php(111): Forge\Core::startup()
+#5 C:\wamp\www\tpad\public\index.php(18): require_once('C:\\wamp\\www\\tpa...')
+#6 {main}
+
+[14-Oct-2014 15:06:56+0100] #310075 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\wamp\www\tpad\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\\wamp\\www\\tpa...', 36, Array)
+#1 C:\wamp\www\tpad\forge\router.php(157): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\wamp\www\tpad\forge\router.php(233): Forge\Router::route_page('~^([^/]+)/([^/]...', Array)
+#3 C:\wamp\www\tpad\forge\core.php(100): Forge\Router::call()
+#4 C:\wamp\www\tpad\engine.php(111): Forge\Core::startup()
+#5 C:\wamp\www\tpad\public\index.php(18): require_once('C:\\wamp\\www\\tpa...')
+#6 {main}
+
+[14-Oct-2014 15:09:51+0100] #303750 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\wamp\www\tpad\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\\wamp\\www\\tpa...', 36, Array)
+#1 C:\wamp\www\tpad\forge\router.php(157): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\wamp\www\tpad\forge\router.php(233): Forge\Router::route_page('~^([^/]+)/([^/]...', Array)
+#3 C:\wamp\www\tpad\forge\core.php(100): Forge\Router::call()
+#4 C:\wamp\www\tpad\engine.php(111): Forge\Core::startup()
+#5 C:\wamp\www\tpad\public\index.php(18): require_once('C:\\wamp\\www\\tpa...')
+#6 {main}
+
+[14-Oct-2014 15:10:31+0100] #320220 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\wamp\www\tpad\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\\wamp\\www\\tpa...', 36, Array)
+#1 C:\wamp\www\tpad\forge\router.php(157): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\wamp\www\tpad\forge\router.php(233): Forge\Router::route_page('~^([^/]+)/([^/]...', Array)
+#3 C:\wamp\www\tpad\forge\core.php(100): Forge\Router::call()
+#4 C:\wamp\www\tpad\engine.php(111): Forge\Core::startup()
+#5 C:\wamp\www\tpad\public\index.php(18): require_once('C:\\wamp\\www\\tpa...')
+#6 {main}
+
+[14-Oct-2014 16:19:57+0100] #347715 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\wamp\www\tpad\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\\wamp\\www\\tpa...', 36, Array)
+#1 C:\wamp\www\tpad\forge\router.php(157): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\wamp\www\tpad\forge\router.php(233): Forge\Router::route_page('~^([^/]+)/([^/]...', Array)
+#3 C:\wamp\www\tpad\forge\core.php(100): Forge\Router::call()
+#4 C:\wamp\www\tpad\engine.php(111): Forge\Core::startup()
+#5 C:\wamp\www\tpad\public\index.php(18): require_once('C:\\wamp\\www\\tpa...')
+#6 {main}
+
+[14-Oct-2014 16:22:28+0100] #381932 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\wamp\www\tpad\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\\wamp\\www\\tpa...', 36, Array)
+#1 C:\wamp\www\tpad\forge\router.php(157): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\wamp\www\tpad\forge\router.php(233): Forge\Router::route_page('~^([^/]+)/([^/]...', Array)
+#3 C:\wamp\www\tpad\forge\core.php(100): Forge\Router::call()
+#4 C:\wamp\www\tpad\engine.php(111): Forge\Core::startup()
+#5 C:\wamp\www\tpad\public\index.php(18): require_once('C:\\wamp\\www\\tpa...')
+#6 {main}
+
+[14-Oct-2014 16:22:58+0100] #349732 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\wamp\www\tpad\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\\wamp\\www\\tpa...', 36, Array)
+#1 C:\wamp\www\tpad\forge\router.php(157): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\wamp\www\tpad\forge\router.php(233): Forge\Router::route_page('~^([^/]+)/([^/]...', Array)
+#3 C:\wamp\www\tpad\forge\core.php(100): Forge\Router::call()
+#4 C:\wamp\www\tpad\engine.php(111): Forge\Core::startup()
+#5 C:\wamp\www\tpad\public\index.php(18): require_once('C:\\wamp\\www\\tpa...')
+#6 {main}
+

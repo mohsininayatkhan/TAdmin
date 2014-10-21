@@ -1,0 +1,24 @@
+<div class="blue_box" id="<?php echo isset($title) ? preg_replace('/[\s\/]+/', '', ucwords($title)) : ''; ?>">
+			
+	<div class="blue_box_pad">
+	
+		<h2 class="blue_box_title icon_arrow_blue"><?php echo isset($title) ? ucwords($title) : ''; ?></h2>
+		
+		<?php if (isset($menus)): ?>
+			<ul class="grid_wrap">
+				<?php for ($i = 0; $i < count($menus); $i++): ?>
+					<li>
+						<a href="/<?php echo URL::segment(0); ?>/<?php echo isset($menus[$i][2]) ? $menus[$i][2] : strtolower(preg_replace('/[\s\/]+/', '-', $menus[$i][0])); ?>" class="<?php echo isset($menus[$i][3]) ? $menus[$i][3] : 'icon_'.($cssref ? $cssref : 'default').'_'.($i+1); ?>">
+							<h2 class="grid_title"><?php echo preg_replace('/( \/ )/', '/', ucwords($menus[$i][0])); ?></h2>
+							<p class="grid_desc"><?php echo $menus[$i][1]; ?></p>
+						</a>
+					</li>
+				<?php endfor; ?>
+			</ul>
+			
+			<div class="clearfix"></div>
+		<?php endif; ?>
+
+	</div>
+	
+</div>

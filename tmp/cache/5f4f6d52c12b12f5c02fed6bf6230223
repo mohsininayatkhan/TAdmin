@@ -1,0 +1,70 @@
+
+<?php $__env->startSection('main_content'); ?>
+
+	<?php echo $__env->make('layout.tools_top', array('parent' => 'Telephony Management'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	
+	<section class="table_wrap small scroll_wrap">
+		<table>
+			<tr class="row head">
+				<td>Name</td>
+				<td>Number</td>
+				<td>Description</td>
+				<td>Extension</td>
+				<td>Created</td>
+				<td width="5%"></td>
+			</tr>
+			<?php for ($i = 1; $i <= 5; $i++): ?>
+				<tr class="row">
+					<td>QD-Opening Hrs</td>
+					<td><?php echo substr(str_shuffle("0123456789"), 0, 5); ?></td>
+					<td>QD-Opening Hrs</td>
+					<td class="searchExtension"><?php echo substr(str_shuffle("0123456789"), 0, 4); ?></td>
+					<td>2014-05-08 14:06:16</td>
+					<td><a href="javascript:void(0)" class="dropdownSetter btn gray icon_wrap_block icon_gear_small" data-dropdown="actionSetter">Actions<i class="icon_arrow_gray right"></i></a></td>
+				</tr>
+			<?php endfor; ?>
+		</table>
+		
+		<nav class="dropdown" id="actionSetter">
+			<ul>
+				<li><a href="javascript:void(0)" onClick="openPopup()">Edit</a><i class="triangle"></i></li>
+				<li><a href="javascript:void(0)">Delete</a></li>
+			</ul>
+		</nav>
+	</section>
+
+<?php $__env->stopSection(); ?>
+
+<!-- popup form -->
+<?php $__env->startSection('form_title'); ?>
+	<h2 class="what">Edit Announcement</h2>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('form_content'); ?>
+	
+	<section class="tab_wrap">
+	
+		<div class="tab_content_pad active">
+			
+			<?php echo $__env->make('layout.sfield_open', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				
+				<div class="col1">
+					<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Announcement Name', 'id' => 'name'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Announcement No.', 'id' => 'number'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Description', 'id' => 'description'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				</div>
+				
+			<?php echo $__env->make('layout.sfield_close', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				
+			<span class="button_wrap topspace">
+				<input type="submit" value="Save">
+				<input type="button" value="Cancel" class="gray" onclick="hidePopup()">
+			</span>
+			
+			<div class="clearfix"></div>
+		</div>
+		
+	</section>
+	
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

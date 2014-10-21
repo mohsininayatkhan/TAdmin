@@ -1,0 +1,16 @@
+<?php if (isset($buttons) && $buttons): ?>
+	<div class="clearfix"></div>
+			
+	<div class="button_wrap topspace">
+		<input type="submit" value="<?php echo isset($submit_text) ? $submit_text : 'Search'; ?>">
+		<input type="reset" value="Reset" class="gray">
+	</div>
+<?php endif; ?>
+
+<?php if (isset($subtitle) && $subtitle): ?>
+	</div> <!-- sfield_pad end -->
+<?php else: ?>
+	<div class="clearfix"></div>
+<?php endif; ?>
+	
+</section>

@@ -1,0 +1,16 @@
+{
+    "minimum-stability": "dev",
+    "require": {
+        "mustache/mustache": "dev-dev",
+        "phenx/php-font-lib": "0.2.1",
+        "dompdf/dompdf": "dev-master",
+        "phpmailer/phpmailer": "dev-master",
+        "symfony/event-dispatcher": "2.3.*@dev",
+        "illuminate/database": "4.1.*@dev",
+        "amazonwebservices/aws-sdk-for-php": "*",
+        "illuminate/view": "4.1.*"
+    },
+    "autoload": {
+        "psr-0": {"libraries": "app/libraries/"}
+    }
+}

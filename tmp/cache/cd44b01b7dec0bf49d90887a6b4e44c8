@@ -1,0 +1,50 @@
+
+<?php $__env->startSection('extra_assets'); ?>
+<script src="js/jquery.validate.js"></script>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main_content'); ?>
+
+	<div class="dialpad floating_box">
+
+		<div class="container">
+
+			<div class="pad">
+			
+				<div class="row">
+					<span class="text"><input type="text" id="number" class="inp"></span>
+				</div>
+				
+				<div class="key_wrap">
+					<div class="key"><span class="key_pad">1</span></div>
+					<div class="key"><span class="key_pad">2</span></div>
+					<div class="key"><span class="key_pad">3</span></div>
+					<div class="key"><span class="key_pad char back">Back</span></div>
+					<div class="key"><span class="key_pad">4</span></div>
+					<div class="key"><span class="key_pad">5</span></div>
+					<div class="key"><span class="key_pad">6</span></div>
+					<div class="key"><span class="key_pad char clear">Clear</span></div>
+					<div class="key"><span class="key_pad">7</span></div>
+					<div class="key"><span class="key_pad">8</span></div>
+					<div class="key"><span class="key_pad">9</span></div>
+					<div class="key"><span class="key_pad char mute">Mute</span></div>
+					<div class="key"><span class="key_pad asterisk">*</span></div>
+					<div class="key"><span class="key_pad">0</span></div>
+					<div class="key"><span class="key_pad">#</span></div>
+					<div class="key"><span class="key_pad dial icon_wrap_notext icon_wrap_block">Dial <i class="icon_call_big"></i></span></div>
+					
+					<div class="clearfix"></div>
+				</div>
+				
+			</div>
+
+			<span class="ie_shadow_top"></span>
+			<span class="ie_shadow_bottom"></span>
+			<span class="ie_shadow_left"></span>
+			<span class="ie_shadow_right"></span>
+		</div>
+		
+	</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.panel', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

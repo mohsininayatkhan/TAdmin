@@ -1,0 +1,25 @@
+
+<?php $__env->startSection('content'); ?>
+
+	<?php echo $__env->make('layout.top_pane', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+	<div class="main_pane">
+
+		<div id="content">
+			
+			<?php echo $__env->make('layout.left_pane', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+			<div class="main_pane_pad">
+			
+				<?php echo $__env->yieldContent('main_content'); ?>
+			
+			</div> <!-- end main_pane_pad -->
+
+		</div> <!-- end content -->
+		
+	</div> <!-- end main_pane -->
+	
+	<?php echo $__env->make('layout.profile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

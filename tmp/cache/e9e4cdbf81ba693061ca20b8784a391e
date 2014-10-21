@@ -1,0 +1,40 @@
+
+<?php $__env->startSection('extra_assets'); ?>
+<script src="js/jquery.validate.js"></script>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main_content'); ?>
+
+	<div class="centered voicemail_wrap">
+	
+		<div class="toogle_wrap">
+			
+			<section class="table_wrap" style="display:block">
+				<table width="100%">
+					<tr class="row head">
+						<td class="col1" width="30%">Time</td>
+						<td class="col2" width="30%">Caller</td>
+						<td class="col3" width="25%">Sec</td>
+						<td class="col4" width="15%">File</td>
+					</tr>
+					<tr class="row">
+						<td class="col1">2014-07-31 16:28:08</td>
+						<td class="col2">0728495613</td>
+						<td class="col3">00:00:10</td>
+						<td class="col4">&nbsp;</td>
+					</tr>
+					<tr class="row">
+						<td class="col1">2014-07-31 16:28:08</td>
+						<td class="col2">0286135497</td>
+						<td class="col3">00:00:10</td>
+						<td class="col4">&nbsp;</td>
+					</tr>
+				</table>
+			</section>
+			
+		</div>
+		
+	</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.panel', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

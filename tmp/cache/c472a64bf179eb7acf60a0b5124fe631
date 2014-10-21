@@ -1,0 +1,326 @@
+
+<?php $__env->startSection('extra_assets'); ?>
+<script src="js/jquery.validate.js"></script>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main_content'); ?>
+
+	<div class="centered grid_wrap" id="home">
+		
+		<?php foreach ($record as $data): ?>
+			<div class="grid">
+				<div class="grid_spacer">
+					<div class="grid_pad">
+						<div class="user_details">
+							<figure class="pic">
+								<img class="preload" src="<?php echo $data['account_image'] ? $data['account_image'] : 'img/content/pic_default.png'; ?>" alt="" /><i class="shaper"></i>
+							</figure>
+							<div class="text">
+								<span class="status icon_status_<?php echo $data['f_status'] == '' ? 'available' : strtolower($data['f_status']); ?>">
+									<?php if ($data['f_status'] == 'AVAILABLE' || $data['f_status'] == ''): ?>
+										Online
+									<?php elseif ($data['f_status'] == 'DND'): ?>
+										Do not disturb
+									<?php elseif ($data['f_status'] == 'OUTOFOFFICE'): ?>
+										Out of office
+									<?php else: ?>
+										<?php echo ucwords(strtolower($data['f_status'])); ?>
+									<?php endif; ?>
+								</span>
+								<br/>
+								<strong class="block"><?php echo $data['name']; ?> <?php echo $data['extension']; ?></strong>
+							</div>
+							
+							<div class="clearfix"></div>
+						</div>
+						
+						<div class="user_tools">
+							<div class="buttons">
+								<a href="" class="icon_wrap_block gray">Call<i class="icon_call"></i></a>
+							</div>
+							
+							<!--
+							<div class="call_info">
+								<div class="text icon_wrap_block">
+									Called 07123456789 <i class="icon_outgoing_call"></i>
+								</div>
+								<div class="tools">
+									<time class="float">00:00:14</time>
+									<a href="" class="icon_wrap_notext"><i class="icon_listen"></i>
+										<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>Listen</span></span>
+									</a>
+									<a href="" class="icon_wrap_notext"><i class="icon_whisper"></i>
+										<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>Whisper</span></span>
+									</a>
+									<a href="" class="icon_wrap_notext"><i class="icon_barge"></i>
+										<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>Barge</span></span>
+									</a>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+							-->
+						</div>
+					</div>
+				</div>
+			</div>
+		<?php endforeach; ?>
+
+		<!--
+		<div class="grid">
+			<div class="grid_spacer outgoing_call">
+				<div class="grid_pad">
+					<div class="user_details">
+						<figure class="pic">
+							<img class="preload" src="http://media-cache-ak0.pinimg.com/236x/44/c9/09/44c909f0f69a9a564725e9d8b35104c1.jpg" alt="" /><i class="shaper"></i>
+						</figure>
+						<div class="text">
+							<span class="status icon_status_online">Online</span>
+							<br/>
+							<strong class="block">Justin 1026</strong>
+						</div>
+						
+						<div class="clearfix"></div>
+					</div>
+					
+					<div class="user_tools">
+						<div class="buttons">
+							<a href="" class="icon_wrap_block gray">Call<i class="icon_call"></i></a>
+						</div>
+						
+						<div class="call_info">
+							<div class="text icon_wrap_block">
+								Called 07123456789 <i class="icon_outgoing_call"></i>
+							</div>
+							<div class="tools">
+								<time class="float">00:00:14</time>
+								<a href="" class="icon_wrap_notext"><i class="icon_listen"></i>
+									<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>Listen</span></span>
+								</a>
+								<a href="" class="icon_wrap_notext"><i class="icon_whisper"></i>
+									<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>Whisper</span></span>
+								</a>
+								<a href="" class="icon_wrap_notext"><i class="icon_barge"></i>
+									<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>Barge</span></span>
+								</a>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="grid">
+			<div class="grid_spacer inbound_call">
+				<div class="grid_pad">
+					<div class="user_details">
+						<figure class="pic">
+							<img class="preload" src="http://media-cache-ec0.pinimg.com/236x/62/31/2a/62312a4e1674bbd385edc7c698d63a8b.jpg" alt=""><i class="shaper"></i>
+						</figure>
+						<div class="text">
+							<span class="status icon_status_out">Out of office</span>
+							<br>
+							<strong class="block">Emily 1007</strong>
+						</div>
+						
+						<div class="clearfix"></div>
+					</div>
+					
+					<div class="user_tools">
+						<div class="buttons">
+							<a href="" class="icon_wrap_block gray">Call<i class="icon_call"></i></a>
+						</div>
+						
+						<div class="call_info">
+							<div class="text icon_wrap_block">
+								Called 07123456789 <i class="icon_inbound_call"></i>
+							</div>
+							<div class="tools">
+								<time class="float">00:00:14</time>
+								<a href="" class="icon_wrap_notext"><i class="icon_listen"></i>
+									<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>Listen</span></span>
+								</a>
+								<a href="" class="icon_wrap_notext"><i class="icon_whisper"></i>
+									<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>Whisper</span></span>
+								</a>
+								<a href="" class="icon_wrap_notext"><i class="icon_barge"></i>
+									<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>Barge</span></span>
+								</a>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="grid">
+			<div class="grid_spacer outbound_call">
+				<div class="grid_pad">
+					<div class="user_details">
+						<figure class="pic">
+							<img class="preload" src="http://media-cache-ak0.pinimg.com/236x/06/df/69/06df69f5703529d4f703d40628ca8d23.jpg" alt=""><i class="shaper"></i>
+						</figure>
+						<div class="text">
+							<span class="status icon_status_busy">Busy</span>
+							<br>
+							<strong class="block">Katie 1046</strong>
+						</div>
+						
+						<div class="clearfix"></div>
+					</div>
+					
+					<div class="user_tools">
+						<div class="buttons">
+							<a href="" class="icon_wrap_block gray">Call<i class="icon_call"></i></a>
+						</div>
+						
+						<div class="call_info">
+							<div class="text icon_wrap_block">
+								Called 07123456789 <i class="icon_outbound_call"></i>
+							</div>
+							<div class="tools">
+								<time class="float">00:00:14</time>
+								<a href="" class="icon_wrap_notext"><i class="icon_listen"></i>
+									<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>Listen</span></span>
+								</a>
+								<a href="" class="icon_wrap_notext"><i class="icon_whisper"></i>
+									<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>Whisper</span></span>
+								</a>
+								<a href="" class="icon_wrap_notext"><i class="icon_barge"></i>
+									<span class="tooltip" style="display: none; opacity: 0; top: 38px;"><span class="tooltip_holder"><i class="triangle"></i>Barge</span></span>
+								</a>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="grid">
+			<div class="grid_spacer internal_call">
+				<div class="grid_pad">
+					<div class="user_details">
+						<figure class="pic">
+							<img class="preload" src="http://makeupjournal.net/wp-content/gallery/gallery/Beautiful%20young%20woman%20studio%20shot%20portrait%20Oleksandr%20Medvedyev%2037448623.jpg" alt=""><i class="shaper"></i>
+						</figure>
+						<div class="text">
+							<span class="status icon_status_dont">Do not disturb</span>
+							<br>
+							<strong class="block">Cynthia 1007</strong>
+						</div>
+						
+						<div class="clearfix"></div>
+					</div>
+					
+					<div class="user_tools">
+						<div class="buttons">
+							<a href="" class="icon_wrap_block gray">Call<i class="icon_call"></i></a>
+						</div>
+						
+						<div class="call_info">
+							<div class="text icon_wrap_block">
+								Called 07123456789 <i class="icon_inbound_call"></i>
+							</div>
+							<div class="tools">
+								<time class="float">00:00:14</time>
+								<a href="" class="icon_wrap_notext"><i class="icon_listen"></i>
+									<span class="tooltip" style="display: none; opacity: 0; top: 38px;"><span class="tooltip_holder"><i class="triangle"></i>Listen</span></span>
+								</a>
+								<a href="" class="icon_wrap_notext"><i class="icon_whisper"></i>
+									<span class="tooltip" style="display: none; opacity: 0; top: 38px;"><span class="tooltip_holder"><i class="triangle"></i>Whisper</span></span>
+								</a>
+								<a href="" class="icon_wrap_notext"><i class="icon_barge"></i>
+									<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>Barge</span></span>
+								</a>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="grid">
+			<div class="grid_spacer premium">
+				<i class="icon_premium"></i>
+				<div class="grid_pad">
+					<div class="user_details">
+						<figure class="pic">
+							<img class="preload" src="http://www.polyvore.com/cgi/img-thing?.out=jpg&amp;size=l&amp;tid=57853672" alt=""><i class="shaper"></i>
+						</figure>
+						<div class="text">
+							<span class="status icon_status_invisible">Invisible</span>
+							<br>
+							<strong class="block">Hannah 1026</strong>
+						</div>
+						
+						<div class="clearfix"></div>
+					</div>
+					
+					<div class="user_tools">
+						<div class="buttons">
+							<a href="" class="icon_wrap_block gray">Call<i class="icon_call"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="grid">
+			<div class="grid_spacer">
+				<div class="grid_pad">
+					<div class="user_details">
+						<figure class="pic">
+							<img class="preload" src="http://31.media.tumblr.com/6b18c7b2f843c970e15840176869840c/tumblr_mnw5bh8R7o1r28uw6o1_250.jpg" alt=""><i class="shaper"></i>
+						</figure>
+						<div class="text">
+							<span class="status icon_status_out">Out of office</span>
+							<br>
+							<strong class="block">Alexa 5962</strong>
+						</div>
+						
+						<div class="clearfix"></div>
+					</div>
+					
+					<div class="user_tools">
+						<div class="buttons">
+							<a href="" class="icon_wrap_block gray">Call<i class="icon_call"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="grid">
+			<div class="grid_spacer">
+				<div class="grid_pad">
+					<div class="user_details">
+						<figure class="pic">
+							<img class="preload" src="img/content/pic_default.png" alt=""><i class="shaper"></i>
+						</figure>
+						<div class="text">
+							<span class="status icon_status_online">Online</span>
+							<br>
+							<strong class="block">Taylor 6402</strong>
+						</div>
+						
+						<div class="clearfix"></div>
+					</div>
+					
+					<div class="user_tools">
+						<div class="buttons">
+							<a href="" class="icon_wrap_block gray">Call<i class="icon_call"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		-->
+		<div class="clearfix"></div>
+		
+	</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.panel', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

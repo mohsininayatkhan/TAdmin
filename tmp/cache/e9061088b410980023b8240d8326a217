@@ -1,0 +1,67 @@
+
+<?php $__env->startSection('extra_assets'); ?>
+<script src="js/jquery.validate.js"></script>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main_content'); ?>
+
+	<div class="centered connections_wrap">
+			
+		<div class="toogle_wrap">
+			
+			<header class="icon_wrap_block">
+				Your BLF connections
+				<i class="icon_arrow_mini_r"></i>
+			</header>
+			
+			<section class="table_wrap">
+				<table width="100%">
+					<tr class="row head">
+						<td class="col1" width="45%">Name</td>
+						<td class="col2" width="45%">Status</td>
+						<td class="col3" width="10%">Action</td>
+					</tr>
+					<tr class="row">
+						<td class="col1">Seth 7261</td>
+						<td class="col2">Connected</td>
+						<td class="col3"><a href="" class="reject">Remove</a></td>
+					</tr>
+					<tr class="row">
+						<td class="col1">Anthony 6418</td>
+						<td class="col2">Connected</td>
+						<td class="col3"><a href="" class="reject">Remove</a></td>
+					</tr>
+				</table>
+			</section>
+			
+			<header class="icon_wrap_block">
+				BLF connections towards you
+				<i class="icon_arrow_mini_r"></i>
+			</header>
+			
+			<section class="table_wrap">
+				<table width="100%">
+					<tr class="row head">
+						<td class="col1" width="45%">Name</td>
+						<td class="col2" width="45%">Status</td>
+						<td class="col3" width="10%">Action</td>
+					</tr>
+					<tr class="row">
+						<td class="col1">Effy 7230</td>
+						<td class="col2">Awaiting</td>
+						<td class="col3"><a href="" class="reject">Reject</a></td>
+					</tr>
+					<tr class="row">
+						<td class="col1">Panda 4031</td>
+						<td class="col2">Awaiting</td>
+						<td class="col3"><a href="" class="reject">Reject</a></td>
+					</tr>
+				</table>
+			</section>
+			
+		</div>
+		
+	</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.panel', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

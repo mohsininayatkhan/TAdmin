@@ -1,0 +1,195 @@
+
+<?php $__env->startSection('main_content'); ?>
+
+	<div class="centered">
+	
+		<h2 class="title">PBX Management</h2>
+		
+		<div class="blue_box" id="ExtensionManagement">
+			
+			<div class="blue_box_pad">
+				<h2 class="blue_box_title icon_arrow_blue">Extension Management</h2>
+				
+				<ul class="grid_wrap">
+					<li>
+						<a href="/<?php echo URL::segment(0); ?>/extensions" class="">
+							<h2 class="grid_title">Extensions</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="/<?php echo URL::segment(0); ?>/credit-management" class="">
+							<h2 class="grid_title">Credit Management</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="/<?php echo URL::segment(0); ?>/phone-directory-management" class="">
+							<h2 class="grid_title">Phone Directory Management</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="">
+							<h2 class="grid_title">Phone Registration Status</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="">
+							<h2 class="grid_title">Extensions Models</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+				</ul>
+				
+				<div class="clearfix"></div>
+				
+			</div>
+			
+		</div>
+		
+		<hr class="hr_gray" />
+		
+		<div class="blue_box" id="ExtraTelephoneFeatures">
+			
+			<div class="blue_box_pad">
+				<h2 class="blue_box_title icon_arrow_blue">Extra Telephone Features</h2>
+				
+				<ul class="grid_wrap">
+					<li>
+						<a href="pbx-management/extra-telephone-features/features-management" class="">
+							<h2 class="grid_title">Features Management</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="pbx-management/extra-telephone-features/call-group" class="">
+							<h2 class="grid_title">Call Group</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="">
+							<h2 class="grid_title">Voice Conference</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="">
+							<h2 class="grid_title">Paging/Intercom</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="">
+							<h2 class="grid_title">Blacklist</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="">
+							<h2 class="grid_title">Outbound Pin Dialing</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="">
+							<h2 class="grid_title">Auto Provisioning Admin</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+				</ul>
+				
+				<div class="clearfix"></div>
+				
+			</div>
+			
+		</div>
+		
+		<hr class="hr_gray" />
+		
+		<div class="blue_box" id="TelephonyManagement">
+			
+			<div class="blue_box_pad">
+				<h2 class="blue_box_title icon_arrow_blue">Telephony Management</h2>
+				
+				<ul class="grid_wrap">
+					<li>
+						<a href="pbx-management/telephony-management/ring-group" class="">
+							<h2 class="grid_title">Ring Group</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="">
+							<h2 class="grid_title">Music On Hold</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="pbx-management/telephony-management/announcement" class="">
+							<h2 class="grid_title">Announcement</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="">
+							<h2 class="grid_title">Queue</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="">
+							<h2 class="grid_title">IVR</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="">
+							<h2 class="grid_title">Day Night</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="">
+							<h2 class="grid_title">DID</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="">
+							<h2 class="grid_title">Manual Day Night</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="">
+							<h2 class="grid_title">Agent Group</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="">
+							<h2 class="grid_title">Queue Group</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+					<li>
+						<a href="" class="">
+							<h2 class="grid_title">Agent Shifts</h2>
+							<p class="grid_desc">Lorem ipsum dolor sit amet</p>
+						</a>
+					</li>
+				</ul>
+				
+				<div class="clearfix"></div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

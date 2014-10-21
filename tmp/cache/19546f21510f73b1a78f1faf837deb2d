@@ -1,0 +1,70 @@
+
+<?php $__env->startSection('main_content'); ?>
+
+	<?php echo $__env->make('layout.tools_top', array('parent' => 'Phone System Setup'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	
+	
+	<section class="table_wrap small scroll_wrap">
+		
+		<!-- Grid  for call group-->
+		<div id="tb_callgroup"></div>
+		
+		<nav class="dropdown" id="actionSetter">
+			<ul>
+				<li><a href="javascript:void(0)" onClick="openCallgroupForm()">Edit</a><i class="triangle"></i></li>
+				<li><a href="javascript:void(0)">Delete</a></li>
+			</ul>
+		</nav>
+	</section>
+	
+	<?php echo $__env->make('layout.tools_bottom_open', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	
+		<!-- Pagination area -->
+		<div class="pagination_wrap"></div>
+		
+	<?php echo $__env->make('layout.tools_bottom_close', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	<?php echo $__env->make('assets.callgroup', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	
+	<!-- popup form -->
+	<?php echo $__env->make('pbxmanagement.extra_telephone_features.call_group_form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+@extends('layout.main')
+
+<?php $__env->startSection('main_content'); ?>
+	
+	<?php echo $__env->make('layout.tools_top', array('parent' => 'Phone System Setup'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	
+	<section class="table_wrap">
+		<table>
+			<tr class="row head">
+				<td>Name</td>
+				<td>Code</td>
+				<td width="5%"></td>
+			</tr>
+			<?php for ($i = 1; $i <= 5; $i++): ?>
+				<tr class="row">
+					<td>All</td>
+					<td>*<?php echo substr(str_shuffle('0123456789'), 0, 2); ?></td>
+					<td><a href="javascript:void(0)" class="dropdownSetter btn gray icon_wrap_block icon_gear_small" data-dropdown="actionSetter">Actions<i class="icon_arrow_gray right"></i></a></td>
+				</tr>
+			<?php endfor; ?>
+		</table>
+		
+		<nav class="dropdown" id="actionSetter">
+			<ul>
+				<li><a href="javascript:void(0)" onClick="openPopup()">Edit</a><i class="triangle"></i></li>
+				<li><a href="javascript:void(0)">Delete</a></li>
+			</ul>
+		</nav>
+	</section>
+
+<?php $__env->stopSection(); ?>
+
+<!-- popup form -->
+<?php echo $__env->make('pbxmanagement.extra_telephone_features.call_group_form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

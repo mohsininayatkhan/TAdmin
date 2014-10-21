@@ -1,0 +1,73 @@
+
+<?php $__env->startSection('extra_assets'); ?>
+<script src="js/jquery.validate.js"></script>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main_content'); ?>
+
+	<div class="centered history_wrap">
+			
+		<div class="toogle_wrap">
+			
+			<header class="icon_wrap_block">
+				Missed Calls
+				<i class="icon_arrow_mini_r"></i>
+				<a href="" class="clear_all blue">Clear All</a>
+			</header>
+			
+			<section class="table_wrap">
+				<table width="100%">
+					<tr class="row head">
+						<td class="col1" width="35%">Time</td>
+						<td class="col2" width="35%">Caller</td>
+						<td class="col3" width="25%">Duration</td>
+						<td class="col4" width="5%"></td>
+					</tr>
+					<tr class="row">
+						<td class="col1">2014-07-31 16:28:08</td>
+						<td class="col2">
+							<span class="icon_wrap_block_left">
+								3698072145
+								<i class="icon_arrow_green_r"></i>
+							</span>
+						</td>
+						<td class="col3">00:00:10</td>
+						<td class="col4"><a href="" class="icon_wrap_block gray">Call<i class="icon_call"></i></a></td>
+					</tr>
+				</table>
+			</section>
+			
+			<header class="icon_wrap_block">
+				Recent Calls
+				<i class="icon_arrow_mini_r"></i>
+				<a href="" class="clear_all blue">Clear All</a>
+			</header>
+			
+			<section class="table_wrap">
+				<table width="100%">
+					<tr class="row head">
+						<td class="col1" width="35%">Time</td>
+						<td class="col2" width="35%">Caller</td>
+						<td class="col3" width="25%">Duration</td>
+						<td class="col4" width="5%"></td>
+					</tr>
+					<tr class="row">
+						<td class="col1">2014-07-31 16:28:08</td>
+						<td class="col2">
+							<span class="icon_wrap_block_left">
+								5469873021
+								<i class="icon_arrow_red_r"></i>
+							</span>
+						</td>
+						<td class="col3">00:00:10</td>
+						<td class="col4"><a href="" class="icon_wrap_block gray">Call<i class="icon_call"></i></a></td>
+					</tr>
+				</table>
+			</section>
+			
+		</div>
+		
+	</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.panel', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

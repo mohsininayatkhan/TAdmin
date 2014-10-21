@@ -1,0 +1,21 @@
+
+<?php $__env->startSection('content'); ?>
+	<h1>Simple</h1>
+	
+	<?php echo $__env->make('logging.form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	
+	<?php if (isset($log)): ?>
+	    
+	    <table>
+	        <?php foreach ($log as $entry): ?>
+    	        <tr>
+                    <td><?php echo $entry['date']; ?></td>
+                    <td><?php echo $entry['message']; ?></td>
+                </tr>
+            <?php endforeach; ?>
+	    </table>
+	    
+    <?php endif; ?>
+	
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

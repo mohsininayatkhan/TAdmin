@@ -1,0 +1,11 @@
+<?php if (isset($title) && $title): ?>
+	<h2 class="sform_title"><?php echo $title; ?></h2>
+<?php endif; ?>
+
+<section class="sfield_wrap <?php echo isset($extra_cls) ? $extra_cls : ''; ?>">
+
+	<?php if (isset($subtitle) && $subtitle): ?>
+		<h2 class="sfield_title"><span class="btn gray icon_wrap_notext"><i class="icon_arrow_blue"></i><i class="icon_arrow_blue_r"></i></span><?php echo $subtitle; ?></h2>
+			
+		<div class="sfield_pad">
+	<?php endif; ?>

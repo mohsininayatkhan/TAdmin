@@ -1,0 +1,90 @@
+<div class="top_pane">
+
+	<div class="top_pane_pad">
+	
+		<figure class="fig_logo">
+			<img src="img/content/logo_white.jpg" alt="Tpad - The Global Telephone network" class="block" width="97" height="45" />
+		</figure>
+		
+		<div class="float company_pane">
+		
+			<div class="pad">
+				<h2 class="name">Tpad <small>012345678</small></h2>
+			</div>
+			
+		</div>
+		
+		<div class="float user_pane" id="userPane">
+		
+			<div class="divider">
+			
+				<div class="pad user_details">
+
+					<div class="text">
+						<span class="status icon_status_<?php echo $user['f_status'] == '' ? 'available' : strtolower($user['f_status']); ?>" id="statusSetter">
+							<?php if ($user['f_status'] == 'AVAILABLE' || $user['f_status'] == ''): ?>
+								Online
+							<?php elseif ($user['f_status'] == 'DND'): ?>
+								Do not disturb
+							<?php elseif ($user['f_status'] == 'OUTOFOFFICE'): ?>
+								Out of office
+							<?php else: ?>
+								<?php echo ucwords(strtolower($user['f_status'])); ?>
+							<?php endif; ?>
+							<i class="icon_arrow_d"></i>
+						</span>
+						<br/>
+						<strong class="block"><?php echo isset($user['name']) ? $user['name'] : ''; ?></strong>
+					</div>		
+					
+					<!--status popup-->
+					<nav class="status_menu" id="statusMenu">
+						<ul>
+							<li><a href="" class="icon_status_online">Online</a><i class="triangle up"></i></li>
+							<li><a href="" class="icon_status_busy">Busy</a></li>
+							<li><a href="" class="icon_status_out">Out of office</a></li>
+							<li><a href="" class="icon_status_invisible">Invisible</a></li>
+							<li><a href="" class="icon_status_dont">Do not disturb</a></li>
+						</ul>
+					</nav>
+					
+					<div class="search"><input type="text" id="search" /></div><!-- placeholder="Search by name or number"-->
+					
+				</div>
+				
+				<div class="clearfix"></div>
+				
+			</div>
+			
+		</div>
+		
+		<div class="float notifier_pane">
+		
+			<div class="divider">
+			
+				<div class="pad">
+				
+					<div class="texts">
+						Incoming call from
+						<strong class="block">01234567890</strong>
+						<time>00:00:14</time>
+					</div>
+					
+					<div class="buttons">
+						<a href="" class="icon_wrap hangup">Hangup<i class="icon_hangup"></i></a>
+						<a href="" class="icon_wrap transfer">Transfer<i class="icon_transfer"></i></a>
+					</div>
+					
+					<div class="clearfix"></div>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+			
+		<div class="clearfix"></div>
+	
+	</div>
+
+</div><!-- end top_pane -->

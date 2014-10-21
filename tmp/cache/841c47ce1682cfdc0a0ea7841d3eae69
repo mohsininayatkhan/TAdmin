@@ -1,0 +1,32 @@
+<aside class="top_tools">
+	
+	<nav class="breadcrumb">
+		<a href="/">Home</a>
+		<a href="/<?php echo URL::segment(0); ?>"><?php echo ucwords(preg_replace(array('/pbx/', "/-/"), array('PBX', " "), URL::segment(0))); ?></a>
+		<?php if (isset($parent)): ?>
+			<a href="/<?php echo URL::segment(0); ?>#<?php echo str_replace(' ', '', $parent); ?>"><?php echo $parent; ?></a>
+		<?php endif; ?>
+		<span><?php echo ucwords(str_replace("-", " ", URL::segment(1))); ?></span>
+	</nav>
+	
+	<?php if (!isset($no_tools)): ?>
+		<div class="right_pane">
+			<div class="float search rounded2"><input type="text" id="search" placeholder="Type here to search <?php echo isset($current) ? $current : ''; ?>" /></div>
+			
+			<a href="" class="btn gradient icon_wrap new-btn">
+				New <?php echo isset($current) ? $current : ''; ?>
+				<i class="icon_new_ext"></i>
+			</a>
+			
+			<a href="" class="btn gradient icon_wrap">
+				Refresh
+				<i class="icon_refresh"></i>
+			</a>
+			
+			<div class="clearfix"></div>
+		</div>
+	<?php endif; ?>
+	
+</aside>
+
+<h2 class="title"><?php echo ucwords(str_replace("-", " ", URL::segment(1))); ?></h2>

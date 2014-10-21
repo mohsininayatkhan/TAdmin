@@ -1,0 +1,12 @@
+
+<?php $__env->startSection('main_content'); ?>
+
+	<div class="centered grid_wrap">
+	
+	
+		<div class="clearfix"></div>
+		
+	</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

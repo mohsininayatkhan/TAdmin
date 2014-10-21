@@ -1,0 +1,45 @@
+
+<?php $__env->startSection('main_content'); ?>
+	
+	<?php echo $__env->make('layout.tools_top', array('parent' => 'Queue Reports'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	
+	<?php echo $__env->make('layout.sform_open', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		
+		<?php echo $__env->make('layout.sfield_open', array('subtitle' => 'Search Wallboard', 'extra_cls' => 'bordered'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					
+			<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'col1', 'type' => 'text', 'label' => 'Enter Wallboard Name', 'id' => 'wallboard'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'col_wide', 'type' => 'checkbox', 'subwrap_tag' => 'label', 'subwrap_cls' => 'wide', 'id' => 'cqueues', 'text' => 'Queues with calls in waiting only'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			
+			<div class="col_wide">
+				<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'col1', 'type' => ['radio', 'select'], 'id' => ['rqueuegroup', 'queue_group'], 'name' => ['rqueues', 'queue_group'], 'options' => array("Quickdox Ltd" => "Quickdox Ltd"), 'text' => 'Queue Group', 'ischecked' => true), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				
+				<span class="or float semibold">OR</span>
+				
+				<?php echo $__env->make('layout.sfield_generator', array('type' => 'radio', 'subwrap_tag' => 'label', 'subwrap_cls' => '', 'id' => 'rqueues', 'name' => 'rqueues', 'text' => 'Select Queues'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			</div>
+			
+			<div class="col_wide checkbox_parent">			
+				<label for="">Select Columns:</label>
+				
+				<label class="field_wrap"><span class="checkbox_wrap"><input type="checkbox" class="checkAll" data-child="columns" data-parent=".checkbox_parent" /></span> All</label>
+				
+				<div class="checkbox_group wide">
+					<?php echo $__env->make('layout.sfield_generator', array('type' => 'checkbox', 'subwrap_tag' => 'label', 'name' => 'columns[]', 'value' => 'queue', 'cls' => 'columns', 'text' => 'Queue'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					<?php echo $__env->make('layout.sfield_generator', array('type' => 'checkbox', 'subwrap_tag' => 'label', 'name' => 'columns[]', 'value' => 'offered', 'cls' => 'columns', 'text' => 'Offered'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					<?php echo $__env->make('layout.sfield_generator', array('type' => 'checkbox', 'subwrap_tag' => 'label', 'name' => 'columns[]', 'value' => 'answered', 'cls' => 'columns', 'text' => 'Answered'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					<?php echo $__env->make('layout.sfield_generator', array('type' => 'checkbox', 'subwrap_tag' => 'label', 'name' => 'columns[]', 'value' => 'abandoned', 'cls' => 'columns', 'text' => 'Abandoned'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					<?php echo $__env->make('layout.sfield_generator', array('type' => 'checkbox', 'subwrap_tag' => 'label', 'name' => 'columns[]', 'value' => 'callwaiting', 'cls' => 'columns', 'text' => 'Call Waiting'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					<?php echo $__env->make('layout.sfield_generator', array('type' => 'checkbox', 'subwrap_tag' => 'label', 'name' => 'columns[]', 'value' => 'longestinqueue', 'cls' => 'columns', 'text' => 'Longest in Queue'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					<?php echo $__env->make('layout.sfield_generator', array('type' => 'checkbox', 'subwrap_tag' => 'label', 'name' => 'columns[]', 'value' => 'currentcalls', 'cls' => 'columns', 'text' => 'Current Calls'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					<?php echo $__env->make('layout.sfield_generator', array('type' => 'checkbox', 'subwrap_tag' => 'label', 'name' => 'columns[]', 'value' => 'freeagents', 'cls' => 'columns', 'text' => 'Free Agents'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					<?php echo $__env->make('layout.sfield_generator', array('type' => 'checkbox', 'subwrap_tag' => 'label', 'name' => 'columns[]', 'value' => 'totalagents', 'cls' => 'columns', 'text' => 'Total Agents'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				</div>
+				
+			</div>
+				
+		<?php echo $__env->make('layout.sfield_close', array('subtitle' => true, 'buttons' => true, 'submit_text' => 'Run Wallboard'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			
+	<?php echo $__env->make('layout.sform_close', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

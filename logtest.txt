@@ -1,0 +1,465 @@
+111Array
+(
+)
+Ad\Billing\EkvBillReccharges Object
+(
+    [table] => erp_billing.ekv_bill_reccharges
+    [primaryKey] => reccharge
+    [timestamps] => 
+    [connection:protected] => 
+    [perPage:protected] => 15
+    [incrementing] => 1
+    [attributes:protected] => Array
+        (
+        )
+
+    [original:protected] => Array
+        (
+        )
+
+    [relations:protected] => Array
+        (
+        )
+
+    [hidden:protected] => Array
+        (
+        )
+
+    [fillable:protected] => Array
+        (
+        )
+
+    [guarded:protected] => Array
+        (
+        )
+
+    [dates:protected] => Array
+        (
+        )
+
+    [with:protected] => Array
+        (
+        )
+
+    [exists] => 
+)
+Ad\Billing\EkvBillReccharges Object
+(
+    [table] => erp_billing.ekv_bill_reccharges
+    [primaryKey] => reccharge
+    [timestamps] => 
+    [connection:protected] => 
+    [perPage:protected] => 15
+    [incrementing] => 1
+    [attributes:protected] => Array
+        (
+        )
+
+    [original:protected] => Array
+        (
+        )
+
+    [relations:protected] => Array
+        (
+        )
+
+    [hidden:protected] => Array
+        (
+        )
+
+    [fillable:protected] => Array
+        (
+        )
+
+    [guarded:protected] => Array
+        (
+        )
+
+    [dates:protected] => Array
+        (
+        )
+
+    [with:protected] => Array
+        (
+        )
+
+    [exists] => 
+)
+Ad\Billing\EkvBillReccharges Object
+(
+    [table] => erp_billing.ekv_bill_reccharges
+    [primaryKey] => reccharge
+    [timestamps] => 
+    [connection:protected] => 
+    [perPage:protected] => 15
+    [incrementing] => 1
+    [attributes:protected] => Array
+        (
+        )
+
+    [original:protected] => Array
+        (
+        )
+
+    [relations:protected] => Array
+        (
+        )
+
+    [hidden:protected] => Array
+        (
+        )
+
+    [fillable:protected] => Array
+        (
+        )
+
+    [guarded:protected] => Array
+        (
+        )
+
+    [dates:protected] => Array
+        (
+        )
+
+    [with:protected] => Array
+        (
+        )
+
+    [exists] => 
+)
+Ad\Billing\EkvBillReccharges Object
+(
+    [table] => erp_billing.ekv_bill_reccharges
+    [primaryKey] => reccharge
+    [timestamps] => 
+    [connection:protected] => 
+    [perPage:protected] => 15
+    [incrementing] => 1
+    [attributes:protected] => Array
+        (
+        )
+
+    [original:protected] => Array
+        (
+        )
+
+    [relations:protected] => Array
+        (
+        )
+
+    [hidden:protected] => Array
+        (
+        )
+
+    [fillable:protected] => Array
+        (
+        )
+
+    [guarded:protected] => Array
+        (
+        )
+
+    [dates:protected] => Array
+        (
+        )
+
+    [with:protected] => Array
+        (
+        )
+
+    [exists] => 
+)
+Ad\Billing\EkvBillReccharges Object
+(
+    [table] => erp_billing.ekv_bill_reccharges
+    [primaryKey] => reccharge
+    [timestamps] => 
+    [connection:protected] => 
+    [perPage:protected] => 15
+    [incrementing] => 1
+    [attributes:protected] => Array
+        (
+        )
+
+    [original:protected] => Array
+        (
+        )
+
+    [relations:protected] => Array
+        (
+        )
+
+    [hidden:protected] => Array
+        (
+        )
+
+    [fillable:protected] => Array
+        (
+        )
+
+    [guarded:protected] => Array
+        (
+        )
+
+    [dates:protected] => Array
+        (
+        )
+
+    [with:protected] => Array
+        (
+        )
+
+    [exists] => 
+)
+Ad\Billing\EkvBillReccharges Object
+(
+    [table] => erp_billing.ekv_bill_reccharges
+    [primaryKey] => reccharge
+    [timestamps] => 
+    [connection:protected] => 
+    [perPage:protected] => 15
+    [incrementing] => 1
+    [attributes:protected] => Array
+        (
+        )
+
+    [original:protected] => Array
+        (
+        )
+
+    [relations:protected] => Array
+        (
+        )
+
+    [hidden:protected] => Array
+        (
+        )
+
+    [fillable:protected] => Array
+        (
+        )
+
+    [guarded:protected] => Array
+        (
+        )
+
+    [dates:protected] => Array
+        (
+        )
+
+    [with:protected] => Array
+        (
+        )
+
+    [exists] => 
+)
+Ad\Billing\EkvBillReccharges Object
+(
+    [table] => erp_billing.ekv_bill_reccharges
+    [primaryKey] => reccharge
+    [timestamps] => 
+    [connection:protected] => 
+    [perPage:protected] => 15
+    [incrementing] => 1
+    [attributes:protected] => Array
+        (
+        )
+
+    [original:protected] => Array
+        (
+        )
+
+    [relations:protected] => Array
+        (
+        )
+
+    [hidden:protected] => Array
+        (
+        )
+
+    [fillable:protected] => Array
+        (
+        )
+
+    [guarded:protected] => Array
+        (
+        )
+
+    [dates:protected] => Array
+        (
+        )
+
+    [with:protected] => Array
+        (
+        )
+
+    [exists] => 
+)
+Ad\Billing\EkvBillReccharges Object
+(
+    [table] => erp_billing.ekv_bill_reccharges
+    [primaryKey] => reccharge
+    [timestamps] => 
+    [connection:protected] => 
+    [perPage:protected] => 15
+    [incrementing] => 1
+    [attributes:protected] => Array
+        (
+        )
+
+    [original:protected] => Array
+        (
+        )
+
+    [relations:protected] => Array
+        (
+        )
+
+    [hidden:protected] => Array
+        (
+        )
+
+    [fillable:protected] => Array
+        (
+        )
+
+    [guarded:protected] => Array
+        (
+        )
+
+    [dates:protected] => Array
+        (
+        )
+
+    [with:protected] => Array
+        (
+        )
+
+    [exists] => 
+)
+Ad\Billing\EkvBillReccharges Object
+(
+    [table] => erp_billing.ekv_bill_reccharges
+    [primaryKey] => reccharge
+    [timestamps] => 
+    [connection:protected] => 
+    [perPage:protected] => 15
+    [incrementing] => 1
+    [attributes:protected] => Array
+        (
+        )
+
+    [original:protected] => Array
+        (
+        )
+
+    [relations:protected] => Array
+        (
+        )
+
+    [hidden:protected] => Array
+        (
+        )
+
+    [fillable:protected] => Array
+        (
+        )
+
+    [guarded:protected] => Array
+        (
+        )
+
+    [dates:protected] => Array
+        (
+        )
+
+    [with:protected] => Array
+        (
+        )
+
+    [exists] => 
+)
+Ad\Billing\EkvBillReccharges Object
+(
+    [table] => erp_billing.ekv_bill_reccharges
+    [primaryKey] => reccharge
+    [timestamps] => 
+    [connection:protected] => 
+    [perPage:protected] => 15
+    [incrementing] => 1
+    [attributes:protected] => Array
+        (
+        )
+
+    [original:protected] => Array
+        (
+        )
+
+    [relations:protected] => Array
+        (
+        )
+
+    [hidden:protected] => Array
+        (
+        )
+
+    [fillable:protected] => Array
+        (
+        )
+
+    [guarded:protected] => Array
+        (
+        )
+
+    [dates:protected] => Array
+        (
+        )
+
+    [with:protected] => Array
+        (
+        )
+
+    [exists] => 
+)
+Ad\Billing\EkvBillReccharges Object
+(
+    [table] => erp_billing.ekv_bill_reccharges
+    [primaryKey] => reccharge
+    [timestamps] => 
+    [connection:protected] => 
+    [perPage:protected] => 15
+    [incrementing] => 1
+    [attributes:protected] => Array
+        (
+        )
+
+    [original:protected] => Array
+        (
+        )
+
+    [relations:protected] => Array
+        (
+        )
+
+    [hidden:protected] => Array
+        (
+        )
+
+    [fillable:protected] => Array
+        (
+        )
+
+    [guarded:protected] => Array
+        (
+        )
+
+    [dates:protected] => Array
+        (
+        )
+
+    [with:protected] => Array
+        (
+        )
+
+    [exists] => 
+)

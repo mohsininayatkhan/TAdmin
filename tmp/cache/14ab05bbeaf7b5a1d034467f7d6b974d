@@ -1,0 +1,131 @@
+<?php if (isset($type)): ?>
+
+	<?php if (isset($wrap) && $wrap): ?>
+		<div class="<?php echo $wrap; ?>">
+	<?php endif; ?>
+	
+	<?php if (isset($label) && $label): ?>
+		<label for="<?php echo isset($id) ? (is_array($id) ? $id[0] : $id) : ''; ?>"><?php echo $label; ?></label>
+	<?php endif; ?>
+	
+	<?php /* select with radio */ ?>
+	<?php if (is_array($type)): ?>
+		<label for="<?php echo $id[0]; ?>">
+			<span class="radio_wrap"><input type="radio" name="<?php echo isset($name[0]) ? $name[0] : $id[0]; ?>" id="<?php echo $id[0]; ?>" <?php echo isset($ischecked) && $ischecked ? 'checked' : ''; ?> /></span>
+			<?php echo isset($text) ? $text : ''; ?>
+		</label>
+		<span class="field_wrap select_wrap">
+			<select name="<?php echo isset($name[1]) ? $name[1] : $id[1]; ?>" id="<?php echo $id[1]; ?>">
+				<?php if (isset($options_default) && $options_default): ?>
+					<option value=""><?php echo $options_default; ?></option>
+				<?php endif; ?>
+				
+				<?php if (isset($options) && $options): ?>					
+					<?php for ($i = 0; $i < count($options); $i++): ?>
+						<?php if (isset($options[$i])): ?>
+							<option value="<?php echo $options[$i]; ?>"><?php echo $options[$i]; ?></option>
+							<?php unset($options[$i]);//unset from array ?>
+						<?php endif; ?>
+					<?php endfor; ?>
+					
+					<?php if (count($options)): ?>
+						<?php foreach ($options as $key => $option): ?>
+							<option value="<?php echo $key; ?>"><?php echo $option; ?></option>
+						<?php endforeach; ?>
+					<?php endif; ?>
+				<?php endif; ?>
+			</select>
+		</span>
+	<?php endif; ?>
+	
+	<?php if (!is_array($type) && $type == 'select'): ?>
+	
+		<?php /* usually for duration */ ?>
+		<?php if (is_array($id) && !is_array($type)): ?>
+			<div class="field_wrap">
+				<span class="clone_wrap1">
+					<span class="select_wrap rounded">
+						<select name="<?php echo $id[0]; ?>" id="<?php echo $id[0]; ?>">
+							<option value=">=">>=</option>
+							<option value="<="><=</option>
+							<option value="=">=</option>
+						</select>
+					</span>
+				</span>
+				<span class="clone_wrap2">
+					<span class="select_wrap rounded">
+						<select name="<?php echo $id[1]; ?>" id="<?php echo $id[1]; ?>">
+							<?php if (isset($options_default) && $options_default): ?>
+								<option value=""><?php echo $options_default; ?></option>
+							<?php endif; ?>
+							
+							<?php if (isset($options) && $options): ?>					
+								<?php for ($i = 0; $i < count($options); $i++): ?>
+									<?php if (isset($options[$i])): ?>
+										<option value="<?php echo $options[$i]; ?>"><?php echo $options[$i]; ?></option>
+										<?php unset($options[$i]);//unset from array ?>
+									<?php endif; ?>
+								<?php endfor; ?>
+								
+								<?php if (count($options)): ?>
+									<?php foreach ($options as $key => $option): ?>
+										<option value="<?php echo $key; ?>"><?php echo $option; ?></option>
+									<?php endforeach; ?>
+								<?php endif; ?>
+							<?php endif; ?>
+						</select>
+					</span>
+				</span>
+				
+				<div class="clearfix"></div>
+			</div>		
+		<?php else: ?>
+			<span class="field_wrap select_wrap">
+				<select name="<?php echo isset($name) ? $name : $id; ?>" id="<?php echo isset($id) ? $id : ''; ?>">
+					<?php if (isset($options_default) && $options_default): ?>
+						<option value=""><?php echo $options_default; ?></option>
+					<?php endif; ?>
+
+					<?php if (isset($options) && $options): ?>					
+						<?php for ($i = 0; $i < count($options); $i++): ?>
+							<?php if (isset($options[$i])): ?>
+								<option value="<?php echo $options[$i]; ?>"><?php echo $options[$i]; ?></option>
+								<?php unset($options[$i]);//unset from array ?>
+							<?php endif; ?>
+						<?php endfor; ?>
+						
+						<?php if (count($options)): ?>
+							<?php foreach ($options as $key => $option): ?>
+								<option value="<?php echo $key; ?>"><?php echo $option; ?></option>
+							<?php endforeach; ?>
+						<?php endif; ?>
+					<?php endif; ?>
+				</select>
+			</span>
+		<?php endif; ?>
+	<?php endif; ?>
+
+	<?php if (!is_array($type) && ($type == 'checkbox' || $type == 'radio')): ?>
+		<<?php echo isset($subwrap_tag) ? $subwrap_tag : 'span'; ?> class="<?php echo isset($subwrap_cls) ? $subwrap_cls : 'field_wrap'; ?>">
+			<span class="<?php echo $type; ?>_wrap"><input type="<?php echo $type; ?>" name="<?php echo isset($name) ? $name : $id; ?>" id="<?php echo isset($id) ? $id : ''; ?>" value="<?php echo isset($value) ? $value : ''; ?>" <?php echo isset($cls) ? 'class='.$cls : ''; ?> <?php echo isset($ischecked) && $ischecked ? 'checked' : ''; ?> /></span>
+			<?php echo isset($text) ? $text : ''; ?>
+		</<?php echo isset($subwrap_tag) ? $subwrap_tag : 'span'; ?>>
+	<?php endif; ?>
+	
+	<?php if (!is_array($type) && $type == 'text'): ?>
+		<span class="field_wrap">
+			<input type="text" name="<?php echo isset($name) ? $name : $id; ?>" id="<?php echo isset($id) ? $id : ''; ?>" /><?php echo isset($hint) ? '<i class="hint">'.$hint.'</i></span>' : ''; ?>
+		</span>
+	<?php endif; ?>
+	
+	<?php if (!is_array($type) && $type == 'file'): ?>
+		<span class="field_wrap file">
+			<input type="file" name="<?php echo isset($name) ? $name : $id; ?>" id="<?php echo isset($id) ? $id : ''; ?>" /><?php echo isset($hint) ? '<i class="hint">'.$hint.'</i></span>' : ''; ?>
+		</span>
+	<?php endif; ?>
+	
+	<?php if (isset($wrap) && $wrap): ?>
+		</div>
+	<?php endif; ?>
+	
+<?php endif; ?>

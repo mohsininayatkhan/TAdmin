@@ -1,0 +1,181 @@
+<?php $__env->startSection('form_title'); ?>
+	<h2 class="what">Edit Extensions</h2>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('form_content'); ?>
+
+	<section class="tab_wrap">
+					
+		<div class="tab_link_wrap">
+			<span class="tab_link active" data-content="tabExtension">Extension</span>
+			<span class="tab_link" data-content="tabSpeedDial">Speed Dial</span>
+			
+			<div class="clearfix"></div>
+		</div>
+		
+		<div class="tab_content">
+			
+			<!-- Extenstion Form -->
+			<form name="frmExtension" id="frmExtension">
+			<div class="tab_content_pad active" id="tabExtension">
+			
+				<?php echo $__env->make('layout.sfield_open', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+					<div class="col1">
+						<h2 class="tab_content_title">Extension Detail</h2>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Extension Name', 'id' => 'name'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Extension', 'id' => 'extension'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Password', 'id' => 'password'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow checkbox_parent topspace', 'type' => 'checkbox', 'label' => 'Voicemail', 'id' => 'voicemail'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Voicemail Password', 'id' => 'voicemail_password'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Voicemail Email', 'id' => 'voicemail_email'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow checkbox_parent', 'type' => 'checkbox', 'label' => 'Recording', 'id' => 'recording'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow checkbox_parent', 'type' => 'checkbox', 'label' => 'Reception', 'id' => 'reception'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						
+						<?php 
+						$ring_duration = array();
+						for ($i = 0; $i <= 120; $i++) {
+							$ring_duration[$i] = $i;
+						}
+						?>
+
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'Ring Duration', 'id' => 'ring_duration', 'options' => $ring_duration), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php 
+						$musiconhold_options = array('default' => 'default');
+						foreach($data['musiconhold'] as $music) {
+							$musiconhold_options[$music['name']] = $music['name'];
+						}
+						?>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'Music on Hold', 'id' => 'music_on_hold', 'options' => $musiconhold_options), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Callerid Local', 'id' => 'callerid_local'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Callerid External', 'id' => 'callerid_external'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'Extension Location', 'id' => 'extension_location', 'options_default' => '', 'options' => array('' => '', '0' => 'On Premise', '1' => 'Hosted' )), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						
+						<?php 
+						$failover_options = array(
+							'' => 'None',
+							'ANNOUNCEMENT' => 'Announcement',
+							'EXTEN' => 'Extension',
+							'EXTERNAL' => 'External',
+							'IVR' => 'IVR',
+							'RINGGROUP' => 'RingGroup',
+							'HANGUP' => 'Terminate Call',
+							'VOICEMAIL' => 'Voicemail',
+						);
+						?>
+						<h2 class="tab_content_title topspace">Extension Failover</h2>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'Failover App', 'id' => 'failover_app', 'options' => $failover_options), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<div id="fo_other">
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'Failover App No.', 'id' => 'failover_app_no'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						</div>
+						<div id="fo_external">
+							<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Failover App No.', 'id' => 'external_failover_app_no'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						</div>
+						
+						<h2 class="tab_content_title topspace">Extension Facilities</h2>
+						<?php 
+						$dialplan_options = array();
+						foreach($data['dialplans'] as $dialplan) {
+							$dialplan_options[$dialplan['dialpatterngroup_id']] = $dialplan['groupname'];
+						}
+						?>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'Dialplan', 'id' => 'dialplan', 'options' => $dialplan_options), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						
+						<?php 
+						$callgroup_options = array();
+						foreach($data['callpickups'] as $callpickup) {
+							$callgroup_options[$callpickup['callpickup_id']] = $callpickup['name'].' - '.$callpickup['callpickup_code'];
+						}
+						?>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'Call Group', 'id' => 'call_group', 'options' => $callgroup_options), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'Forwarding', 'id' => 'forwarding', 'options' => array('none' => 'None', 'fwd' => 'Call Forward', 'fm' => 'Folowme')), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					</div>
+
+
+					<div class="col2">
+						<h2 class="tab_content_title">Extension Phone Detail</h2>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow checkbox_parent topspace', 'type' => 'checkbox', 'label' => 'Autoprovisioning', 'id' => 'autoprovisioning'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php 
+						$phonemodel_options = array('' => '');
+						foreach($data['phonemodels'] as $model) {
+							$phonemodel_options[$model['model']] = $model['model'];
+						}
+						?>
+						
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'Phone Model', 'id' => 'phone_model', 'options' => $phonemodel_options), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'MAC Address', 'id' => 'mac_address'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'Extension Type', 'id' => 'extension_type', 'options' => array('none' => 'None', 'SIP' => 'SIP', 'IAX' => 'IAX')), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'DTMF Mode', 'id' => 'dtmf_mode' , 'options' => array('rfc2833' => 'RFC2833', 'inband' => 'Inband', 'auto' => 'Auto', 'info' => 'Info')), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+						<div class="crow checkbox_parent">
+							<label for="codecs">Codecs</label>
+							
+							<div class="checkbox_group regular">
+								<?php echo $__env->make('layout.sfield_generator', array('subwrap_tag' => 'label', 'type' => 'checkbox', 'name' => 'codecs[]', 'value' => 'alaw', 'text' => 'alaw', 'ischecked' => true), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+								<?php echo $__env->make('layout.sfield_generator', array('subwrap_tag' => 'label', 'type' => 'checkbox', 'name' => 'codecs[]', 'value' => 'ulaw', 'text' => 'ulaw', 'ischecked' => true), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+								<?php echo $__env->make('layout.sfield_generator', array('subwrap_tag' => 'label', 'type' => 'checkbox', 'name' => 'codecs[]', 'value' => 'gsm', 'text' => 'gsm', 'ischecked' => true), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+								<?php echo $__env->make('layout.sfield_generator', array('subwrap_tag' => 'label', 'type' => 'checkbox', 'name' => 'codecs[]', 'value' => 'g729', 'text' => 'g729', 'ischecked' => true), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>							
+								<div class="clearfix"></div>
+							</div>
+							
+						</div>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'Nat', 'id' => 'nat', 'options' => array('yes' => 'Yes', 'no' => 'No', 'never' => 'Never', 'route' => 'Route')), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow checkbox_parent', 'type' => 'checkbox', 'label' => 'Call Waiting', 'id' => 'call_waiting'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						
+						<h2 class="tab_content_title topspace">Extension Billing</h2>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'Billing Type', 'id' => 'billing_type', 'options' => array('extension' => 'Extension' , 'common' => 'Common')), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'Currency', 'id' => 'currency', 'options' => array('USD' => 'USD', 'GBP' => 'GBP')), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php 
+						$callplan_options = array('' => '');
+						foreach($data['callplans'] as $plan) {
+							$callplan_options[$plan['callplan_id']] = $plan['callplan_name'];
+						}
+						?>						
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'Callplan', 'id' => 'callplan', 'options' => $callplan_options), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+						<h2 class="tab_content_title topspace">GUI Access</h2>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'GUI Username', 'id' => 'gui_username'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'GUI Password', 'id' => 'gui_password'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						
+						<h2 class="tab_content_title topspace">Credit Alert</h2>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Warning Alert', 'id' => 'warning_alert'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Critical Alert', 'id' => 'critical_alert'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						
+					</div>
+				
+				<?php echo $__env->make('layout.sfield_close', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				
+				<span class="button_wrap topspace">
+					<input type="submit" value="Save">
+					<input type="button" value="Cancel" class="gray" onclick="hidePopup()">
+				</span>
+				
+				<div class="clearfix"></div>
+			
+			</div>
+			</form>
+			
+			<!-- End of Extenstion Form -->
+			<div class="tab_content_pad" id="tabSpeedDial">
+			
+				<h2 class="tab_content_title">Speed Dial List</h2>
+				
+				<a href="javascript:void(0)" class="btn white icon_wrap">Add new speed dial <i class="icon_plus"></i></a>
+				
+				<span class="button_wrap">
+					<input type="submit" value="Save">
+					<input type="button" value="Cancel" class="gray" onclick="hidePopup()">
+				</span>
+				
+				<div class="clearfix"></div>
+				
+			</div>
+			
+		</div>
+
+	</section>
+
+<?php $__env->stopSection(); ?>

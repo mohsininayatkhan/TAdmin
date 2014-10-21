@@ -1,0 +1,90 @@
+
+<?php $__env->startSection('extra_assets'); ?>
+<script src="js/jquery.validate.js"></script>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main_content'); ?>
+
+	<div class="centered grid_wrap">
+			
+		<div class="toogle_wrap">
+			
+			<header class="icon_wrap_block">
+				Private Phonebook
+				<i class="icon_arrow_mini_r"></i>
+			</header>
+			
+			<section>
+				<div class="grid">
+					<div class="grid_spacer">
+						<div class="grid_pad">
+							<div class="user_details">
+								<figure class="pic">
+									<img class="preload" src="http://www.polyvore.com/cgi/img-thing?.out=jpg&amp;size=l&amp;tid=26246297" alt=""><i class="shaper"></i>
+								</figure>
+								<div class="text">
+									<span class="status icon_status_online">Online</span>
+									<br>
+									<strong class="block">Anthony 3658</strong>
+								</div>
+								
+								<div class="clearfix"></div>
+							</div>
+							
+							<div class="user_tools">
+								<div class="buttons">
+									<a href="" class="icon_wrap gray">Call<i class="icon_call"></i></a>
+									<a href="" class="icon_wrap add">Add<i class="icon_add"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<header class="icon_wrap_block">
+				Public Phonebook
+				<i class="icon_arrow_mini_r"></i>
+			</header>
+			
+			<section>
+				<div class="grid">
+					<div class="grid_spacer">
+						<div class="grid_pad">
+							<div class="user_details">
+								<figure class="pic">
+									<img class="preload" src="http://media-cache-ec0.pinimg.com/236x/1f/7e/57/1f7e57ba18455dc78ac9a4d1cf1aa9b9.jpg" alt=""><i class="shaper"></i>
+								</figure>
+								<div class="text">
+									<span class="status icon_status_online">Online</span>
+									<br>
+									<strong class="block">Anthony 3658</strong>
+								</div>
+								
+								<div class="clearfix"></div>
+							</div>
+							
+							<div class="user_tools">
+								<div class="buttons">
+									<a href="" class="icon_wrap gray">Call<i class="icon_call"></i></a>
+									<a href="" class="icon_wrap add">Add<i class="icon_add"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<header class="icon_wrap_block">
+				Local Extensions
+				<i class="icon_arrow_mini_r"></i>
+			</header>
+			
+			<section></section>
+			
+		</div>
+		
+	</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.panel', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

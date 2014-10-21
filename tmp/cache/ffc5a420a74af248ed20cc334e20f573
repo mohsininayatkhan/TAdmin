@@ -1,0 +1,48 @@
+
+<?php $__env->startSection('main_content'); ?>
+
+	<?php echo $__env->make('layout.tools_top', array('parent' => 'Extension Management'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	
+	<?php echo $__env->make('layout.sform_open', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+		<?php echo $__env->make('layout.sfield_open', array('title' => 'Transfer Credit'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		
+			<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'col1', 'type' => 'select', 'label' => 'Credit Source', 'id' => 'credit_source', 'options_default' => 'Tenant Credit'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'col1', 'type' => 'select', 'label' => 'Credit Destination', 'id' => 'credit_destination', 'options_default' => 'Extension Credit'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'col2', 'type' => 'select', 'label' => 'Extension', 'id' => 'extension', 'options_default' => 'Select extension'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'col1', 'type' => 'text', 'label' => 'Amount to Transfer', 'id' => 'amount_to_transfer'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			
+		<?php echo $__env->make('layout.sfield_close', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		
+		<div class="table_wrap inside">
+			<table>
+				<tr class="row head bold">
+					<td></td>
+					<td>Current Credit</td>
+					<td>New Credit</td>
+				</tr>
+				<tr class="row">
+					<td class="semibold">Source</td>
+					<td>1000.0000</td>
+					<td>1000.0000</td>
+				</tr>
+				<tr class="row">
+					<td class="semibold">Destination</td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+		
+		<?php echo $__env->make('layout.sfield_open', array('title' => 'Credit Transfer History', 'subtitle' => 'Search Credit History', 'extra_cls' => 'bordered'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			
+			<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'col1', 'type' => 'select', 'label' => 'From', 'id' => 'from', 'options' => array('2014-08-15' => '2014-08-15')), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'col2', 'type' => 'select', 'label' => 'To', 'id' => 'to', 'options' => array('2014-08-15' => '2014-08-15')), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			<?php echo $__env->make('layout.sfield_generator', array('wrap' => 'col1', 'type' => 'select', 'label' => 'Account', 'id' => 'accout', 'options_default' => 'All'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+		<?php echo $__env->make('layout.sfield_close', array('subtitle' => true, 'buttons' => true), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			
+	<?php echo $__env->make('layout.sform_close', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

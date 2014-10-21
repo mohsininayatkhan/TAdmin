@@ -1,0 +1,1 @@
+<script src="/js/pbx/extension.js"></script>

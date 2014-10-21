@@ -1,0 +1,70 @@
+<div class="left_pane">
+
+	<div class="left_pane_pad">
+	
+		<nav class="main_menu">
+			<ul>
+				<li>
+					<a class="icon_home<?php echo URL::full() == '' || URL::full() == 'index' ? ' active' : '" href="/'; ?>">
+						<i class="triangle"></i>
+						<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>HOME</span></span>
+					</a>
+				</li>
+				<li>
+					<a class="icon_dialpad<?php echo URL::full() == 'dialpad' ? ' active' : '" href="dialpad'; ?>">
+						<i class="triangle"></i>
+						<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>DIALPAD</span></span>
+					</a>
+				</li>
+				<li>
+					<a class="icon_contact<?php echo URL::full() == 'contacts' ? ' active' : '" href="contacts'; ?>">
+						<i class="triangle"></i>
+						<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>CONTACTS</span></span>
+					</a>
+				</li>
+				<li>
+					<a class="icon_clock<?php echo URL::full() == 'call-history' ? ' active' : '" href="call-history'; ?>">
+						<i class="triangle"></i>
+						<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>CALL&nbsp;HISTORY</span></span>
+					</a>
+				</li>
+				<li>
+					<a class="icon_voicemail<?php echo URL::full() == 'voicemail' ? ' active' : '" href="voicemail'; ?>">
+						<i class="triangle"></i>
+						<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>VOICEMAIL</span></span>
+					</a>
+				</li>
+				<li>
+					<a class="icon_logout"  href="logout">
+						<i class="triangle"></i>
+						<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>LOGOUT</span></span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		
+	</div>
+	
+			
+	<nav class="sub_menu">
+		<ul>
+			<li>
+				<a class="icon_connect<?php echo URL::full() == 'connections' ? ' active' : '" href="connections'; ?>">
+					<i class="triangle"></i>
+					<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>Connections</span></span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0)" class="icon_change">
+					<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>Change&nbsp;order</span></span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0)" class="icon_gear" onclick="showProfile()">
+					<span class="tooltip"><span class="tooltip_holder"><i class="triangle"></i>Edit&nbsp;details</span></span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+
+</div><!-- end left_pane -->

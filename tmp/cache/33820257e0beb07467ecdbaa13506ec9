@@ -1,0 +1,53 @@
+
+<?php $__env->startSection('main_content'); ?>
+
+	<?php echo $__env->make('layout.tools_top', array('parent' => 'Extension Management'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	
+	<section class="table_wrap small scroll_wrap">
+	
+		<table>
+			<tr class="row head">
+				<td>Name</td>
+				<td>Extension</td>
+				<td>User</td>
+				<td>Credit</td>
+				<td width="5%"></td>
+			</tr>
+			<?php for ($i = 0; $i < 20; $i++): ?>
+				<tr class="row">
+					<td><?php echo ucwords(substr(str_shuffle("abcdefjhijklmnopqrstuvwxyz"), 0, 6)); ?></td>
+					<td class="searchExtension"><?php echo substr(str_shuffle("0123456789"), 0, 4); ?></td>
+					<td><?php echo substr(str_shuffle("0123456789"), 0, 1); ?>*<?php echo substr(str_shuffle("0123456789"), 0, 4); ?></td>
+					<td><?php echo substr(str_shuffle("0123456789-"), 0, 1).substr(str_shuffle("0123."), 0, 1).substr(str_shuffle("0123456789"), 0, 10); ?></td>
+					<td><a href="javascript:void(0)" class="dropdownSetter btn gray icon_wrap_block icon_gear_small" data-dropdown="actionSetter">Actions<i class="icon_arrow_gray right"></i></a></td>
+				</tr>
+			<?php endfor; ?>
+		</table>
+		
+		<nav class="dropdown" id="actionSetter">
+			<ul>
+				<li><a href="javascript:void(0)" onClick="openPopup()">Edit</a><i class="triangle"></i></li>
+				<li><a href="javascript:void(0)">Delete</a></li>
+			</ul>
+		</nav>
+		
+	</section>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.tools_bottom_open', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	
+		<div class="pagination_wrap">
+			<span class="float text">1-20 of 50 items</span>
+			<a href="" class="btn gradient icon_wrap_notext disabled"><i class="icon_backward"></i></a>
+			<a href="" class="btn gradient active">1</a>
+			<a href="" class="btn gradient">2</a>
+			<a href="" class="btn gradient">3</a>
+			<a href="" class="btn gradient icon_wrap_notext"><i class="icon_forward"></i></a>
+		</div>
+		
+<?php echo $__env->make('layout.tools_bottom_close', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<!-- popup form -->
+<?php echo $__env->make('pbxmanagement.extension_management.extensions_form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

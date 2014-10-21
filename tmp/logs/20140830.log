@@ -1,0 +1,133 @@
+[30-Aug-2014 10:08:42+0100] #424809 System->Use of undefined constant Router - assumed 'Router'->#0 C:\xampp\htdocs\tpad-panel\app\routes.php(3): {closure}(8, 'Use of undefine...', 'C:\xampp\htdocs...', 3, Array)
+#1 C:\xampp\htdocs\tpad-panel\forge\core.php(88): require_once('C:\xampp\htdocs...')
+#2 C:\xampp\htdocs\tpad-panel\engine.php(111): Forge\Core::startup()
+#3 C:\xampp\htdocs\tpad-panel\public\index.php(18): require_once('C:\xampp\htdocs...')
+#4 {main}
+
+[30-Aug-2014 10:09:58+0100] #438274 System->Use of undefined constant Router - assumed 'Router'->#0 C:\xampp\htdocs\tpad-panel\forge\core.php(101): {closure}(8, 'Use of undefine...', 'C:\xampp\htdocs...', 101, Array)
+#1 C:\xampp\htdocs\tpad-panel\engine.php(111): Forge\Core::startup()
+#2 C:\xampp\htdocs\tpad-panel\public\index.php(18): require_once('C:\xampp\htdocs...')
+#3 {main}
+
+[30-Aug-2014 11:38:20+0100] #431959 System->Cannot find log file [20140831.log]->#0 C:\xampp\htdocs\tpad-panel\app\controllers\logger.php(42): Forge\Log::open('20140831.log')
+#1 C:\xampp\htdocs\tpad-panel\app\controllers\logger.php(35): Logger::getLog('2014-08-31')
+#2 C:\xampp\htdocs\tpad-panel\app\controllers\logger.php(16): Logger::getData()
+#3 [internal function]: Logger::simple()
+#4 C:\xampp\htdocs\tpad-panel\app\controllers\logger.php(8): call_user_func('self::simple')
+#5 C:\xampp\htdocs\tpad-panel\app\routes.php(9): Logger::displayLogs('simple')
+#6 [internal function]: Forge\Core::{closure}(Array)
+#7 C:\xampp\htdocs\tpad-panel\forge\router.php(153): call_user_func(Object(Closure), Array)
+#8 C:\xampp\htdocs\tpad-panel\forge\router.php(233): Forge\Router::route_page('~^logger/([^/]+...', Array)
+#9 C:\xampp\htdocs\tpad-panel\forge\core.php(100): Forge\Router::call()
+#10 C:\xampp\htdocs\tpad-panel\engine.php(111): Forge\Core::startup()
+#11 C:\xampp\htdocs\tpad-panel\public\index.php(18): require_once('C:\xampp\htdocs...')
+#12 {main}
+
+[30-Aug-2014 11:38:26+0100] #490971 System->Cannot find log file [20140831.log]->#0 C:\xampp\htdocs\tpad-panel\app\controllers\logger.php(42): Forge\Log::open('20140831.log')
+#1 C:\xampp\htdocs\tpad-panel\app\controllers\logger.php(35): Logger::getLog('2014-08-31')
+#2 C:\xampp\htdocs\tpad-panel\app\controllers\logger.php(16): Logger::getData()
+#3 [internal function]: Logger::simple()
+#4 C:\xampp\htdocs\tpad-panel\app\controllers\logger.php(8): call_user_func('self::simple')
+#5 C:\xampp\htdocs\tpad-panel\app\routes.php(9): Logger::displayLogs('simple')
+#6 [internal function]: Forge\Core::{closure}(Array)
+#7 C:\xampp\htdocs\tpad-panel\forge\router.php(153): call_user_func(Object(Closure), Array)
+#8 C:\xampp\htdocs\tpad-panel\forge\router.php(233): Forge\Router::route_page('~^logger/([^/]+...', Array)
+#9 C:\xampp\htdocs\tpad-panel\forge\core.php(100): Forge\Router::call()
+#10 C:\xampp\htdocs\tpad-panel\engine.php(111): Forge\Core::startup()
+#11 C:\xampp\htdocs\tpad-panel\public\index.php(18): require_once('C:\xampp\htdocs...')
+#12 {main}
+
+[30-Aug-2014 11:39:49+0100] #485182 System->Cannot find log file [20140829.log]->#0 C:\xampp\htdocs\tpad-panel\app\controllers\logger.php(42): Forge\Log::open('20140829.log')
+#1 C:\xampp\htdocs\tpad-panel\app\controllers\logger.php(35): Logger::getLog('2014-08-29')
+#2 C:\xampp\htdocs\tpad-panel\app\controllers\logger.php(16): Logger::getData()
+#3 [internal function]: Logger::simple()
+#4 C:\xampp\htdocs\tpad-panel\app\controllers\logger.php(8): call_user_func('self::simple')
+#5 C:\xampp\htdocs\tpad-panel\app\routes.php(9): Logger::displayLogs('simple')
+#6 [internal function]: Forge\Core::{closure}(Array)
+#7 C:\xampp\htdocs\tpad-panel\forge\router.php(153): call_user_func(Object(Closure), Array)
+#8 C:\xampp\htdocs\tpad-panel\forge\router.php(233): Forge\Router::route_page('~^logger/([^/]+...', Array)
+#9 C:\xampp\htdocs\tpad-panel\forge\core.php(100): Forge\Router::call()
+#10 C:\xampp\htdocs\tpad-panel\engine.php(111): Forge\Core::startup()
+#11 C:\xampp\htdocs\tpad-panel\public\index.php(18): require_once('C:\xampp\htdocs...')
+#12 {main}
+
+[30-Aug-2014 11:40:36+0100] #423461 System->Cannot find log file [20140829.log]->#0 C:\xampp\htdocs\tpad-panel\app\controllers\logger.php(42): Forge\Log::open('20140829.log')
+#1 C:\xampp\htdocs\tpad-panel\app\controllers\logger.php(35): Logger::getLog('2014-08-29')
+#2 C:\xampp\htdocs\tpad-panel\app\controllers\logger.php(16): Logger::getData()
+#3 [internal function]: Logger::simple()
+#4 C:\xampp\htdocs\tpad-panel\app\controllers\logger.php(8): call_user_func('self::simple')
+#5 C:\xampp\htdocs\tpad-panel\app\routes.php(9): Logger::displayLogs('simple')
+#6 [internal function]: Forge\Core::{closure}(Array)
+#7 C:\xampp\htdocs\tpad-panel\forge\router.php(153): call_user_func(Object(Closure), Array)
+#8 C:\xampp\htdocs\tpad-panel\forge\router.php(233): Forge\Router::route_page('~^logger/([^/]+...', Array)
+#9 C:\xampp\htdocs\tpad-panel\forge\core.php(100): Forge\Router::call()
+#10 C:\xampp\htdocs\tpad-panel\engine.php(111): Forge\Core::startup()
+#11 C:\xampp\htdocs\tpad-panel\public\index.php(18): require_once('C:\xampp\htdocs...')
+#12 {main}
+
+[30-Aug-2014 12:22:48+0100] #403956 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\xampp\htdocs\tpad-panel\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\xampp\htdocs...', 36, Array)
+#1 C:\xampp\htdocs\tpad-panel\forge\router.php(157): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\xampp\htdocs\tpad-panel\forge\router.php(233): Forge\Router::route_page('~^logger/([^/]+...', Array)
+#3 C:\xampp\htdocs\tpad-panel\forge\core.php(100): Forge\Router::call()
+#4 C:\xampp\htdocs\tpad-panel\engine.php(111): Forge\Core::startup()
+#5 C:\xampp\htdocs\tpad-panel\public\index.php(18): require_once('C:\xampp\htdocs...')
+#6 {main}
+
+[30-Aug-2014 12:22:50+0100] #455039 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\xampp\htdocs\tpad-panel\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\xampp\htdocs...', 36, Array)
+#1 C:\xampp\htdocs\tpad-panel\forge\router.php(157): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\xampp\htdocs\tpad-panel\forge\router.php(233): Forge\Router::route_page('~^logger/([^/]+...', Array)
+#3 C:\xampp\htdocs\tpad-panel\forge\core.php(100): Forge\Router::call()
+#4 C:\xampp\htdocs\tpad-panel\engine.php(111): Forge\Core::startup()
+#5 C:\xampp\htdocs\tpad-panel\public\index.php(18): require_once('C:\xampp\htdocs...')
+#6 {main}
+
+[30-Aug-2014 12:33:12+0100] #457549 System->Undefined variable: data->#0 C:\xampp\htdocs\tpad-panel\app\controllers\login.php(6): {closure}(8, 'Undefined varia...', 'C:\xampp\htdocs...', 6, Array)
+#1 C:\xampp\htdocs\tpad-panel\app\routes.php(5): Login::index()
+#2 [internal function]: Forge\Core::{closure}(NULL)
+#3 C:\xampp\htdocs\tpad-panel\forge\router.php(153): call_user_func(Object(Closure), NULL)
+#4 C:\xampp\htdocs\tpad-panel\forge\router.php(204): Forge\Router::route_page()
+#5 C:\xampp\htdocs\tpad-panel\forge\core.php(100): Forge\Router::call()
+#6 C:\xampp\htdocs\tpad-panel\engine.php(111): Forge\Core::startup()
+#7 C:\xampp\htdocs\tpad-panel\public\index.php(18): require_once('C:\xampp\htdocs...')
+#8 {main}
+
+[30-Aug-2014 13:14:11+0100] #405680 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\xampp\htdocs\tpad-panel\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\xampp\htdocs...', 36, Array)
+#1 C:\xampp\htdocs\tpad-panel\forge\router.php(157): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\xampp\htdocs\tpad-panel\forge\router.php(204): Forge\Router::route_page()
+#3 C:\xampp\htdocs\tpad-panel\forge\core.php(100): Forge\Router::call()
+#4 C:\xampp\htdocs\tpad-panel\engine.php(111): Forge\Core::startup()
+#5 C:\xampp\htdocs\tpad-panel\public\index.php(18): require_once('C:\xampp\htdocs...')
+#6 {main}
+
+[30-Aug-2014 13:19:05+0100] #402761 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\xampp\htdocs\tpad-panel\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\xampp\htdocs...', 36, Array)
+#1 C:\xampp\htdocs\tpad-panel\forge\router.php(157): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\xampp\htdocs\tpad-panel\forge\router.php(204): Forge\Router::route_page()
+#3 C:\xampp\htdocs\tpad-panel\forge\core.php(100): Forge\Router::call()
+#4 C:\xampp\htdocs\tpad-panel\engine.php(111): Forge\Core::startup()
+#5 C:\xampp\htdocs\tpad-panel\public\index.php(18): require_once('C:\xampp\htdocs...')
+#6 {main}
+
+[30-Aug-2014 13:20:39+0100] #460352 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\xampp\htdocs\tpad-panel\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\xampp\htdocs...', 36, Array)
+#1 C:\xampp\htdocs\tpad-panel\forge\router.php(157): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\xampp\htdocs\tpad-panel\forge\router.php(204): Forge\Router::route_page()
+#3 C:\xampp\htdocs\tpad-panel\forge\core.php(100): Forge\Router::call()
+#4 C:\xampp\htdocs\tpad-panel\engine.php(111): Forge\Core::startup()
+#5 C:\xampp\htdocs\tpad-panel\public\index.php(18): require_once('C:\xampp\htdocs...')
+#6 {main}
+
+[30-Aug-2014 13:20:59+0100] #421840 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\xampp\htdocs\tpad-panel\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\xampp\htdocs...', 36, Array)
+#1 C:\xampp\htdocs\tpad-panel\forge\router.php(157): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\xampp\htdocs\tpad-panel\forge\router.php(204): Forge\Router::route_page()
+#3 C:\xampp\htdocs\tpad-panel\forge\core.php(100): Forge\Router::call()
+#4 C:\xampp\htdocs\tpad-panel\engine.php(111): Forge\Core::startup()
+#5 C:\xampp\htdocs\tpad-panel\public\index.php(18): require_once('C:\xampp\htdocs...')
+#6 {main}
+
+[30-Aug-2014 13:21:24+0100] #423664 System->Method Illuminate\View\View::__toString() must return a string value->#0 C:\xampp\htdocs\tpad-panel\forge\response.php(36): {closure}(4096, 'Method Illumina...', 'C:\xampp\htdocs...', 36, Array)
+#1 C:\xampp\htdocs\tpad-panel\forge\router.php(157): Forge\Response::make(Object(Illuminate\View\View))
+#2 C:\xampp\htdocs\tpad-panel\forge\router.php(204): Forge\Router::route_page()
+#3 C:\xampp\htdocs\tpad-panel\forge\core.php(100): Forge\Router::call()
+#4 C:\xampp\htdocs\tpad-panel\engine.php(111): Forge\Core::startup()
+#5 C:\xampp\htdocs\tpad-panel\public\index.php(18): require_once('C:\xampp\htdocs...')
+#6 {main}
+

@@ -1,0 +1,38 @@
+
+<?php $__env->startSection('main_content'); ?>
+	
+	<?php echo $__env->make('layout.tools_top', array('parent' => 'Telephony Management'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	
+	<section class="table_wrap small scroll_wrap">
+		<table>
+			<tr class="row head">
+				<td>Name</td>
+				<td>CLI Prefix</td>
+				<td>Number</td>
+				<td>Strategy</td>
+				<td width="5%"></td>
+			</tr>
+			<?php for ($i = 0; $i < 5; $i++): ?>
+				<tr class="row">
+					<td>Ringgroup<?php echo $i + 1; ?></td>
+					<td></td>
+					<td class="searchExtension"><?php echo substr(str_shuffle("0123456789"), 0, 4); ?></td>
+					<td>RINGALL</td>
+					<td><a href="javascript:void(0)" class="dropdownSetter btn gray icon_wrap_block icon_gear_small" data-dropdown="actionSetter">Actions<i class="icon_arrow_gray right"></i></a></td>
+				</tr>
+			<?php endfor; ?>
+		</table>
+		
+		<nav class="dropdown" id="actionSetter">
+			<ul>
+				<li><a href="javascript:void(0)" onClick="openPopup()">Edit</a><i class="triangle"></i></li>
+				<li><a href="javascript:void(0)">Delete</a></li>
+			</ul>
+		</nav>
+	</section>
+
+<?php $__env->stopSection(); ?>
+
+<!-- popup form -->
+<?php echo $__env->make('pbxmanagement.telephony_management.ring_group_form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

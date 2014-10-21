@@ -40,6 +40,11 @@ class Pbxmanagement extends \Forge\Controller {
 		return Blade::make(self::$module.'.'.self::$telephony_management.'.announcement');
 	}
 	
+	// Callgroup
+	public static function callgroup() {
+		 return Blade::make(self::$module.'.'.self::$extra_telephone_features.'.call_group');
+	}
+	
 	
 	public static function ajax_announcement_list() {
 		$page 	= Input::post('page');

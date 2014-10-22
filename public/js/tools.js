@@ -390,6 +390,10 @@ function hidePopup() {
 	$('.overlay').fadeOut(300)
 }
 function openPopup() {
+	var validator = $("form").validate();
+    validator.resetForm();
+	$("#form").find(".error").removeClass("error");
+	
 	$('.overlay').fadeIn(200);
 
 	var fBox = $('.floating_box');

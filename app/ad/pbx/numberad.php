@@ -47,9 +47,9 @@ class NumberAD {
             $response['data'] = $qry->fetchAll();
 
             if (count($response['data'])) {
-                return false;
-            } else {
                 return true;
+            } else {
+                return false;
             }
 
         } catch (\PDOException $e) {

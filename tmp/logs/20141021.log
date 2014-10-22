@@ -157,3 +157,64 @@
 #6 C:\wamp\www\TpadPBX\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
 #7 {main}
 
+[21-Oct-2014 14:50:04+0100] #915645 System->View [pbxmanagement.telephony_management.callgroup] not found.->#0 C:\wamp\www\TpadAdmin\vendor\illuminate\view\Illuminate\View\FileViewFinder.php(76): Illuminate\View\FileViewFinder->findInPaths('pbxmanagement.t...', Array)
+#1 C:\wamp\www\TpadAdmin\vendor\illuminate\view\Illuminate\View\Environment.php(115): Illuminate\View\FileViewFinder->find('pbxmanagement.t...')
+#2 C:\wamp\www\TpadAdmin\app\libraries\blade.php(98): Illuminate\View\Environment->make('pbxmanagement.t...', Array)
+#3 C:\wamp\www\TpadAdmin\app\controllers\pbxmanagement.php(45): Blade::make('pbxmanagement.t...')
+#4 C:\wamp\www\TpadAdmin\forge\router.php(262): Pbxmanagement::callgroup(Array)
+#5 C:\wamp\www\TpadAdmin\forge\core.php(100): Forge\Router::call()
+#6 C:\wamp\www\TpadAdmin\engine.php(111): Forge\Core::startup()
+#7 C:\wamp\www\TpadAdmin\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#8 {main}
+
+[21-Oct-2014 14:56:24+0100] #987503 System->Array to string conversion->#0 C:\wamp\www\TpadAdmin\forge\response.php(36): {closure}(8, 'Array to string...', 'C:\\wamp\\www\\Tpa...', 36, Array)
+#1 C:\wamp\www\TpadAdmin\forge\router.php(267): Forge\Response::make(Array)
+#2 C:\wamp\www\TpadAdmin\forge\core.php(100): Forge\Router::call()
+#3 C:\wamp\www\TpadAdmin\engine.php(111): Forge\Core::startup()
+#4 C:\wamp\www\TpadAdmin\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#5 {main}
+
+[21-Oct-2014 18:55:00+0100] #978600 System->Declaration of AD\Pbx\ExtensionAd::create() should be compatible with Illuminate\Database\Eloquent\Model::create(array $attributes)->#0 C:\wamp\www\TpadAdmin\forge\autoload.php(58): {closure}(2048, 'Declaration of ...', 'C:\\wamp\\www\\Tpa...', 217, Array)
+#1 C:\wamp\www\TpadAdmin\forge\autoload.php(58): Forge\Autoload::load()
+#2 [internal function]: Forge\Autoload::load('AD\\Pbx\\Extensio...')
+#3 C:\wamp\www\TpadAdmin\app\models\extensionmodel.php(30): spl_autoload_call('AD\\Pbx\\Extensio...')
+#4 C:\wamp\www\TpadAdmin\app\controllers\extension.php(35): ExtensionModel::getAll(5, '', '1', '')
+#5 C:\wamp\www\TpadAdmin\forge\router.php(262): Extension::render(Array)
+#6 C:\wamp\www\TpadAdmin\forge\core.php(100): Forge\Router::call()
+#7 C:\wamp\www\TpadAdmin\engine.php(111): Forge\Core::startup()
+#8 C:\wamp\www\TpadAdmin\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#9 {main}
+
+[21-Oct-2014 18:55:08+0100] #949952 System->Declaration of AD\Pbx\ExtensionAd::create() should be compatible with Illuminate\Database\Eloquent\Model::create(array $attributes)->#0 C:\wamp\www\TpadAdmin\forge\autoload.php(58): {closure}(2048, 'Declaration of ...', 'C:\\wamp\\www\\Tpa...', 217, Array)
+#1 C:\wamp\www\TpadAdmin\forge\autoload.php(58): Forge\Autoload::load()
+#2 [internal function]: Forge\Autoload::load('AD\\Pbx\\Extensio...')
+#3 C:\wamp\www\TpadAdmin\app\models\extensionmodel.php(30): spl_autoload_call('AD\\Pbx\\Extensio...')
+#4 C:\wamp\www\TpadAdmin\app\controllers\extension.php(35): ExtensionModel::getAll(5, '', '1', '')
+#5 C:\wamp\www\TpadAdmin\forge\router.php(262): Extension::render(Array)
+#6 C:\wamp\www\TpadAdmin\forge\core.php(100): Forge\Router::call()
+#7 C:\wamp\www\TpadAdmin\engine.php(111): Forge\Core::startup()
+#8 C:\wamp\www\TpadAdmin\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#9 {main}
+
+[21-Oct-2014 18:56:09+0100] #976164 System->Declaration of AD\Pbx\ExtensionAd::create() should be compatible with Illuminate\Database\Eloquent\Model::create(array $attributes)->#0 C:\wamp\www\TpadAdmin\forge\autoload.php(58): {closure}(2048, 'Declaration of ...', 'C:\\wamp\\www\\Tpa...', 220, Array)
+#1 C:\wamp\www\TpadAdmin\forge\autoload.php(58): Forge\Autoload::load()
+#2 [internal function]: Forge\Autoload::load('AD\\Pbx\\Extensio...')
+#3 C:\wamp\www\TpadAdmin\app\models\extensionmodel.php(30): spl_autoload_call('AD\\Pbx\\Extensio...')
+#4 C:\wamp\www\TpadAdmin\app\controllers\extension.php(35): ExtensionModel::getAll(5, '', 1, '')
+#5 C:\wamp\www\TpadAdmin\forge\router.php(262): Extension::render(Array)
+#6 C:\wamp\www\TpadAdmin\forge\core.php(100): Forge\Router::call()
+#7 C:\wamp\www\TpadAdmin\engine.php(111): Forge\Core::startup()
+#8 C:\wamp\www\TpadAdmin\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#9 {main}
+
+[21-Oct-2014 18:57:27+0100] #929585 System->Declaration of AD\Pbx\ExtensionAd::create() should be compatible with Illuminate\Database\Eloquent\Model::create(array $attributes)->#0 C:\wamp\www\TpadAdmin\forge\autoload.php(58): {closure}(2048, 'Declaration of ...', 'C:\\wamp\\www\\Tpa...', 221, Array)
+#1 C:\wamp\www\TpadAdmin\forge\autoload.php(58): Forge\Autoload::load()
+#2 [internal function]: Forge\Autoload::load('AD\\Pbx\\Extensio...')
+#3 C:\wamp\www\TpadAdmin\app\models\extensionmodel.php(30): spl_autoload_call('AD\\Pbx\\Extensio...')
+#4 C:\wamp\www\TpadAdmin\app\controllers\extension.php(35): ExtensionModel::getAll(5, '', 1, '')
+#5 C:\wamp\www\TpadAdmin\forge\router.php(262): Extension::render(Array)
+#6 C:\wamp\www\TpadAdmin\forge\core.php(100): Forge\Router::call()
+#7 C:\wamp\www\TpadAdmin\engine.php(111): Forge\Core::startup()
+#8 C:\wamp\www\TpadAdmin\public\index.php(18): require_once('C:\\wamp\\www\\Tpa...')
+#9 {main}
+

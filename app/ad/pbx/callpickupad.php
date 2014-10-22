@@ -85,4 +85,19 @@ class CallpickupAD {
       	}
 		return $number_of_rows;
 	}
+	
+	public static function delete($callpickup_id, $customer_id) {
+
+        try {
+            self::setPDO();
+            $qry = self::$pdo->prepare("DELETE FROM tp_callpickup WHERE callpickup_id = :callpickup_id AND customer_id = :customer_id");
+            $qry->execute(array($callpickup_id, $customer_id));
+            $affected_rows = $qry->rowCount();
+            return true;
+        } catch (\PDOException $e) {
+            throw new \RuntimeException(sprintf('PDOException was thrown when trying to delete call pickup : %s', $e->getMessage()), 0, $e);
+            return false;
+        }
+        return false;
+    }
 }

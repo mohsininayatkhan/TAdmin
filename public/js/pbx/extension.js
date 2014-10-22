@@ -24,21 +24,73 @@ $( document ).ready(function() {
 	});
 	
 	$('#frmExtension #failover_app').change(function () {
-		
 		var act = $(this).val();
 		handleFailoverApp(act);
-		
-		/*$('select[name="failover_app_no"]').find('option').remove();
-		
-		if(act=='EXTERNAL') {
-			$('#frmExtension #fo_external').show();
-			$('#frmExtension #fo_other').hide();
-		} else {
-			$('#frmExtension #fo_external').hide();
-			$('#frmExtension #fo_other').show();
-			getFailoverApp(act);
-		}*/
 	});	
+	
+	$("#frmExtension").validate({
+        rules : {
+            name : "required",
+            extension : "required",
+            password : "required",
+			dialplan : "required",
+			callplan : "required",
+			voicemail_password : {
+				pattern: /^[a-z0-9\-\s]+$/i, 
+				rangelength: [4, 8]
+			},
+			voicemail_email: {
+				email: true
+			},
+			mac_address: {
+				pattern: /^[a-z0-9\-\s]+$/i, 
+				max: 20
+			},
+			dtmf_mode: "required",
+			nat : "required",
+			billing_type: "required",
+			currency : "required",
+			callplan : "required",
+			gui_username : {
+				pattern: /^[a-z0-9\-\s]+$/i, 
+				rangelength: [4, 20]
+			},
+			gui_password : {
+				pattern: /^[a-z0-9\-\s]+$/i, 
+				rangelength: [4, 20]
+			},
+        }
+    });
+	
+	
+	$('#sbtBtn').click(function() {
+
+        if ($("#frmExtension").valid()) {
+            var request = $.ajax({
+                url : "/extension/save",
+                type : 'POST',
+                dataType : 'json',
+                data : $('#frmExtension').serialize()
+            });
+
+            request.done(function(json) {
+                if (json.status == 'ERROR') {
+                    alert(json.message);
+                    return;
+                }
+                alert(json.message);
+                datagrid(current_page);
+                hidePopup();
+            });
+
+            request.fail(function() {
+                return false;
+            });
+
+            request.always(function() {
+            });
+        }
+    });
 	
 	
 	$('body').on('click', '.pagination_wrap .btn_backward', function(e) {
@@ -119,6 +171,39 @@ function getFailoverApp(type) {
 	});
 }
 
+
+function deleteExtension() {
+
+    if (!confirm('Are you sure you want to delete the record?')) {
+        return false;
+    }
+	
+    var request = $.ajax({
+        url : "/extension/delete",
+        type : 'POST',
+        dataType : 'json',
+        data : {
+            account_id : currentId
+        }
+    });
+
+    request.done(function(json) {
+
+        if (json.status == 'ERROR') {
+            alert(json.message);
+            return;
+        }
+        alert(json.message);
+    });
+
+    request.fail(function() {
+        return false;
+    });
+
+    request.always(function() {
+        datagrid(current_page);
+    });
+}
 
 function datagrid(page){
 	
@@ -209,6 +294,11 @@ function pagination(data) {
 
 function openExtensionForm() {
 	
+
+	var validator = $("#frmExtension").validate();
+    validator.resetForm();
+	$("#frmExtension").find(".error").removeClass("error");
+	
 	var request = $.ajax({
 		url : "/extension/get",
 		type : 'POST',
@@ -227,11 +317,15 @@ function openExtensionForm() {
 			
 			var row = json.rows[0];
 			
+			$('#frmExtension #account_id').val(row['account_id']);
 			// extension name
 			$('#frmExtension #name').val(row['name']);
 			
 			// extension number
 			$('#frmExtension #extension').val(row['extennumber']);
+			
+			// fax
+			$('#frmExtension #fax').val(row['fax']);
 			
 			// password
 			$('#frmExtension #password').val(row['secret']);
@@ -301,8 +395,7 @@ function openExtensionForm() {
 				
 			} else {
 				$("#frmExtension #failover_app_no").val(row['failover_appnumber']);	
-			}
-			
+			}			
 			
 			// dialup plan
 			$('#frmExtension #dialplan').val(row['dialpatterngroup_id']);
@@ -389,8 +482,6 @@ function openExtensionForm() {
 			
 			// Critical Alert
 			$('#frmExtension #critical_alert').val(row['u_credit']);
-			
-			console.log(row['phone_model']);
 			
 		} else {
 			alert('Sorry! no record found.');

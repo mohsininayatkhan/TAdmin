@@ -17,6 +17,10 @@
 			
 			<!-- Extenstion Form -->
 			<form name="frmExtension" id="frmExtension">
+			<input type="hidden" name="account_id" id="account_id" value="" />
+			<input type="hidden" id="before_name" name="before_name" value = ""/>
+			<input type="hidden" id="exten_hdcallgrp" name="exten_hdcallgrp" value = "" />
+			<input type="hidden" value="0" id="fax" name="fax"/>
 			<div class="tab_content_pad active" id="tabExtension">
 			
 				@include('layout.sfield_open')
@@ -149,7 +153,7 @@
 				@include('layout.sfield_close')
 				
 				<span class="button_wrap topspace">
-					<input type="submit" value="Save">
+					<input id="sbtBtn" name="sbtBtn" type="button" value="Save">
 					<input type="button" value="Cancel" class="gray" onclick="hidePopup()">
 				</span>
 				
@@ -166,7 +170,7 @@
 				<a href="javascript:void(0)" class="btn white icon_wrap">Add new speed dial <i class="icon_plus"></i></a>
 				
 				<span class="button_wrap">
-					<input type="submit" value="Save">
+					<input id="sbtBtn" name="sbtBtn" type="button" value="Save">
 					<input type="button" value="Cancel" class="gray" onclick="hidePopup()">
 				</span>
 				

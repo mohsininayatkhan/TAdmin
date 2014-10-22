@@ -59,7 +59,6 @@ class Callgroup extends \Forge\Controller
         $data = Input::post();
         $data['customer_id'] = 5;
         
-        $ObjCallgroupModel = new CallgroupModel();
-        $ObjCallgroupModel->delete($data);
+        CallgroupModel::delete($data);
     }
 }

@@ -197,6 +197,7 @@ function openCallgroupForm() {
 
     var validator = $("#frmCallgroup").validate();
     validator.resetForm();
+	$("#frmCallgroup").find(".error").removeClass("error");
 
     var request = $.ajax({
         url : "/callgroup/get",

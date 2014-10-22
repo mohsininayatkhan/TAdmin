@@ -24,6 +24,7 @@ class Extension extends \Forge\Controller
 		return $data;
 	}
 	
+	
 	public static function render() {
 		
 		$page = Input::post('page');
@@ -35,6 +36,7 @@ class Extension extends \Forge\Controller
         $record = ExtensionModel::getAll(5, '', $page, $keywords);
 		echo json_encode($record);
 	}
+	
 	
 	public static function getFailoverApp() {
 	
@@ -71,37 +73,32 @@ class Extension extends \Forge\Controller
 			return array('status' => 'ERROR', 'message' => 'Account ID can\'t be empty');
 		}
 		
-		$record = ExtensionModel::getAll(5, $account_id);
-		
+		$record = ExtensionModel::getAll(5, $account_id);		
 		echo json_encode($record);
 	}
-	/*
+	
 	public static function save() {
 		
-		/*$data = Input::post();
+		$data = Input::post();
 		
 		$data['customer_id'] = 5;
 		$data['extenm'] = 15;
 		
-		$ObjCallgroupModel = new CallgroupModel();
-		
 		// update
-		if (!empty($data['callpickup_id'])) {
-			$res = CallgroupModel::update($data);
+		if (!empty($data['account_id'])) {
+			$res = ExtensionModel::update($data);
 			echo json_encode($res);
 			return;
 		}
 		
 		// create
-		$res = CallgroupModel::create($data);
-		echo json_encode($res);*/
-	/*}
+		$res = ExtensionModel::create($data);
+		echo json_encode($res);
+	}
 	
 	public static function delete() { 
-		/*$data = Input::post();
+		$data = Input::post();
 		$data['customer_id'] = 5;
-		
-		$ObjCallgroupModel = new CallgroupModel();
-		$ObjCallgroupModel->delete($data);*/
-	//}
+		ExtensionModel::delete($data);
+	}
 }

@@ -58,7 +58,7 @@ class CallgroupModel extends \Model\Base {
             return array('status' => 'ERROR', 'message' => 'Validation error');
         }
 
-        if (!\AD\Pbx\NumberAD::alreadyExists($data['customer_id'], $data['code'], $data['callpickup_id'])) {
+        if (\AD\Pbx\NumberAD::alreadyExists($data['customer_id'], $data['code'], $data['callpickup_id'])) {
             return array('status' => "ERROR", 'message' => 'The number ' . $data['code'] . ' is already being used!');
         }
 
@@ -102,7 +102,7 @@ class CallgroupModel extends \Model\Base {
             return array('status' => 'ERROR', 'message' => 'Validation error');
         }
 
-        if (!\Pbx\Ad\NumberAd::alreadyExists($data['customer_id'], $data['code'], $data['callpickup_id'])) {
+        if (\AD\Pbx\NumberAD::alreadyExists($data['customer_id'], $data['code'])) {
             return array('status' => "ERROR", 'message' => 'The number ' . $data['code'] . ' is already being used!');
         }
 
@@ -115,9 +115,12 @@ class CallgroupModel extends \Model\Base {
         return array('status' => 'ERROR', 'message' => 'Uknown error accoured while creating record!');
     }
 
-	public function delete($data) {
+	public static function delete($data) {
+	
 
         $code = '';
+		
+		$row = \AD\Pbx\CallpickupAD::getAll($data['customer_id'], $data['callpickup_id']);
 
         $resCallgroup =\AD\Pbx\CallgroupAD::getAll($data['customer_id'], $data['callpickup_id']);
 
@@ -136,9 +139,10 @@ class CallgroupModel extends \Model\Base {
             return array('status' => 'ERROR', 'message' => 'Unable to delete asteric extension.');
         }
 
-        $row = \AD\Pbx\CallpickupAD::get($data['callpickup_id'], $data['customer_id']);
-
-        if ($row) {
+		$res = \AD\Pbx\CallpickupAD::getAll($data['customer_id'], $data['callpickup_id']);
+		
+        $row = $res['data'][0];
+        if (count($row)) {
             $callpickup_id = $row['callpickup_id'];
         }
 

@@ -90,9 +90,7 @@ class CallgroupAD
         try {
             self::setPDO();
 
-            $qry = self::$pdo -> prepare('UPDATE tp_callpickup 
-                                        SET callpickup_code=?, name=?, dsc=? 
-									    WHERE callpickup_id=? AND customer_id=?');
+            $qry = self::$pdo -> prepare('UPDATE tp_callpickup SET callpickup_code=?, name=?, dsc=? WHERE callpickup_id=? AND customer_id=?');
 
             $values = array(
                 $data['code'], 

@@ -159,7 +159,7 @@ $(function(){
 	}
 	
 	// Seach by extension
-	if (search.length && $('.searchExtension').length) {
+	if (search.length) {
 		$.expr[':'].Contains = function(a, i, m) { 
 		  return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0; 
 		};
@@ -168,8 +168,8 @@ $(function(){
 			// var keyCode = event.which;
 			var term = $(this).val();
 			// hide all 
-			$('.table_wrap').find('.searchExtension').parents('.row').not('.head').hide();
-			$('.table_wrap').find('.searchExtension:Contains("' + term + '")').parents('.row').show();
+			$('.table_wrap').find('td').parents('.row').not('.head').hide();
+			$('.table_wrap').find('td:Contains("' + term + '")').parents('.row').show();
 		});
 	}
 	
@@ -309,7 +309,7 @@ $(function(){
 			pos = el.offset();
 			el.animate({top:pos.top+10, opacity:0},function(){el.hide()});
 		});
-		dropdownSetter.removeClass(classActive)
+		$('.dropdownSetter.'+classActive).removeClass(classActive)
 	});
 	$(window).resize(function(){
 		var ww = $(window).width();
@@ -386,8 +386,13 @@ $(function(){
 
 
 function hidePopup() {
-	$('.floating_box').fadeOut(200);
-	$('.overlay').fadeOut(300)
+	$('.floating_box').fadeOut(200, function(){
+		// Clean form
+		$('.validate i.error.global').html('');
+		$('.validate i.error').not('.global').remove();
+		$('.validate .error').not('.global').removeClass('error');
+	});
+	$('.overlay').fadeOut(300);
 }
 function openPopup() {
 	var validator = $("form").validate();
@@ -401,6 +406,69 @@ function openPopup() {
 		fBox.css({marginTop: '-'+($('.floating_box').height()/2)+'px'})
 	}
 	fBox.fadeIn(300)
+}
+
+
+/***********************************
+ * THIS SECTION IS FOR FAILOVER *
+ ***********************************/
+function handleFailoverApp(obj, act) {
+	obj.find('option').remove();
+	if(act == 'EXTERNAL') {
+		$('#fo_external').show();
+		$('#fo_other').hide();
+	} else if (act == 'HANGUP') {
+		obj.append($('<option></option>').val('Hangup').html('Hangup'));
+	} else {
+		$('#fo_external').hide();
+		$('#fo_other').show();
+		getFailoverApp(obj, act);
+	}
+}
+function getFailoverApp(obj, type) {
+	var request = $.ajax({
+		url : '/pbxmanagement/getFailoverApp',
+		type : 'POST',
+		dataType : 'json',
+		async: false,
+		data : {type: type}
+	});
+	
+	request.done(function(json) {
+		if (json.status == 'ERROR' ) {
+			alert(json.message);
+			return false;
+		}
+		
+		if(json.length <= 0) {
+			return;
+		}
+		if (type == 'ANNOUNCEMENT') {
+			$.each( json, function( key, value ) {
+				obj.append($('<option></option>').val(value.announcement_id).html(value.name));
+			});
+		} else if(type == 'EXTEN') {
+			$.each( json, function( key, value ) {
+				obj.append($('<option></option>').val(value.account_id).html(value.name+' - '+value.extennumber));
+			});
+		} else if(type == 'IVR') {
+			$.each( json, function( key, value ) {
+				obj.append($('<option></option>').val(value.ivr_number).html(value.ivr_name+' - '+value.ivr_number));
+			});
+		} else if(type == 'RINGGROUP') {
+			$.each( json, function( key, value ) {
+				obj.append($('<option></option>').val(value.ringgroup_id).html(value.name+' - '+value.ringgroup_num));
+			});
+		} else if(type == 'VOICEMAIL') {
+			$.each( json, function( key, value ) {
+				obj.append($('<option></option>').val(value.exten).html(value.fullname+' - '+value.exten));
+			});
+		} else if(type == 'QUEUE') {
+			$.each( json, function( key, value ) {
+				obj.append($('<option></option>').val(value.exten).html(value.dsc+' - '+value.exten));
+			});
+		}
+	});
 }
 
 /***********************************

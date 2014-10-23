@@ -115,7 +115,13 @@
 	
 	@if (!is_array($type) && $type == 'text')
 		<span class="field_wrap">
-			<input type="text" name="{{ $name or $id }}" id="{{ $id or '' }}" />{{ isset($hint) ? '<i class="hint">'.$hint.'</i></span>' : '' }}
+			<input type="text" name="{{ $name or $id }}" id="{{ $id or '' }}" {{ isset($value) ? 'value="'.$value.'"' : '' }} {{ isset($maxlength) ? 'maxlength="'.$maxlength.'"' : '' }} />{{ isset($hint) ? '<i class="hint">'.$hint.'</i></span>' : '' }}
+		</span>
+	@endif
+	
+	@if (!is_array($type) && $type == 'number')
+		<span class="field_wrap">
+			<input type="number" name="{{ $name or $id }}" id="{{ $id or '' }}" min="{{ $min or 1 }}" max="{{ $max or '' }}" />{{ isset($hint) ? '<i class="hint">'.$hint.'</i></span>' : '' }}
 		</span>
 	@endif
 	

@@ -6,7 +6,7 @@
 		@if (isset($parent))
 			<a href="/{{ URL::segment(0) }}#{{ str_replace(' ', '', $parent) }}">{{ $parent }}</a>
 		@endif
-		<span>{{ ucwords(str_replace("-", " ", URL::segment(1))) }}</span>
+		<span>{{ $current ? $current : ucwords(str_replace("-", " ", URL::segment(1))) }}</span>
 	</nav>
 	
 	@if (!isset($no_tools))

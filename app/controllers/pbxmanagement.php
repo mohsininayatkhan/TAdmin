@@ -57,4 +57,36 @@ class Pbxmanagement extends \Forge\Controller {
         $record = $ObjAnnouncementModel->getAll(5, '', $page, $keywords);
 		echo json_encode($record);
 	}
+	
+	public static function getFailoverApp() {
+	
+		$type = Input::post('type');	
+		$res = array();
+		
+		if ($type == 'ANNOUNCEMENT') {
+			$data = AnnouncementModel::getAll(5);
+			$res = $data['rows'];
+		} else if ($type == 'EXTEN') {
+			$data = ExtensionModel::getAll(5);
+			$res = $data['rows'];
+		} else if ($type == 'IVR') {
+			$data = IvrModel::getAll(5);
+			$res = $data['rows'];
+		} else if ($type == 'RINGGROUP') {
+			$data = RinggroupModel::getAll(5);
+			$res = $data['rows'];
+		} else if ($type == 'VOICEMAIL') {
+			$data = VoicemailModel::getAll(5);
+			$res = $data['rows'];
+		} else if ($type == 'QUEUE') {
+			$data = QueueModel::getAll(5);
+			$res = $data['rows'];
+		}
+		echo json_encode($res);
+	}
+	
+	// RingGroup
+	public static function ringgroup() {
+		return Blade::make(self::$module.'.ringgroup')->with('data', Ringgroup::index());
+	}
 }

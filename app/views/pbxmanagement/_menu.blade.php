@@ -8,7 +8,7 @@
 				
 		<?php
 		$menus = array(
-			// title, description, link, icon class
+			// title, description, custom link, custom icon class
 			["user, user group &amp; queues", "Lorem ipsum dolor", "user-group-queues"], 
 			["credit management", "Lorem ipsum dolor sit amet"], 
 			["phone registration", "Lorem ipsum dolor sit amet"], 
@@ -19,7 +19,7 @@
 			["blacklist", "Lorem ipsum dolor sit amet"],
 			["outbound pin dialing", "Lorem ipsum dolor sit amet"],
 			["auto provisioning admin", "Lorem ipsum dolor"],
-			["ring groups", "Lorem ipsum dolor sit amet"],
+			["RingGroup", "Lorem ipsum dolor sit amet"],
 			["music on hold", "Lorem ipsum dolor sit amet"],
 			["announcement", "Lorem ipsum dolor sit amet"],
 			["queues", "Lorem ipsum dolor sit amet"],

@@ -195,6 +195,8 @@ echo "<pre>";
    public static function call()
    {
       $url_path = Url::full(true);
+	  // Added Oct 21
+	  $url_path = str_replace("-", "", $url_path);
       
       if (strstr($url_path, '?'))
       {

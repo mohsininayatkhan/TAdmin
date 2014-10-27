@@ -27,11 +27,88 @@ $( document ).ready(function() {
 		datagrid(--current_page);
 	});
 	
+	$('#new-btn').click(function() {
+		$("#frmAnnouncement #rec_file" ).rules( "add", "required" );					 
+	});
+	
 	$("#search").keyup(function(e) {
 		datagrid(1);
 	});
 	
+	$("#frmAnnouncement").validate({
+        rules : {
+            name : "required",
+            number : "required",
+            description : "required",
+			rec_file: {
+				required: true,
+				extension: "wav"
+			}
+        },
+		errorPlacement: function(error, element){
+			error.appendTo(element.parents('.crow'));
+		}
+    });
+	
+	
+	$('#sbtBtn').click(function() {
+
+        if ($("#frmAnnouncement").valid()) {
+			
+			$('#frmAnnouncement').ajaxForm({
+				dataType : 'json',						   
+				beforeSubmit: function() {
+				},
+				success: function(json) {
+					
+					if (json.status == 'ERROR') {
+						alert(json.message);
+						return;
+					}
+					alert(json.message);
+                	datagrid(current_page);
+                	hidePopup();
+				},
+				error: function (XMLHttpRequest, textStatus, errorThrown) {
+               }
+			}).submit();
+        }
+    });
+	
 });
+
+function deleteAnnouncement() {
+
+    if (!confirm('Are you sure you want to delete the record?')) {
+        return false;
+    }
+	
+    var request = $.ajax({
+        url : "/announcement/delete",
+        type : 'POST',
+        dataType : 'json',
+        data : {
+            announcement_id : currentId
+        }
+    });
+
+    request.done(function(json) {
+
+        if (json.status == 'ERROR') {
+            alert(json.message);
+            return;
+        }
+        alert(json.message);
+    });
+
+    request.fail(function() {
+        return false;
+    });
+
+    request.always(function() {
+        datagrid(current_page);
+    });
+}
 
 function datagrid(page){
 	
@@ -70,7 +147,7 @@ function datagrid(page){
 				html += '<td>'+value.desc+'</td>';
 				html += '<td>'+value.extennumber+'</td>';
 				html += '<td>'+value.create_dttm+'</td>';
-				html += '<td><a href="javascript:void(0)" id="'+value.callpickup_id+'" class="dropdownSetter btn gray icon_wrap_block icon_gear_small" data-dropdown="actionSetter">Actions<i class="icon_arrow_gray right"></i></a></td>';
+				html += '<td><a href="javascript:void(0)" id="'+value.announcement_id+'" class="dropdownSetter btn gray icon_wrap_block icon_gear_small" data-dropdown="actionSetter">Actions<i class="icon_arrow_gray right"></i></a></td>';
 				html += '</tr>';
 			});
 		}
@@ -122,15 +199,22 @@ function pagination(data) {
 	$('.pagination_wrap').html(html);
 }
 
-function openExtensionForm() {
+function openAnnouncementForm() {
+	
+	var validator = $("#frmAnnouncement").validate();
+    validator.resetForm();
+	$("#frmExtension").find(".error").removeClass("error");
+	$("#frmAnnouncement #rec_file" ).rules( "remove", "required" );
 	
 	var request = $.ajax({
 		url : "/announcement/get",
 		type : 'POST',
 		dataType : 'json',
-		data : {account_id: currentId}
+		data : {announcement_id: currentId}
 	});
-		
+	
+	
+	
 	request.done(function(json) {
 						  
 		if (json.status == 'ERROR' ) {
@@ -139,10 +223,10 @@ function openExtensionForm() {
 		}
 		
 		if (json.count>0) {
-			$('#frmExtension #name').val(json.rows[0]['name']);
-			$('#frmExtension #extension').val(json.rows[0]['extennumber']);
-			$('#frmExtension #callerid_external').val(json.rows[0]['calleridexternal']);
-			$('#frmExtension #voicemail_email').val(json.rows[0]['email']);
+			$('#frmAnnouncement #announcement_id').val(json.rows[0]['announcement_id']);
+			$('#frmAnnouncement #name').val(json.rows[0]['name']);
+			$('#frmAnnouncement #number').val(json.rows[0]['announcement_number']);
+			$('#frmAnnouncement #description').val(json.rows[0]['desc']);
 		} else {
 			alert('Sorry! no record found.');
 		}

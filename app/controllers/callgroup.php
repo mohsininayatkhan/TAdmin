@@ -18,7 +18,7 @@ class Callgroup extends \Forge\Controller
         $page     = (!empty($page) ? $page : 1);
         $keywords = (!empty($keywords) ? $keywords : '');
 		
-        $record = CallgroupModel::getAll(5, '', $page, $keywords);
+        $record = CallgroupModel::getAll(1, '', $page, $keywords);
         echo json_encode($record);
     }
     

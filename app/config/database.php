@@ -17,11 +17,20 @@ return array(
 
     'connections' => array(
         'default' => array(
+            // 'driver'   => 'mysql',
+            // 'host'     => '10.10.7.120',
+            // 'database' => 'tpadpbx6',
+            // 'username' => 'root',
+            // 'password' => 'tpad123',
+            // 'charset'  => 'utf8',
+            // 'collation'=> 'utf8_bin',
+            // 'prefix'   => '',
+        // ),
             'driver'   => 'mysql',
-            'host'     => '10.10.7.120',
+            'host'     => '10.10.7.107',
             'database' => 'tpadpbx6',
             'username' => 'root',
-            'password' => 'tpad123',
+            'password' => 'sophomore',
             'charset'  => 'utf8',
             'collation'=> 'utf8_bin',
             'prefix'   => '',

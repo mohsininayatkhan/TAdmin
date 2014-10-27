@@ -51,3 +51,96 @@
 	</section>
 	
 @stop
+
+
+<!-- popup form -->
+<div class="floating_box list hidden">
+
+	<div class="container sform_wrap">
+
+		<div class="sform_pad">
+
+			<h2 class="what">RingGroup - <span class="module"></span></h2>
+
+			<section class="tab_wrap">
+					
+				<div class="tab_link_wrap">
+					<span class="tab_link active" data-content="tabList">List</span>
+					<span class="tab_link" data-content="tabAdd">Add/Edit</span>
+					
+					<div class="clearfix"></div>
+				</div>
+				
+				<div class="tab_content">
+					
+					<div class="tab_content_pad active" id="tabList">
+						
+						<section class="table_wrap">
+							<div id="gridList"></div>
+							
+							<nav class="dropdown popup">
+								<ul>
+									<li><a href="javascript:void(0)" onclick="editList()">Edit</a><i class="triangle"></i></li>
+									<li><a href="javascript:void(0)" onclick="deleteList()">Delete</a></li>
+								</ul>
+							</nav>
+						</section>
+						
+						<span class="button_wrap topspace">
+							<input type="button" value="Close" class="gray" onclick="hidePopup()">
+						</span>
+						
+						<div class="clearfix"></div>
+				
+					</div>
+
+					
+					<div class="tab_content_pad" id="tabAdd">
+						<form name="formList" id="formList" class="validate">
+							
+							<h2 class="tab_content_title">Add to RingGroup List</h2>
+							
+							@include('layout.sfield_open')
+								<input type="hidden" name="name" id="name" value="" />
+								<div class="col_wide">
+									@include('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'Extension Type', 'id' => 'extentype', 'options' => array('EXTEN' => 'Extension', 'EXTERNAL' => 'External')))
+									<div id="dst_extension">
+										<?php 
+										$extensions = array();
+										foreach($data['extensions'] as $dd) {
+											$extensions[$dd['extennumber']] = $dd['extennumber'];
+										}
+										?>
+										@include('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'Destination', 'id' => 'dst_number', 'options' => $extensions))
+									</div>
+									<div id="dst_external" style="display:none">
+										@include('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Destination', 'id' => 'external_dst_number'))
+									</div>
+									
+								</div>
+							
+							@include('layout.sfield_close')
+							
+							<span class="button_wrap topspace">
+								<input type="submit" value="Save">
+								<input type="button" value="Close" class="gray" onclick="hidePopup()">
+							</span>
+							<i class="global error"></i>
+							<div class="clearfix"></div>
+							
+						</form>
+					</div>
+					
+				</div>
+
+			</section>
+			
+		</div>
+
+		<span class="ie_shadow_top"></span>
+		<span class="ie_shadow_bottom"></span>
+		<span class="ie_shadow_left"></span>
+		<span class="ie_shadow_right"></span>
+	</div>
+	
+</div> <!-- end floating_box -->

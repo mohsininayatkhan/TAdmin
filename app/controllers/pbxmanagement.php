@@ -89,4 +89,9 @@ class Pbxmanagement extends \Forge\Controller {
 	public static function ringgroup() {
 		return Blade::make(self::$module.'.ringgroup')->with('data', Ringgroup::index());
 	}
+	
+	// Music On Hold
+	public static function musiconhold() {
+		return Blade::make(self::$module.'.musiconhold');
+	}
 }

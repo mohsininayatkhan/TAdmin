@@ -1,25 +1,16 @@
 <?php 
 class Ringgroup extends \Forge\Controller
 {
-	protected static $module = 'pbxmanagement';
-	protected static $extension_management = 'extension_management';
-	protected static $extra_telephone_features = 'extra_telephone_features';
-	protected static $telephony_management = 'telephony_management';	
+	protected static $customer_id = 1;
 	
 	public static function index()
 	{
-		$res_failovermsg = AnnouncementModel::getAll(5);
-		// $res_callpickups = CallpickupModel::getAll(5);
-		// $res_phonemodels = PhoneModel::getAll(5);
-		// $res_musiconhold = MusiconholdModel::getAll(5);
-		// $res_callplans   = CallplanModel::getAll(5);
+		$res_failovermsg = AnnouncementModel::getAll(self::$customer_id);
+		$res_extensions = ExtensionModel::getAll(self::$customer_id);
 		
 		$data = array();
 		$data['failovermsg'] = $res_failovermsg['rows'];
-		// $data['callpickups'] = $res_callpickups['rows'];
-		// $data['phonemodels'] = $res_phonemodels['rows'];
-		// $data['callplans']   = $res_callplans['rows'];
-		// $data['musiconhold'] = $res_musiconhold['rows'];
+		$data['extensions'] = $res_extensions['rows'];
 		
 		return $data;
 	}
@@ -32,7 +23,7 @@ class Ringgroup extends \Forge\Controller
 		$page  	  = (!empty($page) ? $page : 1);
 		$keywords = (!empty($keywords) ? $keywords : '');
 		
-        $record = RinggroupModel::getAll(5, '', $page, $keywords);
+        $record = RinggroupModel::getAll(self::$customer_id, '', $page, $keywords);
 		echo json_encode($record);
 	}
 	
@@ -42,17 +33,17 @@ class Ringgroup extends \Forge\Controller
 		$id = (!empty($id) ? $id : '');
 		
 		if ($id == '') {
-			return array('status' => 'ERROR', 'message' => 'Account ID can\'t be empty');
+			return array('status' => 'ERROR', 'message' => 'No record selected');
 		}
 		
-		$record = RinggroupModel::getAll(5, $id);
+		$record = RinggroupModel::getAll(self::$customer_id, $id);
 		
 		echo json_encode($record);
 	}
 	
     public static function nextnum() {
 		$data = Input::all();
-		$data['customer_id'] = 5;
+		$data['customer_id'] = self::$customer_id;
 		$data['limit'] = 1;
 		
 		// create
@@ -61,19 +52,65 @@ class Ringgroup extends \Forge\Controller
 	}
 	
     public static function save() {
-        
         $data = Input::post();
-        $data['customer_id'] = 5;
+        $data['customer_id'] = self::$customer_id;
+        $data['user_key'] = time(); // temporary
                 
         // update
         if (!empty($data['ringgroup_id'])) {
             $res = RinggroupModel::update($data);
-            echo json_encode($res);
-            return;
+            die(json_encode($res));
         }
         
         // create
         $res = RinggroupModel::create($data);
         echo json_encode($res);
+    }
+	
+    public static function delete() { 
+        $data = Input::post();
+        $data['customer_id'] = self::$customer_id;
+        
+        $res = RinggroupModel::delete($data);
+		echo json_encode($res);
+    }
+	
+	// List
+	public static function getList() {
+		
+		$id = Input::post('id');
+		$id = (!empty($id) ? $id : '');
+		
+		$data['customer_id'] = self::$customer_id;
+		
+		if (!$id) {
+			return array('status' => 'ERROR', 'message' => 'No record selected');
+		}
+		
+		$record = RinggroupModel::getList($id);
+		
+		echo json_encode($record);
+	}
+    public static function saveList() { 
+        $data = Input::post();
+		$data['customer_id'] = self::$customer_id;
+        $data['user_key'] = time(); // temporary
+                
+        // update
+        if (!empty($data['ringgrouplist_id'])) {
+            $res = RinggroupModel::updateList($data);
+            die(json_encode($res));
+        }
+        
+        // create
+        $res = RinggroupModel::createList($data);
+        echo json_encode($res);
+    }
+	public static function deleteList() {
+        $data = Input::post();
+		$data['customer_id'] = self::$customer_id;
+        
+        $res = RinggroupModel::deleteList($data);
+		echo json_encode($res);
     }
 }

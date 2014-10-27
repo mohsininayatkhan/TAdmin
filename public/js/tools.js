@@ -52,9 +52,9 @@ $(function(){
 		checkBoxes = $('input[type=checkbox]'),
 		radioBtns = $('input[type=radio]'),
 		
-		tabWrap = $('.tab_wrap'),
+		tabWrap = $('.tab_wrap').not('.no_tab'),
 		tabLinks = $('.tab_link',tabWrap),
-		tabContent = $('.tab_content_pad'),
+		tabContent = $('.tab_content_pad',tabWrap),
 		
 		scrollWrap = $('.scroll_wrap'),
 		
@@ -136,12 +136,16 @@ $(function(){
 			e.preventDefault();
 			
 			currentDropdown = $('#'+el.data('dropdown'));
-			currentId = el.attr('id')
+			currentId = el.attr('id');
 			
 			pos = el.offset();
 			defaultTop = pos.top+44;
 			defaultLeft = pos.left-currentDropdown.outerWidth() + el.outerWidth();
-			
+
+			if (el.attr('data-popup') != undefined) {
+				currentDropdown = $('.dropdown.popup');
+			}
+				
 			if (el.hasClass(classActive)) {
 				currentDropdown.stop().animate({top:defaultTop, opacity:0}, function(){$(this).hide()});
 				el.removeClass(classActive);
@@ -154,6 +158,7 @@ $(function(){
 				el.addClass(classActive)
 				dropdownSetter.not(el).removeClass(classActive);
 			}
+			
 			return false
 		});
 	}
@@ -397,17 +402,47 @@ function hidePopup() {
 function openPopup() {
 	var validator = $("form").validate();
     validator.resetForm();
-	$("#form").find(".error").removeClass("error");
 	
 	$('.overlay').fadeIn(200);
 
-	var fBox = $('.floating_box');
+	var fBox = $('.floating_box.main');
 	if (!fBox.is("[style]")) {
-		fBox.css({marginTop: '-'+($('.floating_box').height()/2)+'px'})
+		fBox.css({marginTop: '-'+(fBox.height()/2)+'px'})
 	}
 	fBox.fadeIn(300)
 }
 
+
+/***********************************
+ * THIS SECTION IS FOR PAGINATION *
+ ***********************************/
+ function pagination(data) {
+	var html = '';
+	html +='<span id="records_count" class="float text">'+data.start+'-'+parseInt(data.start+data.page_rows)+' of '+data.total_rows+' items</span>';
+	
+	var backword_status = '';
+	if(current_page == 1) {
+		backword_status = 'disabled';
+	}
+	
+	html +='<a class="btn gradient icon_wrap_notext btn_backward '+backword_status+'"><i class="icon_backward"></i></a>';
+	
+	for(i=1; i<=data.num_pages; i++){
+		var active = '';
+		if (data.current_page == i) {
+			active = 'active';
+		}
+		html +='<a class="btn page gradient '+active+'">'+i+'</a>';
+	}
+	
+	var forward_status = '';
+	if(current_page == data.num_pages) {
+		forward_status = 'disabled';
+	}
+	
+	html +='<a class="btn gradient icon_wrap_notext btn_forward '+forward_status+'"><i class="icon_forward"></i></a>';
+	$('.pagination_wrap').html(html);
+}
 
 /***********************************
  * THIS SECTION IS FOR FAILOVER *

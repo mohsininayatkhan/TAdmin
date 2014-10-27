@@ -63,9 +63,9 @@ class MusiconholdAD {
 		} catch (\PDOException $e) {
 			$response['status'] 	= 'ERROR';
 			$response['total'] 		= 0;
-			$response['message'] 	= sprintf('PDOException was thrown when trying to get music on hold: %s', $e->getMessage());
+			$response['message'] 	= sprintf('PDOException was thrown while getting MOH : %s', $e->getMessage());
 			//return $response;
-			throw new \RuntimeException(sprintf('PDOException was thrown when trying to get music on hold: %s', $e->getMessage()), 0, $e);
+			throw new \RuntimeException(sprintf('PDOException was thrown while getting MOH : %s', $e->getMessage()), 0, $e);
 		}
 		return $response;
 	}
@@ -85,4 +85,54 @@ class MusiconholdAD {
       	}
 		return $number_of_rows;
 	}
+
+	public static function create($data) {
+		try {
+			self::setPDO();
+			$sql = 'INSERT INTO as_musiconhold (customer_id, name, directory) VALUES (?, ?, ?)';
+
+            $values = array(
+				$data['customer_id'], 
+                $data['name'], 
+                $data['directory']
+            );
+            
+            $qry = self::$pdo->prepare($sql);
+            $qry->execute($values);
+			
+			$qry = self::$pdo->prepare('SELECT LAST_INSERT_ID()');
+			$qry->execute();
+			$last_id = $qry->fetch();
+			
+			if (!isset($last_id[0]) || !$last_id[0]) {
+				return false;
+			}
+			
+			return $last_id[0];
+			
+		} catch (\PDOException $e) {
+			throw new \RuntimeException(sprintf('PDOException was thrown while creating new MOH group : %s', $e -> getMessage()), 0, $e);
+			return false;
+		}
+		
+		return false;
+	}
+	
+	public static function delete($data) {
+        try {
+            self::setPDO();
+            $qry = self::$pdo->prepare("DELETE FROM as_musiconhold WHERE musiconhold_id=? AND customer_id=?");
+			
+            $qry->execute(array($data['musiconhold_id'], $data['customer_id']));
+            $affected_rows = $qry->rowCount();
+
+            return $affected_rows;
+			
+        } catch (\PDOException $e) {
+            throw new \RuntimeException(sprintf('PDOException was thrown while deleting MOH group : %s', $e->getMessage()), 0, $e);
+            return false;
+        }
+		
+        return false;
+    }
 }

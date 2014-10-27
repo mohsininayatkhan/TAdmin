@@ -31,7 +31,7 @@
 	</div> <!-- end main_pane -->
 	
 	<!-- popup form -->
-	<div class="floating_box hidden">
+	<div class="floating_box main hidden">
 
 		<div class="container sform_wrap">
 

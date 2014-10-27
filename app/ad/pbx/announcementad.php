@@ -3,7 +3,7 @@ use \Forge\Config;
 use \Illuminate\Database\Eloquent\Model as DB;
 
 
-class AnnouncementAd extends \Model {
+class AnnouncementAd {
 
    /**
      * @var \PDO PDO instance.
@@ -91,5 +91,84 @@ class AnnouncementAd extends \Model {
          	throw new \RuntimeException(sprintf('PDOException was thrown when trying to get call group count: %s', $e->getMessage()), 0, $e);
       	}
 		return $number_of_rows;
+	}
+	
+	public static function update($data) {
+	
+		try {
+            self::setPDO();
+			
+			 $values = array(
+                $data['number'], 
+                $data['name'], 
+                $data['description']
+            );
+			
+			$sql = 'UPDATE tp_announcement SET `announcement_number`=?, `name`=?, `desc`=?';
+			
+			if (isset($data['file'])) {
+				$sql .= ' ,`file`=?, `path`=?';
+				
+				$values[] = $res['file'];
+				$values[] = $res['path'];
+			}
+			
+			$sql .= ' WHERE `announcement_id`=? AND `customer_id`=?';
+			
+			$values[] = $data['announcement_id'];
+			$values[] = $data['customer_id'];
+			
+            $qry = self::$pdo->prepare($sql);
+            $qry -> execute($values);
+            return true;
+        } catch (\PDOException $e) {
+            throw new \ADException(sprintf('PDOException was thrown when trying to update announcement : %s', $e -> getMessage()), 0, $e);
+            return false;
+        }
+	
+	}
+	
+	
+	public static function create($data) {
+	
+		try {
+            self::setPDO();
+			
+			 $values = array(
+                ':customer_id' 			=> $data['customer_id'],
+				':announcement_number' 	=> $data['number'],
+				':name' 				=> $data['name'],
+				':file' 				=> $data['file'],
+				':path' 				=> $data['path'],
+				':desc' 				=> $data['description'],
+				':user_key' 			=> $data['userkey'],
+				':create_dttm' 			=> '2013-09-30 23:38:57',
+				':extennumber' 			=> ''
+            );
+			
+			$sql = 'INSERT INTO tp_announcement (`customer_id`, `announcement_number`, `name`, `file`, `path`, `desc`, `user_key`, `create_dttm`, `extennumber`	) 
+				VALUES ( :customer_id, :announcement_number, :name, :file, :path, :desc, :user_key, :create_dttm, :extennumber)';
+					
+            $qry = self::$pdo->prepare($sql);
+            $qry -> execute($values);
+            return true;
+        } catch (\PDOException $e) {
+            throw new \ADException(sprintf('PDOException was thrown when trying to create announcement : %s', $e -> getMessage()), 0, $e);
+            return false;
+        }
+	}
+	
+	public static function delete($customer_id, $announcement_id) {
+		try {
+			self::setPDO();
+			$qry = self::$pdo->prepare("DELETE FROM tp_announcement WHERE customer_id = :customer_id AND announcement_id = :announcement_id");
+			$qry->execute(array($customer_id, $announcement_id));
+			$affected_rows = $qry->rowCount();
+			return true;
+		} catch (\PDOException $e) {
+			throw new \ADException(sprintf('PDOException was thrown when trying to delete announcement information : %s', $e->getMessage()), 0, $e);
+			return false;
+		}
+		return false;
 	}
 }

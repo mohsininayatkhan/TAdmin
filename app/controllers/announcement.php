@@ -22,45 +22,47 @@ class Announcement extends \Forge\Controller
 		echo json_encode($record);
 	}
 	
-	/*public static function get() {
+	public static function get() {
 	
-		/*$callpickup_id 	= Input::post('callpickup_id');
-		$callpickup_id  = (!empty($callpickup_id) ? $callpickup_id : '');
+		$announcement_id 	= Input::post('announcement_id');
+		$announcement_id  = (!empty($announcement_id) ? $announcement_id : '');
 		
-		if ($callpickup_id == '') {
-			return array('status' => 'ERROR', 'message' => 'Call Pickup ID can\'t be empty');
+		if ($announcement_id == '') {
+			return json_encode(array('status' => 'ERROR', 'message' => 'Announcement ID can\'t be empty'));
 		}
 		
-		$record = CallgroupModel::getAll(5, $callpickup_id);
-		echo json_encode($record);*/
-	/*}
+		$record = AnnouncementModel::getAll(5, $announcement_id);
+		echo json_encode($record);
+	}
 	
 	public static function save() {
 		
-		/*$data = Input::post();
-		
+		$data = Input::post();
 		$data['customer_id'] = 5;
-		$data['extenm'] = 15;
 		
-		$ObjCallgroupModel = new CallgroupModel();
+		$file = Input::file('rec_file');
 		
-		// update
-		if (!empty($data['callpickup_id'])) {
-			$res = CallgroupModel::update($data);
-			echo json_encode($res);
-			return;
+		if (isset($file) and !empty($file)) {
+			$data['file'] = $file;
 		}
 		
-		// create
-		$res = CallgroupModel::create($data);
-		echo json_encode($res);*/
-	/*}
+		// update
+		if (!empty($data['announcement_id'])) {
+			
+			$res = AnnouncementModel::update($data);
+			echo json_encode($res);
+			exit();
+		}
+		
+		$res = AnnouncementModel::create($data);
+		echo json_encode($res);
+		exit();
+	}
 	
 	public static function delete() { 
-		/*$data = Input::post();
+		$data = Input::post();
 		$data['customer_id'] = 5;
 		
-		$ObjCallgroupModel = new CallgroupModel();
-		$ObjCallgroupModel->delete($data);*/
-	//}
+		AnnouncementModel::delete($data);
+	}
 }

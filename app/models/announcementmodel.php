@@ -1,7 +1,9 @@
 <?php 
 use Forge\Validator;
 class AnnouncementModel extends \Model\Base {    
-    private static $rules = array();
+    
+	private static $rules = array();
+	private static $userkey = 'B288DDA5C9BB097E68C922518';	
 
     public static function getAll($customer, $announcement_id='', $page=NULL, $keywords='') {
 
@@ -41,12 +43,84 @@ class AnnouncementModel extends \Model\Base {
 
 	
     public static function update($data) {
+		
+		if (isset($data['file'])) {
+			$res = self::upload($data['file']);
+			
+			if ($res['status'] == 'ERROR') {
+				return $res;
+			}
+			$data['file'] = $res['file'];
+			$data['path'] = $res['path'];
+		}
+		$data['userkey'] = self::$userkey;
+		
+		if (\AD\Pbx\NumberAD::alreadyExists($data['customer_id'], $data['number'], $data['announcement_id'])) {
+            return array('status' => "ERROR", 'message' => 'The number ' . $data['number'] . ' is already being used!');
+        }
+		
+		if (\AD\Pbx\AnnouncementAd::update($data)) {
+			return array('status' => 'SUCCESS', 'message' => 'Record updated successfully.');
+		}
+		return array('status' => 'ERROR', 'message' => 'Can\'t create update record.');
     }
 	
 	
+
     public static function create($data) {
+	
+		if (isset($data['file'])) {
+			$res = self::upload($data['file']);
+			
+			if ($res['status'] == 'ERROR') {
+				return $res;
+			}
+			$data['file'] = $res['file'];
+			$data['path'] = $res['path'];
+		}
+		$data['userkey'] = self::$userkey;
+		
+		
+		
+		if (\AD\Pbx\NumberAD::alreadyExists($data['customer_id'], $data['number'])) {
+            return array('status' => "ERROR", 'message' => 'The number ' . $data['number'] . ' is already being used!');
+        }
+		
+		if (\AD\Pbx\AnnouncementAd::create($data)) {
+			return array('status' => 'SUCCESS', 'message' => 'Record created successfully.');
+		}
+		return array('status' => 'ERROR', 'message' => 'Can\'t create new record.');
+       
     }
 
-	public function delete($data) {
+	
+	public static function upload($file) {
+		
+		$upload = $file[0];		
+		$name = uniqid().'.wav';
+		
+		$path = \Forge\Core::path('storage') .'upload';
+		$des = $path.DIRECTORY_SEPARATOR.$name;			
+		
+		try {
+			\Forge\File::move($upload['tmp_name'], $des, true);
+		} catch(Exception $e) {
+			return array('status' => 'ERROR', 'message' => $e->getMessage());
+		}
+		return array('status' => 'SUCCESS', 'message' => 'file uploaded successfully', 'file' => $name, 'path' => $path);
+	}
+	
+	
+	public static function delete($data) {
+		
+		$response = \AD\Pbx\AnnouncementAd::delete($data['customer_id'], $data['announcement_id']);
+		
+		if ($response) {
+			if ($response['status'] != 'ok') {
+				return array('status' => 'ERROR', 'message' => $res['status']);
+			}
+			return array('status' => 'SUCCESS', 'message' => 'Record deleted successfully!' );
+		}
+        return array('status' => 'ERROR', 'message' => 'Uknown error accoured while deleting record!');
     }
 }

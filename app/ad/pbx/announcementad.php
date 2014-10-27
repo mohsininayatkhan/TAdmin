@@ -72,7 +72,7 @@ class AnnouncementAd {
 			$response['total'] 		= 0;
 			$response['message'] 	= sprintf('PDOException was thrown when trying to get call group: %s', $e->getMessage());
 			//return $response;
-         	throw new \RuntimeException(sprintf('PDOException was thrown when trying to get call grouup: %s', $e->getMessage()), 0, $e);
+         	throw new \ADException(sprintf('PDOException was thrown when trying to get call grouup: %s', $e->getMessage()), 0, $e);
       	}
 		return $response;
    	}
@@ -88,7 +88,7 @@ class AnnouncementAd {
 			$qry->execute($param); 
 			$number_of_rows = $qry->fetchColumn(); 
 		}catch (\PDOException $e) {
-         	throw new \RuntimeException(sprintf('PDOException was thrown when trying to get call group count: %s', $e->getMessage()), 0, $e);
+         	throw new \ADException(sprintf('PDOException was thrown when trying to announcement count: %s', $e->getMessage()), 0, $e);
       	}
 		return $number_of_rows;
 	}

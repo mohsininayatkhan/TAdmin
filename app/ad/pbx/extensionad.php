@@ -67,7 +67,7 @@ class ExtensionAd {
 			$response['total'] 		= 0;
 			$response['message'] 	= sprintf('PDOException was thrown when trying to get extensions: %s', $e->getMessage());
 			//return $response;
-         	throw new \RuntimeException(sprintf('PDOException was thrown when trying to get extensions: %s', $e->getMessage()), 0, $e);
+         	throw new \ADException(sprintf('PDOException was thrown when trying to get extensions: %s', $e->getMessage()), 0, $e);
       	}
 		return $response;
    	}
@@ -83,7 +83,7 @@ class ExtensionAd {
 			$qry->execute($param); 
 			$number_of_rows = $qry->fetchColumn(); 
 		}catch (\PDOException $e) {
-         	throw new \RuntimeException(sprintf('PDOException was thrown when trying to get count: %s', $e->getMessage()), 0, $e);
+         	throw new \ADException(sprintf('PDOException was thrown when trying to get count: %s', $e->getMessage()), 0, $e);
       	}
 		return $number_of_rows;
 	}
@@ -152,7 +152,7 @@ class ExtensionAd {
             $response = $qry->fetch();
             return $response;
         } catch (\PDOException $e) {
-            throw new \RuntimeException(sprintf('PDOException was thrown when trying to add extension : %s', $e -> getMessage()), 0, $e);
+            throw new \ADException(sprintf('PDOException was thrown when trying to add extension : %s', $e -> getMessage()), 0, $e);
             return false;
         }
         return false;
@@ -220,7 +220,7 @@ class ExtensionAd {
 			$response = $qry->fetch();
 			return $response;
         } catch (\PDOException $e) {
-            throw new \RuntimeException(sprintf('PDOException was thrown when trying to update extension : %s', $e -> getMessage()), 0, $e);
+            throw new \ADException(sprintf('PDOException was thrown when trying to update extension : %s', $e -> getMessage()), 0, $e);
             return false;
         }
     }
@@ -251,7 +251,7 @@ class ExtensionAd {
                 return false;
             }
 		} catch (\PDOException $e) {
-            throw new \RuntimeException(sprintf('PDOException was thrown when trying to check name : %s', $e -> getMessage()), 0, $e);
+            throw new \ADException(sprintf('PDOException was thrown when trying to check name : %s', $e -> getMessage()), 0, $e);
             return false;
         }
 	}
@@ -273,7 +273,7 @@ class ExtensionAd {
 			$qry->execute($values);
 			$response = $qry->fetch();
 			return $response;
-		} catch (\PDOException $e) {
+		} catch (\ADException $e) {
 			throw new \RuntimeException(sprintf('PDOException was thrown when trying to delete extension : %s', $e -> getMessage()), 0, $e);
 			return false;
 		}

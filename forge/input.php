@@ -21,19 +21,23 @@ class Input
       return array_key_exists($key, $_POST) ? $_POST[$key] : $default;
    }
    
-   public static function file()
+   public static function file($key = '')
    {
-      $name = array_key_exists('name', $_FILES) ? (array) $_FILES['name'] : array();
+      if (empty($key)) return array();
+      
+      $upload = array_get($_FILES, $key, array());
+      
+      $name = (array) array_get($upload, 'name', array());
       
       if (empty($name[0])) return array();
-      
-      $type = (array) $_FILES['type'];
-      $tmp_name = (array) $_FILES['tmp_name'];
-      $error = (array) $_FILES['error'];
-      $size = (array) $_FILES['size'];
+
+      $type = (array) $upload['type'];
+      $tmp_name = (array) $upload['tmp_name'];
+      $error = (array) $upload['error'];
+      $size = (array) $upload['size'];
       $result = array();
-      
-      for ($i = 0; $i < count($_FILES['name']); $i++)
+
+      for ($i = 0; $i < count($upload['name']); $i++)
       {
          $result[] = array(
             'name' => $name[$i],
@@ -43,7 +47,7 @@ class Input
             'size' => $size[$i]
          );
       }
-      
+
       return $result;
    }
    

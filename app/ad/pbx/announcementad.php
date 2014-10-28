@@ -109,8 +109,8 @@ class AnnouncementAd {
 			if (isset($data['file'])) {
 				$sql .= ' ,`file`=?, `path`=?';
 				
-				$values[] = $res['file'];
-				$values[] = $res['path'];
+				$values[] = $data['file'];
+				$values[] = $data['path'];
 			}
 			
 			$sql .= ' WHERE `announcement_id`=? AND `customer_id`=?';

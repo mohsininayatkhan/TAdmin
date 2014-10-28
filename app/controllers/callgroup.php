@@ -4,13 +4,17 @@ class Callgroup extends \Forge\Controller
     protected static $module = 'pbxmanagement';
     protected static $extension_management = 'extension_management';
     protected static $extra_telephone_features = 'extra_telephone_features';
-    protected static $telephony_management = 'telephony_management';    
+    protected static $telephony_management = 'telephony_management';	
     
-    public function index()
+    public static function index()
     {
-        return Blade::make(self::$module.'.'.self::$extra_telephone_features.'.call_group');
+        $res_extension   = ExtensionModel::getAll(5);
+		
+		$data = array();
+		$data['extensions']  = $res_extension['rows'];
+		return $data;
     }
-    
+	
     public static function render() {
         $page       = Input::post('page');
         $keywords   = Input::post('keywords');
@@ -18,7 +22,7 @@ class Callgroup extends \Forge\Controller
         $page     = (!empty($page) ? $page : 1);
         $keywords = (!empty($keywords) ? $keywords : '');
 		
-        $record = CallgroupModel::getAll(1, '', $page, $keywords);
+        $record = CallgroupModel::getAll(5, '', $page, $keywords);
         echo json_encode($record);
     }
     
@@ -41,8 +45,6 @@ class Callgroup extends \Forge\Controller
         $data['customer_id'] = 5;
         $data['extenm'] = 15;
         
-        $ObjCallgroupModel = new CallgroupModel();
-        
         // update
         if (!empty($data['callpickup_id'])) {
             $res = CallgroupModel::update($data);
@@ -61,4 +63,19 @@ class Callgroup extends \Forge\Controller
         
         CallgroupModel::delete($data);
     }
+	
+	public static function getCallpickuplist() {
+		 $callpickup_id = Input::post('callpickup_id'); 
+		 
+		 $res = CallpickupextensionModel::getAll($callpickup_id);
+		 echo json_encode($res);	
+	}
+	
+	public static function addExtension() {
+		$data = Input::post();
+        $data['customer_id'] = 5;
+		
+		$res = CallpickupextensionModel::create($data);
+		echo json_encode($res);	
+	}
 }

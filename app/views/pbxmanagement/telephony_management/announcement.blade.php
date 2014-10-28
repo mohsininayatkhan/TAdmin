@@ -13,6 +13,7 @@
 		<nav class="dropdown" id="actionSetter">
 			<ul>
 				<li><a href="javascript:void(0)" onClick="openAnnouncementForm()">Edit</a><i class="triangle"></i></li>
+				<li><a onClick="downloadAnnouncementFile()" href="javascript:void(0)">Download Announcement File</a></li>
 				<li><a onClick="deleteAnnouncement()" href="javascript:void(0)">Delete</a></li>
 			</ul>
 		</nav>

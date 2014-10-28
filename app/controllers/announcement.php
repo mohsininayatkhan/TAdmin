@@ -65,4 +65,36 @@ class Announcement extends \Forge\Controller
 		
 		AnnouncementModel::delete($data);
 	}
+	
+	public static function download() {
+	
+		$announcement_id 	= Input::get('announcement_id');
+		$announcement_id  = (!empty($announcement_id) ? $announcement_id : '');
+		
+		if ($announcement_id == '') {
+			return json_encode(array('status' => 'ERROR', 'message' => 'Announcement ID can\'t be empty'));
+		}
+		
+		$record = AnnouncementModel::getAll(5, $announcement_id);
+		
+		if ($record['status'] == 'ERROR') {
+			return json_encode(array('status' => 'ERROR', 'message' => 'Record not found'));
+		}
+		
+		$row = $record['rows'][0];
+		$filepath = $row['path'].'/'.$row['file'];		
+		
+		header("Content-type: application/octetstream");
+		header('Content-Disposition: attachment; filename='.$row['file']);
+		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+		header('Pragma: public');
+		header("Content-transfer-encoding: binary");
+		header("Content-length: " . filesize($filepath) . "");
+
+		$fp=fopen($filepath, "r");
+		fpassthru($fp);
+		fclose($fp);
+
+		exit();
+	}
 }

@@ -2,7 +2,11 @@
 use Forge\Validator;
 class AnnouncementModel extends \Model\Base {    
     
-	private static $rules = array();
+	 private static $rules = array(
+        'name' => 'required|alpha', 
+        'number' => 'required|numeric', 
+        'description' => 'required'
+    );
 	private static $userkey = 'B288DDA5C9BB097E68C922518';	
 
     public static function getAll($customer, $announcement_id='', $page=NULL, $keywords='') {
@@ -43,6 +47,8 @@ class AnnouncementModel extends \Model\Base {
 
 	
     public static function update($data) {
+		
+		self::$rules['announcement_id'] = 'required|numeric';
 		
 		if (isset($data['file'])) {
 			$res = self::upload($data['file']);
@@ -96,11 +102,22 @@ class AnnouncementModel extends \Model\Base {
 	
 	public static function upload($file) {
 		
-		$upload = $file[0];		
+		$upload = $file[0];
+		$filename = $upload['name'];
+		$tail = explode(".", $filename);
+		$tail = end($tail);
+		
+		if (strtolower($tail) != 'wav') {
+			return array('status' => 'ERROR', 'message' => 'Recording file should be of wav format');
+		}
+		
 		$name = uniqid().'.wav';
 		
-		$path = \Forge\Core::path('storage') .'upload';
-		$des = $path.DIRECTORY_SEPARATOR.$name;			
+		$path = \Forge\Core::path('iofiles') .'annc/'.Config::get('app._TENANT_');;
+		if (!file_exists($path)) {
+			mkdir($path);
+		}
+		$des = $path.'/'.$name;			
 		
 		try {
 			\Forge\File::move($upload['tmp_name'], $des, true);

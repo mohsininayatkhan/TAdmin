@@ -1,9 +1,9 @@
 <?php
 require_once('extraroutes.php');
 
-//Router::register(array('/', '*', '*/*'), function($method){
-   //return \Main::show($method);
-//});
+Router::register(array('/', '*', '*/*'), function($method){
+   return \Main::show($method);
+});
 
 Router::register('logger/*', function($method){
 	return \Logger::displayLogs($method[0]);

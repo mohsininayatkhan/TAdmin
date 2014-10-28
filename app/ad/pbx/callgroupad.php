@@ -65,7 +65,7 @@ class CallgroupAD
             $response['status'] = 'ERROR';
             $response['total'] = 0;
             $response['message'] = sprintf('PDOException was thrown when trying to get call group: %s', $e -> getMessage());
-            throw new \RuntimeException(sprintf('PDOException was thrown when trying to get call grouup: %s', $e -> getMessage()), 0, $e);
+            throw new \ADException(sprintf('PDOException was thrown when trying to get call grouup: %s', $e -> getMessage()), 0, $e);
         }
         return $response;
     }
@@ -80,7 +80,7 @@ class CallgroupAD
             $qry -> execute($param);
             $number_of_rows = $qry -> fetchColumn();
         } catch (\PDOException $e) {
-            throw new \RuntimeException(sprintf('PDOException was thrown when trying to get call group count: %s', $e -> getMessage()), 0, $e);
+            throw new \ADException(sprintf('PDOException was thrown when trying to get call group count: %s', $e -> getMessage()), 0, $e);
         }
         return $number_of_rows;
     }
@@ -102,7 +102,7 @@ class CallgroupAD
             $qry -> execute($values);
             return true;
         } catch (\PDOException $e) {
-            throw new \RuntimeException(sprintf('PDOException was thrown when trying to update call group : %s', $e -> getMessage()), 0, $e);
+            throw new \ADException(sprintf('PDOException was thrown when trying to update call group : %s', $e -> getMessage()), 0, $e);
             return false;
         }
         return false;
@@ -128,10 +128,24 @@ class CallgroupAD
             $response = $qry -> fetch();
             return $response;
         } catch (\PDOException $e) {
-            throw new \RuntimeException(sprintf('PDOException was thrown when trying to add customer : %s', $e -> getMessage()), 0, $e);
+            throw new \ADException(sprintf('PDOException was thrown when trying to add customer : %s', $e -> getMessage()), 0, $e);
             return false;
         }
         return false;
     }
+	
+	public static function delete($callpickup_id, $customer_id) {
 
+        try {
+            self::setPDO();
+            $qry = self::$pdo->prepare("DELETE FROM tp_callpickup WHERE callpickup_id = :callpickup_id AND customer_id = :customer_id");
+            $qry->execute(array($callpickup_id, $customer_id));
+            $affected_rows = $qry->rowCount();
+            return true;
+        } catch (\PDOException $e) {
+            throw new \RuntimeException(sprintf('PDOException was thrown when trying to delete call pickup : %s', $e->getMessage()), 0, $e);
+            return false;
+        }
+        return false;
+    }
 }

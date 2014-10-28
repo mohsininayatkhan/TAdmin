@@ -29,6 +29,9 @@ $paths['sys'] = __DIR__ .'/forge/';
 // Temp/writable files
 $paths['storage'] = __DIR__ .'/tmp/';
 
+// Temp/writable files
+$paths['iofiles'] = __DIR__ .'/iofiles/';
+
 // Public folder
 $paths['public'] = __DIR__ .'/public/';
 

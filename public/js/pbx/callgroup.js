@@ -38,8 +38,43 @@ $(document).ready(function() {
             code : "required",
         }
     });
+	
+	$("#frmCallpickup").validate({
+        rules : {
+            exten : "required"
+        }
+    });
 
-    $('#sbtBtn').click(function() {
+    $('#sbtAddBtn').click(function() {
+								   
+		 if ($("#frmCallpickup").valid()) {
+            var request = $.ajax({
+                url : "/callgroup/addExtension",
+                type : 'POST',
+                dataType : 'json',
+                data : $('#frmCallpickup').serialize()
+            });
+
+            request.done(function(json) {
+                if (json.status == 'ERROR') {
+                    alert(json.message);
+                    return;
+                }
+                alert(json.message);
+				$('#frmCallpickup #exten').val('');
+                showList();
+            });
+
+            request.fail(function() {
+                return false;
+            });
+
+            request.always(function() {
+            });
+        }
+	});
+	
+	$('#sbtBtn').click(function() {
 
         if ($("#frmCallgroup").valid()) {
             var request = $.ajax({
@@ -235,7 +270,7 @@ function openCallgroupForm() {
 
     $('.overlay').fadeIn(200);
 
-    var fBox = $('.floating_box');
+    var fBox = $('.floating_box.main');
     if (!fBox.is("[style]")) {
         fBox.css({
             marginTop : '-' + ($('.floating_box').height() / 2) + 'px'
@@ -269,4 +304,74 @@ function populateForm(account_id) {
 
     request.always(function() {
     });
+}
+
+
+function showList() {
+	
+	var request = $.ajax({
+        url : "/callgroup/getCallpickuplist",
+        type : 'POST',
+        dataType : 'json',
+        data : {
+            callpickup_id : currentId
+        }
+    });
+
+    request.done(function(json) {
+
+        if (json.status == 'ERROR') {
+            alert(json.message);
+            return;
+        }
+		
+		$('#frmCallpickup #callpickup_id').val(currentId);
+		
+        if (json.count > 0) {
+            var html = '';
+			html += '<table>'
+			// Header Row
+			html += '<tr class="row head">';
+			html += '<td>Etension</td>';
+			html += '<td width="5%"></td>';
+			html += '</tr>';
+	
+			if (json.count > 0) {
+				$.each(json.rows, function(key, value) {
+					html += '<tr class="row">';
+					html += '<td>' + value.exten + '</td>';
+					html += '<td><a href="javascript:void(0)" id="' + value.callpickupexten_id + '" class="dropdownSetter btn gray icon_wrap_block icon_gear_small" data-dropdown="actionSetter"  data-popup=true>Actions<i class="icon_arrow_gray right"></i></a></td>';
+					html += '</tr>';
+				});
+        	}
+        	html += '</table>';
+			$('#gridList').html(html);
+			$('#gridsection').removeClass("hidden");
+        } else {
+            $('#gridsection').addClass("hidden");
+        }
+    });
+
+    request.fail(function() {
+        return false;
+    });
+
+    request.always(function() {
+        //alert('test');
+    });
+	
+	$('.overlay').fadeIn(200);
+	
+	var fBox = $('.floating_box.list');
+	// Add current module name to title
+	//fBox.find('.module').text($('#row_'+currentId).find("td:eq(0)").text());
+	
+	if (!fBox.is("[style]")) {
+		fBox.css({marginTop: '-'+(fBox.height()/2)+'px'})
+	}
+	fBox.fadeIn(300)
+}
+
+function addToList() {
+	
 }

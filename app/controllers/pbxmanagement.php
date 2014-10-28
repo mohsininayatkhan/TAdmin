@@ -42,7 +42,7 @@ class Pbxmanagement extends \Forge\Controller {
 	
 	// Callgroup
 	public static function callgroup() {
-		 return Blade::make(self::$module.'.'.self::$extra_telephone_features.'.call_group');
+		 return Blade::make(self::$module.'.'.self::$extra_telephone_features.'.call_group')->with('data', Callgroup::index());
 	}
 	
 	

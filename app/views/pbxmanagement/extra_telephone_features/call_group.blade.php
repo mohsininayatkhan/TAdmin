@@ -13,6 +13,7 @@
 		<nav class="dropdown" id="actionSetter">
 			<ul>
 				<li><a href="javascript:void(0)" onClick="openCallgroupForm()">Edit</a><i class="triangle"></i></li>
+				<li><a href="javascript:void(0)" onClick="showList()">Call Pickup List</a></li>
 				<li><a href="javascript:void(0)" onClick="deleteCallgroup()">Delete</a></li>
 			</ul>
 		</nav>

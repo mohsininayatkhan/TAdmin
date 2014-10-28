@@ -28,7 +28,8 @@ $( document ).ready(function() {
 	});
 	
 	$('#new-btn').click(function() {
-		$("#frmAnnouncement #rec_file" ).rules( "add", "required" );					 
+		$("#frmAnnouncement #rec_file" ).rules( "add", "required" );
+		fBox.find('.module').text('New');
 	});
 	
 	$("#search").keyup(function(e) {
@@ -249,6 +250,9 @@ function openAnnouncementForm() {
 	fBox.fadeIn(300)
 }
 
+function downloadAnnouncementFile() {
+	window.open('/announcement/download?announcement_id='+currentId+'&ms='+ Math.random());
+}
 
 function populateForm(account_id) {
 	

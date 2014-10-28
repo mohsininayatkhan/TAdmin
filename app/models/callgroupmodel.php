@@ -9,7 +9,7 @@ class CallgroupModel extends \Model\Base {
         'description' => 'required', 
         'name' => 'required'
     );
-
+	
     public static function getAll($customer, $callpickup_id = '', $page = NULL, $keywords = '') {
 
 		$result = array();
@@ -49,8 +49,8 @@ class CallgroupModel extends \Model\Base {
 	
     public static function update($data) {
 
-        self::$rules['callpickup_id'] = 'required';
-
+		self::$rules['callpickup_id'] = 'required|numeric';
+		
         $validator = new Validator($data, self::$rules);
 
         if ($validator->fails()) {
@@ -116,13 +116,11 @@ class CallgroupModel extends \Model\Base {
     }
 
 	public static function delete($data) {
-	
-
         $code = '';
-		
-		$row = \AD\Pbx\CallpickupAD::getAll($data['customer_id'], $data['callpickup_id']);
-
+				
         $resCallgroup =\AD\Pbx\CallgroupAD::getAll($data['customer_id'], $data['callpickup_id']);
+		
+		$row = array();
 
         if ($resCallgroup['status'] == 'SUCCESS') {
             $row = $resCallgroup['data'][0];
@@ -135,23 +133,18 @@ class CallgroupModel extends \Model\Base {
             // in case of error
             return $resCallgroup;
         }
+		
         if (!\AD\Pbx\AsteriskExtensionAD::delete($data['customer_id'], $code)) {
             return array('status' => 'ERROR', 'message' => 'Unable to delete asteric extension.');
         }
-
-		$res = \AD\Pbx\CallpickupAD::getAll($data['customer_id'], $data['callpickup_id']);
 		
-        $row = $res['data'][0];
-        if (count($row)) {
-            $callpickup_id = $row['callpickup_id'];
-        }
+		$callpickup_id = $row['callpickup_id'];
 
         \AD\Pbx\CallpickupExtensionAD::delete($callpickup_id);
 
-        if ( \AD\Pbx\CallpickupAD::delete($callpickup_id, $data['customer_id'])) {
+        if ( \AD\Pbx\CallgroupAD::delete($callpickup_id, $data['customer_id'])) {
             \AD\Pbx\NumberAD::delete($data['customer_id'], $data['callpickup_id'], 'PICKUP');
             return array('status' => 'SUCCESS', 'message' => 'Record deleted successfully!');
         }
     }
-
 }

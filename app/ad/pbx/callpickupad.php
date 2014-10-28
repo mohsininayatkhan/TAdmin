@@ -50,6 +50,7 @@ class CallpickupAD {
 			if (isset($options['start']) && isset($options['limit'])) {
 				$sql .= ' LIMIT '.$options['start'].', '.$options['limit'];
 			}
+			
 			$qry = self::$pdo->prepare($sql);
 			$qry->execute($param);
 			

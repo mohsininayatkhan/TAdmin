@@ -3,8 +3,8 @@ use Forge\Validator;
 class ExtensionModel extends \Model\Base {
 	
 	private static $rules = array(
-        'name' => 'required', 
-        'extension' => 'required', 
+        'name' => 'required|name', 
+        'extension' => 'required|extension', 
         'password' => 'required', 
         'callplan' => 'required'
     );

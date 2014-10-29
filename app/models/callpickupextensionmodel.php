@@ -5,7 +5,7 @@ class CallpickupextensionModel extends \Model\Base {
 
     private static $rules = array(
         'callpickup_id' => 'required|numeric',
-		'exten'			=> 'required|numeric'
+		'exten'			=> 'required|extension'
     );
 	
 	private static $userkey = 'B288DDA5C9BB097E68C922518';	

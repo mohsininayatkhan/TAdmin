@@ -4,7 +4,7 @@
 
 @section('form_content')
 	
-	<form name="frmAnnouncement" id="frmAnnouncement" enctype="multipart/form-data" target="upload_target" action="/announcement/save" method="post">
+	<form name="frmAnnouncement" id="frmAnnouncement" enctype="multipart/form-data" class="validate" target="upload_target" action="/announcement/save" method="post">
 	<input type="hidden" name="announcement_id" id="announcement_id" value="" />
 	<section class="tab_wrap no_tab">
 	

@@ -11,7 +11,7 @@
 			@include('layout.sfield_open')
 				
 				<!-- Callgroup Form -->
-				<form name="frmCallgroup" id="frmCallgroup">
+				<form name="frmCallgroup" id="frmCallgroup" class="validate">
 				<input type="hidden" name="callpickup_id" id="callpickup_id" value="" />
 				<div class="col_wide">
 					@include('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Name', 'id' => 'name'))
@@ -45,7 +45,7 @@
 				<h2 class="tab_content_title">Add to call pickup list</h2>
 				@include('layout.sfield_open')
 					<!-- Callpick list Form -->
-					<form name="frmCallpickup" id="frmCallpickup">
+					<form name="frmCallpickup" id="frmCallpickup" class="validate">
 						<input type="hidden" name="callpickup_id" id="callpickup_id" value="" />
 						 <input type="hidden"  value="EXTEN" name="exten_type" id="exten_type" />
 						<div class="col_wide">

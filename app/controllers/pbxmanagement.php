@@ -45,6 +45,11 @@ class Pbxmanagement extends \Forge\Controller {
 		 return Blade::make(self::$module.'.'.self::$extra_telephone_features.'.call_group')->with('data', Callgroup::index());
 	}
 	
+	// Black list
+	public static function blacklist() {
+		 return Blade::make(self::$module.'.'.self::$extra_telephone_features.'.black_list')->with('data', Callgroup::index());
+	}
+	
 	
 	public static function ajax_announcement_list() {
 		$page 	= Input::post('page');

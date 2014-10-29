@@ -108,8 +108,13 @@
 
 	@if (!is_array($type) && ($type == 'checkbox' || $type == 'radio'))
 		<{{ $subwrap_tag or 'span' }} class="{{ $subwrap_cls or 'field_wrap' }}">
+			@if (isset($isLabelTop))
+				{{ $text or '' }}<br/>
+			@endif
 			<span class="{{ $type }}_wrap"><input type="{{ $type }}" name="{{ $name or $id }}" id="{{ $id or '' }}" value="{{ $value or '' }}" {{ isset($cls) ? 'class='.$cls : '' }} {{ isset($ischecked) && $ischecked ? 'checked' : '' }} /></span>
-			{{ $text or '' }}
+			@if (!isset($isLabelTop))
+				{{ $text or '' }}
+			@endif
 		</{{ $subwrap_tag or 'span' }}>
 	@endif
 	
@@ -121,7 +126,7 @@
 	
 	@if (!is_array($type) && $type == 'number')
 		<span class="field_wrap">
-			<input type="number" name="{{ $name or $id }}" id="{{ $id or '' }}" min="{{ $min or 1 }}" max="{{ $max or '' }}" />{{ isset($hint) ? '<i class="hint">'.$hint.'</i></span>' : '' }}
+			<input type="number" name="{{ $name or $id }}" id="{{ $id or '' }}" min="{{ $min or 1 }}" max="{{ $max or '' }}" value="{{ $default or '' }}" />{{ isset($hint) ? '<i class="hint">'.$hint.'</i></span>' : '' }}
 		</span>
 	@endif
 	

@@ -47,6 +47,8 @@ class MusiconholdAD {
 			
 			$sql .= $where;
 			
+			$sql .= ' order by musiconhold_id DESC';
+			
 			if (isset($options['start']) && isset($options['limit'])) {
 				$sql .= ' LIMIT '.$options['start'].', '.$options['limit'];
 			}
@@ -65,7 +67,7 @@ class MusiconholdAD {
 			$response['total'] 		= 0;
 			$response['message'] 	= sprintf('PDOException was thrown while getting MOH : %s', $e->getMessage());
 			//return $response;
-			throw new \RuntimeException(sprintf('PDOException was thrown while getting MOH : %s', $e->getMessage()), 0, $e);
+			throw new \ADException(sprintf('PDOException was thrown while getting MOH : %s', $e->getMessage()), 0, $e);
 		}
 		return $response;
 	}
@@ -81,7 +83,7 @@ class MusiconholdAD {
 			$qry->execute($param); 
 			$number_of_rows = $qry->fetchColumn(); 
 		}catch (\PDOException $e) {
-         	throw new \RuntimeException(sprintf('PDOException was thrown when trying to get music on hold count: %s', $e->getMessage()), 0, $e);
+         	throw new \ADException(sprintf('PDOException was thrown when trying to get music on hold count: %s', $e->getMessage()), 0, $e);
       	}
 		return $number_of_rows;
 	}
@@ -89,6 +91,7 @@ class MusiconholdAD {
 	public static function create($data) {
 		try {
 			self::setPDO();
+			
 			$sql = 'INSERT INTO as_musiconhold (customer_id, name, directory) VALUES (?, ?, ?)';
 
             $values = array(
@@ -111,7 +114,7 @@ class MusiconholdAD {
 			return $last_id[0];
 			
 		} catch (\PDOException $e) {
-			throw new \RuntimeException(sprintf('PDOException was thrown while creating new MOH group : %s', $e -> getMessage()), 0, $e);
+			throw new \ADException(sprintf('PDOException was thrown while creating new MOH group : %s', $e -> getMessage()), 0, $e);
 			return false;
 		}
 		
@@ -121,15 +124,22 @@ class MusiconholdAD {
 	public static function delete($data) {
         try {
             self::setPDO();
-            $qry = self::$pdo->prepare("DELETE FROM as_musiconhold WHERE musiconhold_id=? AND customer_id=?");
 			
-            $qry->execute(array($data['musiconhold_id'], $data['customer_id']));
-            $affected_rows = $qry->rowCount();
+			$sql = 'DELETE FROM as_musiconhold WHERE customer_id=? AND musiconhold_id=?';
+			
+			$values = array(
+				$data['customer_id'],
+				$data['musiconhold_id']
+			);
+			
+            $qry = self::$pdo->prepare($sql);
+			$qry->execute($values);
+			// return $qry->rowCount();
 
-            return $affected_rows;
+            return true;
 			
         } catch (\PDOException $e) {
-            throw new \RuntimeException(sprintf('PDOException was thrown while deleting MOH group : %s', $e->getMessage()), 0, $e);
+            throw new \ADException(sprintf('PDOException was thrown while deleting MOH group : %s', $e->getMessage()), 0, $e);
             return false;
         }
 		

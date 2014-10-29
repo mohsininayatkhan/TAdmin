@@ -28,10 +28,7 @@ $(document).ready(function() {
 		datagrid(--current_page);
 	});
 	
-	$('.tab_link[data-content="tabAdd"]').click(function(){
-		$('#formList #moh_file').val('');
-		$('#formList .error').html('');
-	});
+	$('.tab_link[data-content="tabAdd"]').click(cleanForm);
 	
 	// Form validation
 	$('#form').validate({
@@ -65,11 +62,10 @@ function datagrid(page){
 		
 	request.done(function(json) {
 		if (json.status == 'ERROR' ) {
-			alert(json.message);
+			showLoader(json.message, true);
 			return
 		}
-		
-		current_page = page;				  
+			  
 		var html = '';
 		html += '<table>'
 		html += '<tr class="row head">';
@@ -86,20 +82,23 @@ function datagrid(page){
 				html += '<td><a href="javascript:void(0)" id="'+value.musiconhold_id+'" class="dropdownSetter btn gray icon_wrap_block icon_gear_small" data-dropdown="actionSetter">Actions<i class="icon_arrow_gray right"></i></a></td>';
 				html += '</tr>';
 			});
+			
 		} else {
 			html += '<tr class="row"><td colspan="3">No record found.</td></tr>';
 		}
+		
 		html += '</table>';
+		$('#grid').html(html);
 		
-		
+		current_page = page;
 		var data = {current_page: page, total_rows: json.total, page_rows: json.count, num_pages:json.num_pages, start: json.start};
 		pagination(data);
-		
-		$('#grid').html(html);
 	});
 }
 
 function saveData() {
+	showLoader();
+	
 	var request = $.ajax({
 		url: "/musiconhold/save",
 		type: 'post',
@@ -110,7 +109,7 @@ function saveData() {
 	
 	request.success(function(json){
 		if (json.status == 'ERROR' ) {
-			$('.global.error').html(json.message).show();
+			showLoader(json.message).show();
 			return;
 		}
 		
@@ -123,6 +122,9 @@ function deleteGroup() {
     if (!confirm('Are you sure you want to delete the record?')) {
         return false;
     }
+	
+	showLoader();
+	
     var request = $.ajax({
         url: "/musiconhold/delete",
         type: 'POST',
@@ -131,7 +133,7 @@ function deleteGroup() {
     });
 
     request.done(function(json) {
-        alert(json.message);
+        showLoader(json.message, true);
     });
 	
 	request.always(function() {
@@ -155,6 +157,8 @@ function showList() {
 	$('#tabList').fadeIn(200)
 }
 function showFiles() {
+	showLoader();
+	
 	// Clean
 	showList();
 	
@@ -162,13 +166,12 @@ function showFiles() {
 		url: "/musiconhold/getFiles",
 		type: 'POST',
 		dataType: 'json',
-		data: {id: currentId}
+		data: {musiconhold_id: currentId}
 	});
 		
 	request.done(function(json) {
-		
 		if (json.status == 'ERROR' ) {
-			alert(json.message);
+			showLoader(json.message, true);
 			return;
 		}
 		
@@ -195,21 +198,22 @@ function showFiles() {
 			html += HTML_norecord;
 		}
 		html += '</table>';
-		
 		$('#gridList').html(html);
+		
+		hideLoader();
+		
+		var fBox = $('.floating_box.list');
+		fBox.find('.module').text($('#row_'+currentId).find("td:eq(0)").text()); // Add current module name to title
+		if (!fBox.is("[style]")) {
+			fBox.css({marginTop: '-'+(fBox.height()/2)+'px'})
+		}
+		$('.overlay').fadeIn(200);
+		fBox.fadeIn(300);
 	});
-	$('.overlay').fadeIn(200);
-	
-	var fBox = $('.floating_box.list');
-	// Add current module name to title
-	fBox.find('.module').text($('#row_'+currentId).find("td:eq(0)").text());
-	
-	if (!fBox.is("[style]")) {
-		fBox.css({marginTop: '-'+(fBox.height()/2)+'px'})
-	}
-	fBox.fadeIn(300)
 }
 function uploadFile() {
+	showLoader();
+	
 	var request = $.ajax({
 		url: "/musiconhold/uploadFile",
 		type: 'POST',
@@ -222,11 +226,12 @@ function uploadFile() {
 	
 	request.success(function(json){
 		if (json.status == 'ERROR' ) {
-			$('#formList .global.error').html(json.message).show();
+			showLoader(json.message, true);
 			return;
 		}
 		
-		var table = $('#gridList table');
+		hideLoader();
+		
 		id = new Date().getTime();//Math.random();
 		html = $('<tr class="row" id="row_list_'+id+'">'+
 			'<td>'+json.filename+'</td>'+
@@ -234,6 +239,7 @@ function uploadFile() {
 			'</tr>');
 			
 		// Clear table content if no record yet
+		var table = $('#gridList table');
 		if ($('tr:eq(1)', table).find('td').length <= 1) {
 			$('tr:eq(1)', table).remove();
 			table.append(html);
@@ -249,6 +255,8 @@ function deleteFile() {
         return false;
     }
 
+	showLoader();
+	
     var request = $.ajax({
         url: "/musiconhold/deleteFile",
         type: 'POST',
@@ -260,11 +268,13 @@ function deleteFile() {
     });
 
     request.done(function(json) {
-        alert(json.message);
+        showLoader(json.message, true);
+		
 		if (json.status != 'ERROR') {
-			var table = $('#gridList table');
 			$('#row_'+currentId).fadeOut(200, function(){
 				$(this).remove();
+				
+				var table = $('#gridList table');
 				if (table.find('tr').length <= 1) {
 					table.append(HTML_norecord)
 				}

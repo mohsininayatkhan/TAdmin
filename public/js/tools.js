@@ -36,7 +36,8 @@ function loadScripts(array,callback){
 
 var classActive = 'active',
 	currentTab  = null,
-	currentId = null;
+	currentId = null,
+	HTML_loader = 'Loading.. Please wait';
 $(function(){
 	// Contains variables for objects
 	var inpBorder = $('.inp'),
@@ -390,19 +391,31 @@ $(function(){
 });
 
 
+
+/***********************************
+ * THIS SECTION IS FOR POPUP AND LOADER *
+ ***********************************/
+function cleanForm() {
+	$('.validate i.error').remove();
+	$('.validate .error').removeClass('error');
+	$("form").trigger('reset');
+	$('input[type=checkbox]').each(function(){
+		el = $(this);
+		checkboxWrap = el.parents('.checkbox_wrap');
+		if (el.is(':checked')) {
+			checkboxWrap.addClass(classActive)
+		} else {
+			checkboxWrap.removeClass(classActive)
+		}
+		// console.log($(this));
+		// console.log($(this).is(':checked'));
+	})
+}
 function hidePopup() {
-	$('.floating_box').fadeOut(200, function(){
-		// Clean form
-		$('.validate i.error.global').html('');
-		$('.validate i.error').not('.global').remove();
-		$('.validate .error').not('.global').removeClass('error');
-	});
+	$('.floating_box').fadeOut(200, cleanForm);
 	$('.overlay').fadeOut(300);
 }
 function openPopup() {
-	var validator = $("form").validate();
-    validator.resetForm();
-	
 	$('.overlay').fadeIn(200);
 
 	var fBox = $('.floating_box.main');
@@ -410,6 +423,22 @@ function openPopup() {
 		fBox.css({marginTop: '-'+(fBox.height()/2)+'px'})
 	}
 	fBox.fadeIn(300)
+}
+// Loader
+function showLoader(html, close) {
+	$('.loader').show().css({opacity: 0});
+	var loaderPad = $('.loader .loader_pad');
+	loaderPad.html(html ? html : HTML_loader);
+	if (close) {
+		loaderPad.append('<i class="loader_close" onclick="hideLoader()">x</i>');
+	}
+	loaderPad.css({
+		marginLeft: -(loaderPad.outerWidth() / 2)
+	});
+	$('.loader').animate({opacity: 1}, 200)
+}
+function hideLoader() {
+	$('.loader').fadeOut(200);
 }
 
 
@@ -449,7 +478,9 @@ function openPopup() {
  ***********************************/
 function handleFailoverApp(obj, act) {
 	obj.find('option').remove();
-	if(act == 'EXTERNAL') {
+	if(!act) {
+		return
+	} else if(act == 'EXTERNAL') {
 		$('#fo_external').show();
 		$('#fo_other').hide();
 	} else if (act == 'HANGUP') {
@@ -476,31 +507,41 @@ function getFailoverApp(obj, type) {
 		}
 		
 		if(json.length <= 0) {
+			obj.append($('<option></option>').val('').html('No record available'));
 			return;
 		}
+		
 		if (type == 'ANNOUNCEMENT') {
 			$.each( json, function( key, value ) {
-				obj.append($('<option></option>').val(value.announcement_id).html(value.name));
+				obj.append($('<option></option>').val(value.announcement_number).html(value.name+' - '+value.announcement_number));
+			});
+		} else if(type == 'DAYNIGHT') {
+			$.each( json, function( key, value ) {
+				obj.append($('<option></option>').val(value.daynight_number).html(value.daynight_name+' - '+value.daynight_number));
 			});
 		} else if(type == 'EXTEN') {
 			$.each( json, function( key, value ) {
-				obj.append($('<option></option>').val(value.account_id).html(value.name+' - '+value.extennumber));
+				obj.append($('<option></option>').val(value.extennumber).html(value.name+' - '+value.extennumber));
 			});
 		} else if(type == 'IVR') {
 			$.each( json, function( key, value ) {
 				obj.append($('<option></option>').val(value.ivr_number).html(value.ivr_name+' - '+value.ivr_number));
 			});
+		} else if(type == 'QUEUE') {
+			$.each( json, function( key, value ) {
+				obj.append($('<option></option>').val(value.exten).html(value.dsc+' - '+value.exten));
+			});
 		} else if(type == 'RINGGROUP') {
 			$.each( json, function( key, value ) {
-				obj.append($('<option></option>').val(value.ringgroup_id).html(value.name+' - '+value.ringgroup_num));
+				obj.append($('<option></option>').val(value.ringgroup_num).html(value.name+' - '+value.ringgroup_num));
+			});
+		} else if(type == 'MEETME') {
+			$.each( json, function( key, value ) {
+				obj.append($('<option></option>').val(value.conf_exten).html(value.conf_exten));
 			});
 		} else if(type == 'VOICEMAIL') {
 			$.each( json, function( key, value ) {
 				obj.append($('<option></option>').val(value.exten).html(value.fullname+' - '+value.exten));
-			});
-		} else if(type == 'QUEUE') {
-			$.each( json, function( key, value ) {
-				obj.append($('<option></option>').val(value.exten).html(value.dsc+' - '+value.exten));
 			});
 		}
 	});

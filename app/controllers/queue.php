@@ -1,76 +1,98 @@
 <?php 
 class Queue extends \Forge\Controller
 {
-
-	public static function index()
-	{
-		// $res_dailplans 	 = DailplanModel::getAll(5);
-		// $res_callpickups = CallpickupModel::getAll(5);
-		// $res_phonemodels = PhoneModel::getAll(5);
-		// $res_musiconhold = MusiconholdModel::getAll(5);
-		// $res_callplans   = CallplanModel::getAll(5);
+	protected static $customer_id = 1;
+	
+	public static function index() {
+		$res_annc = AnnouncementModel::getAll(self::$customer_id);
+		$res_moh = MusiconholdModel::getAll(self::$customer_id);
+		$res_extension = ExtensionModel::getAll(self::$customer_id);
 		
-		// $data = array();
-		// $data['dialplans'] 	 = $res_dailplans['rows'];
-		// $data['callpickups'] = $res_callpickups['rows'];
-		// $data['phonemodels'] = $res_phonemodels['rows'];
-		// $data['callplans']   = $res_callplans['rows'];
-		// $data['musiconhold'] = $res_musiconhold['rows'];
+		$data = array();
+		$data['annc'] = $res_annc['rows'];
+		$data['moh'] = $res_moh['rows'];
+		$data['extension'] = $res_extension['rows'];
 		
 		return $data;
 	}
 	
 	public static function render() {
-		
 		$page = Input::post('page');
 		$keywords = Input::post('keywords');
 		
 		$page  	  = (!empty($page) ? $page : 1);
 		$keywords = (!empty($keywords) ? $keywords : '');
 		
-        $record = RinggroupModel::getAll(5, '', $page, $keywords);
-		echo json_encode($record);
+        $record = QueueModel::getAll(self::$customer_id, '', $page, $keywords);
+		die(json_encode($record));
 	}
 	
 	public static function get() {
-		
 		$id = Input::post('id');
-		$id = (!empty($id) ? $id : '');
-		
-		if ($id == '') {
-			return array('status' => 'ERROR', 'message' => 'Account ID can\'t be empty');
+		if (!$id) {
+			return array('status' => 'ERROR', 'message' => 'No record selected');
 		}
 		
-		$record = RinggroupModel::getAll(5, $id);
-		
-		echo json_encode($record);
-	}
-	
-    public static function nextnum() {
-		$data = Input::all();
-		$data['customer_id'] = 5;
-		$data['limit'] = 1;
-		
-		// create
-        $res = RinggroupModel::getNextNum($data);
-        echo json_encode($res);
+		$record = QueueModel::getAll(self::$customer_id, $id);
+		die(json_encode($record));
 	}
 	
     public static function save() {
-        
         $data = Input::post();
-        
-        $data['customer_id'] = 5;
+        $data['customer_id'] = self::$customer_id;
+		$data['user_key'] = time(); // temporary
                 
         // update
-        if (!empty($data['ringgroup_id'])) {
-            $res = RinggroupModel::update($data);
-            echo json_encode($res);
-            return;
+        if (!empty($data['queue_id'])) {
+            $res = QueueModel::update($data);
+            die(json_encode($res));
         }
         
         // create
-        $res = RinggroupModel::create($data);
-        echo json_encode($res);
+        $res = QueueModel::create($data);
+        die(json_encode($res));
+    }
+	
+	public static function delete() { 
+        $data = Input::post();
+        $data['customer_id'] = self::$customer_id;
+        
+        $res = QueueModel::delete($data);
+		die(json_encode($res));
+    }
+	
+	// Members List
+	public static function getList() {
+		$id = Input::post('id');
+		if (!$id) {
+			return array('status' => 'ERROR', 'message' => 'No record selected');
+		}
+		
+		$record = QueueModel::getList(self::$customer_id, $id);
+		die(json_encode($record));
+	}
+	public static function saveList() {
+		$data = Input::post();
+		$data['customer_id'] = self::$customer_id;
+        $data['user_key'] = time(); // temporary
+                
+        // update
+        if (!empty($data['member_exten'])) {
+			$res = QueueModel::deleteList($data);
+			if ($res['status'] == 'ERROR') {
+				die(json_encode($res));
+			}
+        }
+        
+        // create
+        $res = QueueModel::createList($data);
+        die(json_encode($res));
+	}
+	public static function deleteList() {
+        $data = Input::post();
+		$data['customer_id'] = self::$customer_id;
+        
+        $res = QueueModel::deleteList($data);
+		die(json_encode($res));
     }
 }

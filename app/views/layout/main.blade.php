@@ -51,6 +51,12 @@
 		
 	</div> <!-- end floating_box -->
 	
-	<div class="overlay"></div>	
+	<div class="overlay"></div>
+	
+	<div class="loader">
+		<div class="loader_wrap">
+			<div class="loader_pad">Loading.. Please wait</div>
+		</div>
+	</div>
 @stop
 

@@ -28,6 +28,9 @@ $(document).ready(function() {
 		datagrid(--current_page);
 	});
 	// Main form
+	$('.new-btn').click(function(){
+		$('.floating_box.main .what').html('New RingGroup');
+	});
 	$('#failover_app').change(function(){
 		handleFailoverApp($('#failover_appnumber'), $(this).val());
 	});	
@@ -36,8 +39,9 @@ $(document).ready(function() {
 		handleExten($(this).val());
 	});	
 	$('.tab_link[data-content="tabAdd"]').click(function(){
-		$('#formList #ringgrouplist_id').val('');
-		$('#formList .error').html('');
+		cleanForm();
+		handleExten();
+		$('#formList #ringgrouplist_id').val('')
 	});
 	
 	// Form validation
@@ -82,7 +86,6 @@ $(document).ready(function() {
 });
 
 function datagrid(page){
-	
 	var request = $.ajax({
 		url: "/ringgroup/render",
 		type: 'POST',
@@ -92,11 +95,10 @@ function datagrid(page){
 		
 	request.done(function(json) {
 		if (json.status == 'ERROR' ) {
-			alert(json.message);
-			return
+			showLoader(json.message, true);
+			return;
 		}
 		
-		current_page = page;				  
 		var html = '';
 		html += '<table>'
 		html += '<tr class="row head">';
@@ -117,69 +119,18 @@ function datagrid(page){
 				html += '<td><a href="javascript:void(0)" id="'+value.ringgroup_id+'" class="dropdownSetter btn gray icon_wrap_block icon_gear_small" data-dropdown="actionSetter">Actions<i class="icon_arrow_gray right"></i></a></td>';
 				html += '</tr>';
 			});
+			
 		} else {
 			html += '<tr class="row"><td colspan="5">No record found.</td></tr>';
 		}
+		
 		html += '</table>';
+		$('#grid').html(html);
 		
-		
+		current_page = page;
 		var data = {current_page: page, total_rows: json.total, page_rows: json.count, num_pages:json.num_pages, start: json.start};
 		pagination(data);
-		
-		$('#grid').html(html);
 	});
-}
-
-function openForm() {
-	var request = $.ajax({
-		url: "/ringgroup/get",
-		type: 'POST',
-		dataType: 'json',
-		data: {id: currentId}
-	});
-		
-	request.done(function(json) {
-		
-		if (json.status == 'ERROR' ) {
-			alert(json.message);
-			return;
-		}
-		
-		if (json.count>0) {
-			
-			var row = json.rows[0];
-
-			$('#form #ringgroup_id').val(row['ringgroup_id']);
-			$('#form #name').val(row['name']);
-			$('#form #cli_name_prefix').val(row['cli_name_prefix']);
-			$('#form #ringtime').val(row['ringtime']);
-			$('#form #strategy').val(row['strategy']);
-			$('#form #ringgroup_num').val(row['ringgroup_num']);
-			
-			$('#form #failover_announcement_no').val(row['failover_announcement_no']);
-			$('#form #failover_app').val(row['failover_app']);
-
-			handleFailoverApp($('#failover_appnumber'), row['failover_app']);
-			
-			if(row['failover_app'] == 'EXTERNAL') {
-				$("#form #external_failover_appnumber").val(row['failover_appnumber']);
-				
-			} else {
-				$("#form #failover_appnumber").val(row['failover_appnumber']);	
-			}
-			
-		} else {
-			alert('Sorry! no record found.');
-		}
-	});
-	
-	$('.overlay').fadeIn(200);
-
-	var fBox = $('.floating_box.main');
-	if (!fBox.is("[style]")) {
-		fBox.css({marginTop: '-'+(fBox.height()/2)+'px'})
-	}
-	fBox.fadeIn(300)
 }
 
 function getNextNUm() {
@@ -192,20 +143,76 @@ function getNextNUm() {
 		
 	request.done(function(json) {
 		if (json.status == 'ERROR' ) {
-			alert('Error occurred while fetching new ringgroup number. Error: '+json.message);
+			 showLoader(json.message, true);
 			return;
 		}
 
-		if (json.rows.length) {
-			$('#ringgroup_num').val(json.rows[0]['num']);
-
-		} else {
-			alert('Sorry! No available ringgroup number.');
+		if (!json.rows.length) {
+			showLoader('Sorry! No available ringgroup number', true);
+			return;
 		}
+		
+		$('#ringgroup_num').val(json.rows[0]['num']);
+	});
+}
+
+function openForm() {
+	showLoader();
+	
+	var request = $.ajax({
+		url: "/ringgroup/get",
+		type: 'POST',
+		dataType: 'json',
+		data: {id: currentId}
+	});
+		
+	request.done(function(json) {
+		if (json.status == 'ERROR' ) {
+			showLoader(json.message, true);
+			return;
+		}
+		
+		if (!json.count){
+			showLoader('Record not found!', true);
+			return;
+		}
+			
+		var row = json.rows[0];
+
+		$('#form #ringgroup_id').val(row['ringgroup_id']);
+		$('#form #name').val(row['name']);
+		$('#form #cli_name_prefix').val(row['cli_name_prefix']);
+		$('#form #ringtime').val(row['ringtime']);
+		$('#form #strategy').val(row['strategy']);
+		$('#form #ringgroup_num').val(row['ringgroup_num']);
+		
+		$('#form #failover_announcement_no').val(row['failover_announcement_no']);
+		$('#form #failover_app').val(row['failover_app']);
+
+		handleFailoverApp($('#failover_appnumber'), row['failover_app']);
+		
+		if (row['failover_app'] == 'EXTERNAL') {
+			$("#form #external_failover_appnumber").val(row['failover_appnumber']);
+			
+		} else {
+			$("#form #failover_appnumber").val(row['failover_appnumber']);	
+		}
+		
+		hideLoader();
+		
+		var fBox = $('.floating_box.main');
+		$('.what', fBox).html('Eidt RingGroup - '+row['name']); // Update popup title
+		if (!fBox.is("[style]")) {
+			fBox.css({marginTop: '-'+(fBox.height()/2)+'px'})
+		}
+		$('.overlay').fadeIn(200);
+		fBox.fadeIn(300);
 	});
 }
 
 function saveData() {
+	showLoader();
+	
 	var request = $.ajax({
 		url: "/ringgroup/save",
 		type: 'post',
@@ -216,23 +223,23 @@ function saveData() {
 	
 	request.success(function(json){
 		if (json.status == 'ERROR' ) {
-			$('.global.error').html(json.message).show();
+			showLoader(json.message).show();
 			return;
 		}
 		
-		// Means we are modifying a record, so we need to update table record instead of refreshing the page
+		hideLoader();
+		
 		id = $('#form #ringgroup_id').val();
-		if (id) {
-			$('#row_'+id).find("td:eq(0)").html($('#form #name').val());
-			$('#row_'+id).find("td:eq(1)").html($('#form #cli_name_prefix').val());
-			$('#row_'+id).find("td:eq(2)").html($('#form #ringgroup_num').val());
-			$('#row_'+id).find("td:eq(3)").html($('#form #strategy option:selected').val());
-			hidePopup();
-			
-		} else {
+		if (!id) {
 			window.location.reload()
 		}
-
+		
+		// Means we are modifying a record, so we need to update table record instead of refreshing the page		
+		$('#row_'+id).find("td:eq(0)").html($('#form #name').val());
+		$('#row_'+id).find("td:eq(1)").html($('#form #cli_name_prefix').val());
+		$('#row_'+id).find("td:eq(2)").html($('#form #ringgroup_num').val());
+		$('#row_'+id).find("td:eq(3)").html($('#form #strategy option:selected').val());
+		hidePopup();
 	});
 }
 
@@ -240,6 +247,9 @@ function deleteData() {
     if (!confirm('Are you sure you want to delete the record?')) {
         return false;
     }
+	
+	showLoader();
+	
     var request = $.ajax({
         url: "/ringgroup/delete",
         type: 'POST',
@@ -248,7 +258,7 @@ function deleteData() {
     });
 
     request.done(function(json) {
-        alert(json.message);
+         showLoader(json.message, true);
     });
 	
 	request.always(function() {
@@ -281,6 +291,8 @@ function handleExten(value) {
 	}
 }
 function openList() {
+	showLoader();
+	
 	// Clean
 	showList();
 	
@@ -292,18 +304,16 @@ function openList() {
 	});
 		
 	request.done(function(json) {
-		
 		if (json.status == 'ERROR' ) {
-			alert(json.message);
+			showLoader(json.message, true);
 			return;
 		}
 		
 		// Add Ringgroup id
-		$('#formList #list_ringgroup_id').val(currentId);
+		$('#formList #ringgroup_id').val(currentId);
 		
 		var html = '';
 		html += '<table>'
-		// Header Row
 		html += '<tr class="row head">';
 		html += '<td>Type</td>';
 		html += '<td>Destination</td>';
@@ -318,25 +328,28 @@ function openList() {
 				html += '<td><a href="javascript:void(0)" id="list_'+value.ringgrouplist_id+'" class="dropdownSetter btn gray icon_wrap_block icon_gear_small" data-dropdown="actionSetter" data-popup=true>Actions<i class="icon_arrow_gray right"></i></a></td>';
 				html += '</tr>';
 			});
+			
 		} else {
 			html += HTML_norecord;
 		}
-		html += '</table>';
 		
+		html += '</table>';
 		$('#gridList').html(html);
+		
+		hideLoader();
+			
+		var fBox = $('.floating_box.list');
+		fBox.find('.module').text($('#row_'+currentId).find("td:eq(0)").text()); // Add current module name to title
+		if (!fBox.is("[style]")) {
+			fBox.css({marginTop: '-'+(fBox.height()/2)+'px'})
+		}
+		$('.overlay').fadeIn(200);
+		fBox.fadeIn(300);
 	});
-	$('.overlay').fadeIn(200);
-	
-	var fBox = $('.floating_box.list');
-	// Add current module name to title
-	fBox.find('.module').text($('#row_'+currentId).find("td:eq(0)").text());
-	
-	if (!fBox.is("[style]")) {
-		fBox.css({marginTop: '-'+(fBox.height()/2)+'px'})
-	}
-	fBox.fadeIn(300)
 }
 function saveList() {
+	showLoader();
+	
 	var request = $.ajax({
 		url: "/ringgroup/saveList",
 		type: 'post',
@@ -347,11 +360,12 @@ function saveList() {
 	
 	request.success(function(json){
 		if (json.status == 'ERROR' ) {
-			$('#formList .global.error').html(json.message).show();
+			showLoader(json.message, true);
 			return;
 		}
 		
-		var table = $('#gridList table');
+		hideLoader();
+		
 		// Means we are modifying a record, so we need to update table record instead of refreshing the page
 		id = $('#formList #ringgrouplist_id').val();
 		extentype = $('#formList #extentype option:selected').val();
@@ -368,6 +382,7 @@ function saveList() {
 				'</tr>');
 				
 			// Clear table content if no record yet
+			var table = $('#gridList table');
 			if ($('tr:eq(1)', table).find('td').length <= 1) {
 				$('tr:eq(1)', table).remove();
 				table.append(html);
@@ -377,43 +392,46 @@ function saveList() {
 		}
 		
 		showList();
-
 	});
 }
 function editList() {
-	currentId = currentId.split('_');
-	id = currentId[1];
-	extentype = $('#row_list_'+id).find("td:eq(0)").text();
-	dst_number = $('#row_list_'+id).find("td:eq(1)").text();
-	
-	addList();
-	
+	var id = currentId.split('_');
+		id = id[1];
+	var extentype = $('#row_list_'+id).find("td:eq(0)").text();
+	var dst_number = $('#row_list_'+id).find("td:eq(1)").text();
+
 	$('#formList #ringgrouplist_id').val(id);
 	$('#formList #extentype').val(extentype);
 	$('#formList #dst_number').val(dst_number);
 	$('#formList #external_dst_number').val(dst_number);
 	
+	addList();	
 	handleExten(extentype);
 }
 function deleteList() {
 	if (!confirm('Are you sure you want to delete the record?')) {
         return false;
     }
-	var table = $('#gridList table');
-	currentId = currentId.split('_');
-	id = currentId[1];
+	
+	showLoader();
+	
+	var id = currentId.split('_');
+		id = id[1];
     var request = $.ajax({
         url: "/ringgroup/deleteList",
         type: 'POST',
         dataType: 'json',
-        data: {ringgroup_id: $('#formList #list_ringgroup_id').val(), ringgrouplist_id: id}
+        data: {ringgroup_id: $('#formList #ringgroup_id').val(), ringgrouplist_id: id}
     });
 
     request.done(function(json) {
-        alert(json.message);
+        showLoader(json.message, true);
+		
 		if (json.status != 'ERROR' ) {
 			$('#row_list_'+id).fadeOut(200, function(){
 				$(this).remove();
+				
+				var table = $('#gridList table');
 				if (table.find('tr').length <= 1) {
 					table.append(HTML_norecord)
 				}

@@ -90,6 +90,11 @@ img{
 /* GLOBAL
 ============================================================================================== */
 .overlay,.loader{display:none;position:fixed;top:0;left:0;z-index:9998;width:100%;height:100%;background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAWdEVYdENyZWF0aW9uIFRpbWUAMDgvMTQvMTSBRuK4AAAADUlEQVQImWNgMPY9AwACBAFNFTDWSwAAAABJRU5ErkJggg==')}
+.loader{z-index:99999}
+.loader_wrap{position:fixed;top:50%;left:50%}
+.loader_pad{position:relative;margin:-21px 0 0 -118px;padding:10px 20px;max-width:500px;background:#fff;border-radius:5px;font-size:18px}
+.loader_close{position:absolute;top:-12px;right:-12px;width:22px;height:22px;background:#00334e;border:2px solid #fff;border-radius:20px;box-shadow: -1px 1px 4px #555;text-align:center;color:#fff;font:bold 17px/19px tahoma;cursor:pointer}
+.loader_close:hover{background:#006da8}
 .floating_box{position:fixed;z-index:9999;left:0;right:0;top:50%}
 .floating_box .container{position:relative;max-width:98%;border-radius:6px;box-shadow:0 0 4px #ccc;background:#fff;margin:0 20px 0 70px}
 .floating_box .container:before,.login_wrap .container:after{content:"";position:absolute;z-index:-1;-webkit-box-shadow:0 0 25px rgba(0,0,0,0.5);-moz-box-shadow:0 0 25px rgba(0,0,0,0.5);box-shadow:0 0 25px rgba(0,0,0,0.5);top:0;bottom:0;left:10px;right:10px;-moz-border-radius:300px / 20px;border-radius:300px / 20px}
@@ -117,7 +122,7 @@ img{
 .file input:after{content:'Choose file';line-height:30px;text-align:center;color:#000}
 .file input:hover:before{background:#D1D6D6}
 .validate i.error{clear:both;display:block;margin:2px 0 8px 150px}
-.validate i.global{display:block!important;clear:none;float:right;margin:24px 15px 0 0;font-size:14px}
+/* .validate i.global{display:block!important;clear:none;float:right;margin:24px 15px 0 0;font-size:14px} */
 
 /* COMMON
 ============================================================================================== */
@@ -549,6 +554,7 @@ background-size:contain
 .sfield_wrap .sfield_title .btn{border-radius:20px;height:20px;width:20px;margin:-3px 10px 0 8px;padding:0}
 .sfield_wrap .or{margin:5px 20px}
 .sfield_inside{margin:15px 0;padding:8px 10px 4px}
+.sfield_inside.top{margin-top:0}
 .sfield_inside .sfield_title{padding-top:0;border:0;font-weight:600}
 .select_parent [class^=clone_]{float:left;width:65%}
 .select_parent .clone_wrap1{width:33%;margin-right:2%}
@@ -638,8 +644,11 @@ background-size:contain
 /* .toggle_wrap .scroll_wrap {margin-bottom:40px}
 .toggle_wrap .scroll_wrap.mCS_no_scrollbar{margin-bottom:0} */
 
-/*POPUP actions*/
+/*CUSTOM*/
 .dropdown.popup{z-index:999999}
+.checkbox_group.narrow .field_wrap{width:25px;text-indent:4px}
+.title_label {float:none!important}
+.hide{display:none}
 
 /*DASHBOARD*/
 /* #dashboard.tab_wrap .tab_content_pad{display:block} */

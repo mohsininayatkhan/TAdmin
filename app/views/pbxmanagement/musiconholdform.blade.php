@@ -83,7 +83,7 @@
 								<input type="hidden" name="musiconhold_id" id="musiconhold_id" value="" />
 								<div class="col_wide">
 									<div class="crow">
-										<label for="name">Choose File<br/>(wav,mp3 format)</label>
+										<label for="name">Choose File<br/>(wav, mp3 format)</label>
 										<span class="field_wrap">
 											<input type="file" id="moh_file" name="moh_file" />
 										</span>
@@ -96,7 +96,7 @@
 								<input type="submit" value="Save">
 								<input type="button" value="Close" class="gray" onclick="hidePopup()">
 							</span>
-							<i class="global error"></i>
+
 							<div class="clearfix"></div>
 							
 						</form>

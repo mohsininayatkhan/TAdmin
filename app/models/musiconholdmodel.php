@@ -85,7 +85,7 @@ class MusiconholdModel extends \Model\Base {
 		
 		// Check if record exists
 		$res = \AD\Pbx\MusiconholdAD::getAll($data['customer_id'], $data['musiconhold_id']);
-        if ($res['status'] != 'SUCCESS') {
+        if ($res['status'] == 'ERROR') {
 			return $res;
 		}
 		$dir = $res['data'][0]['directory'];
@@ -128,7 +128,7 @@ class MusiconholdModel extends \Model\Base {
 		
 		// Check if record exists
 		$res = \AD\Pbx\MusiconholdAD::getAll($data['customer_id'], $data['musiconhold_id']);
-        if ($res['status'] != 'SUCCESS') {
+        if ($res['status'] == 'ERROR') {
 			return $res;
 		}
 		$dir = $res['data'][0]['directory'];
@@ -175,7 +175,7 @@ class MusiconholdModel extends \Model\Base {
 
 		// Check if record exists
 		$res = \AD\Pbx\MusiconholdAD::getAll($data['customer_id'], $data['musiconhold_id']);
-        if ($res['status'] != 'SUCCESS') {
+        if ($res['status'] == 'ERROR') {
 			return $res;
 		}
 		$dir = $res['data'][0]['directory'];
@@ -215,7 +215,7 @@ class MusiconholdModel extends \Model\Base {
 		
 		// Check if record exists
 		$res = \AD\Pbx\MusiconholdAD::getAll($data['customer_id'], $data['musiconhold_id']);
-        if ($res['status'] != 'SUCCESS') {
+        if ($res['status'] == 'ERROR') {
 			return $res;
 		}
 		$dir = $res['data'][0]['directory'];
@@ -245,7 +245,7 @@ class MusiconholdModel extends \Model\Base {
 		
 		// Check if record exists
 		$res = \AD\Pbx\MusiconholdAD::getAll($data['customer_id'], $data['musiconhold_id']);
-        if ($res['status'] != 'SUCCESS') {
+        if ($res['status'] == 'ERROR') {
 			die('Error occured while downloading file');
 		}
 		$dir = $res['data'][0]['directory'];

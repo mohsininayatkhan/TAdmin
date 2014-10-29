@@ -69,22 +69,28 @@ class Pbxmanagement extends \Forge\Controller {
 		$res = array();
 		
 		if ($type == 'ANNOUNCEMENT') {
-			$data = AnnouncementModel::getAll(5);
+			$data = AnnouncementModel::getAll(1);
 			$res = $data['rows'];
 		} else if ($type == 'EXTEN') {
-			$data = ExtensionModel::getAll(5);
+			$data = ExtensionModel::getAll(1);
 			$res = $data['rows'];
 		} else if ($type == 'IVR') {
-			$data = IvrModel::getAll(5);
+			$data = IvrModel::getAll(1);
 			$res = $data['rows'];
 		} else if ($type == 'RINGGROUP') {
-			$data = RinggroupModel::getAll(5);
+			$data = RinggroupModel::getAll(1);
 			$res = $data['rows'];
 		} else if ($type == 'VOICEMAIL') {
-			$data = VoicemailModel::getAll(5);
+			$data = VoicemailModel::getAll(1);
 			$res = $data['rows'];
 		} else if ($type == 'QUEUE') {
-			$data = QueueModel::getAll(5);
+			$data = QueueModel::getAll(1);
+			$res = $data['rows'];
+		} else if ($type == 'DAYNIGHT') {
+			$data = DaynightModel::getAll(1);
+			$res = $data['rows'];
+		} else if ($type == 'MEETME') {
+			$data = VoiceconfModel::getAll(1);
 			$res = $data['rows'];
 		}
 		echo json_encode($res);
@@ -98,5 +104,10 @@ class Pbxmanagement extends \Forge\Controller {
 	// Music On Hold
 	public static function musiconhold() {
 		return Blade::make(self::$module.'.musiconhold');
+	}
+	
+	// Queues
+	public static function queues() {
+		return Blade::make(self::$module.'.queue')->with('data', Queue::index());
 	}
 }

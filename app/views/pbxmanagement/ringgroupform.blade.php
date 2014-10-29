@@ -1,5 +1,5 @@
 @section('form_title')
-	<h2 class="what">Edit Call Group</h2>
+	<h2 class="what">New RingGroup</h2>
 @stop
 
 @section('form_content')
@@ -15,7 +15,7 @@
 					<div class="col1">
 						@include('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Name', 'id' => 'name'))
 						@include('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'CLI Prefix', 'id' => 'cli_name_prefix'))
-						@include('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'number', 'label' => 'Ring Duration', 'id' => 'ringtime'))
+						@include('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'number', 'label' => 'Ring Duration', 'id' => 'ringtime', 'default' => 1))
 						@include('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'Ringgroup Strategy', 'id' => 'strategy', 'options' => array('RINGALL' => 'Ringall', 'HUNT' => 'Hunt', 'MEMORYHUNT' => 'Memory Hunt', 'FIRSTAVAILABLE' => 'First Available')))
 						@include('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'text', 'label' => 'Ringgroup Number', 'id' => 'ringgroup_num', 'maxlength' => 6, 'hint' => 'This is auto-generated, change only if you want to use custom number'))
 					</div>
@@ -101,7 +101,8 @@
 							<h2 class="tab_content_title">Add to RingGroup List</h2>
 							
 							@include('layout.sfield_open')
-								<input type="hidden" name="name" id="name" value="" />
+								<input type="hidden" name="ringgroup_id" id="ringgroup_id" value="" />
+								<input type="hidden" name="ringgrouplist_id" id="ringgrouplist_id" value="" />
 								<div class="col_wide">
 									@include('layout.sfield_generator', array('wrap' => 'crow', 'type' => 'select', 'label' => 'Extension Type', 'id' => 'extentype', 'options' => array('EXTEN' => 'Extension', 'EXTERNAL' => 'External')))
 									<div id="dst_extension">
@@ -125,7 +126,7 @@
 								<input type="submit" value="Save">
 								<input type="button" value="Close" class="gray" onclick="hidePopup()">
 							</span>
-							<i class="global error"></i>
+							<!--<i class="global error"></i> -->
 							<div class="clearfix"></div>
 							
 						</form>

@@ -70,7 +70,7 @@ class RigngroupAD {
 			$response['total'] 		= 0;
 			$response['message'] 	= sprintf('PDOException was thrown when trying to get ringgroup: %s', $e->getMessage());
 			//return $response;
-			throw new \RuntimeException(sprintf('PDOException was thrown when trying to get ring grouup: %s', $e->getMessage()), 0, $e);
+			throw new \ADException(sprintf('PDOException was thrown when trying to get ringgroup: %s', $e->getMessage()), 0, $e);
 		}
 		return $response;
 	}
@@ -86,7 +86,7 @@ class RigngroupAD {
 			$qry->execute($param); 
 			$number_of_rows = $qry->fetchColumn(); 
 		}catch (\PDOException $e) {
-         	throw new \RuntimeException(sprintf('PDOException was thrown when trying to get ringgroup count: %s', $e->getMessage()), 0, $e);
+         	throw new \ADException(sprintf('PDOException was thrown when trying to get ringgroup count: %s', $e->getMessage()), 0, $e);
       	}
 		return $number_of_rows;
 	}
@@ -134,7 +134,7 @@ class RigngroupAD {
 			$response['status'] 	= 'ERROR';
 			$response['total'] 		= 0;
 			$response['message'] 	= sprintf('PDOException was thrown when trying to get ringgroup: %s', $e->getMessage());
-			throw new \RuntimeException(sprintf('PDOException was thrown when trying to get ring grouup: %s', $e->getMessage()), 0, $e);
+			throw new \ADException(sprintf('PDOException was thrown when trying to get ringgroup: %s', $e->getMessage()), 0, $e);
 		}
 		
 		return $response;
@@ -144,11 +144,10 @@ class RigngroupAD {
 		try {
 			self::setPDO();
 
-			$qry = self::$pdo->prepare('UPDATE tp_ringgroup 
-										SET ringgroup_num=?, name=?, strategy=?, 
-										failover_app=?, failover_appnumber=?, failover_announcement_no=?, 
-										ringtime=?, cli_name_prefix=?
-										WHERE ringgroup_id=? AND customer_id=?');
+			$sql = 'UPDATE tp_ringgroup 
+					SET ringgroup_num=?, name=?, strategy=?, failover_app=?, failover_appnumber=?, failover_announcement_no=?, ringtime=?, cli_name_prefix=?
+					WHERE ringgroup_id=? AND customer_id=?';
+					
 			$values = array(
 				$data['ringgroup_num'], 
 				$data['name'], 
@@ -162,12 +161,13 @@ class RigngroupAD {
 				$data['customer_id']
 			);
 			
+			$qry = self::$pdo->prepare($sql);
 			$qry->execute($values);
 			
 			return true;
 			
 		} catch (\PDOException $e) {
-			throw new \RuntimeException(sprintf('PDOException was thrown when trying to update ringgroup : %s', $e -> getMessage()), 0, $e);
+			throw new \ADException(sprintf('PDOException was thrown when trying to update ringgroup : %s', $e -> getMessage()), 0, $e);
 			return false;
 		}
 		
@@ -177,7 +177,9 @@ class RigngroupAD {
 	public static function create($data) {
 		try {
 			self::setPDO();
-			$sql = 'INSERT INTO tp_ringgroup (customer_id, ringgroup_num, name, strategy, failover_app, failover_appnumber, failover_announcement_no, ringtime, cli_name_prefix, user_key, create_dttm) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())';
+			$sql = 'INSERT INTO tp_ringgroup 
+					(customer_id, ringgroup_num, name, strategy, failover_app, failover_appnumber, failover_announcement_no, ringtime, cli_name_prefix, user_key, create_dttm) 
+					VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())';
 
             $values = array(
 				$data['customer_id'], 
@@ -208,7 +210,7 @@ class RigngroupAD {
 			return true;
 			
 		} catch (\PDOException $e) {
-			throw new \RuntimeException(sprintf('PDOException was thrown when trying to add ringgroup : %s', $e -> getMessage()), 0, $e);
+			throw new \ADException(sprintf('PDOException was thrown when trying to add ringgroup : %s', $e -> getMessage()), 0, $e);
 			return false;
 		}
 		
@@ -218,12 +220,18 @@ class RigngroupAD {
 	public static function delete($data) {
         try {
             self::setPDO();
-            $qry = self::$pdo->prepare("DELETE FROM tp_ringgroup WHERE ringgroup_id = :ringgroup_id AND customer_id = :customer_id");
+            
+			$sql = 'DELETE FROM tp_ringgroup WHERE ringgroup_id=? AND customer_id=?';
 			
-            $qry->execute(array($data['ringgroup_id'], $data['customer_id']));
-            $affected_rows = $qry->rowCount();
+			$values = array(
+				$data['ringgroup_id'],
+				$data['customer_id']
+			);
+			
+			$qry = self::$pdo->prepare($sql);
+            $qry->execute($values);
 
-			if ($affected_rows) {
+			if ($qry->rowCount()) {
 				self::deleteList($data['customer_id'], $data['ringgroup_id']);
 				self::delete_numberinfo($data['customer_id'], $data['ringgroup_id'], self::$module);
 			}
@@ -231,7 +239,7 @@ class RigngroupAD {
             return true;
 			
         } catch (\PDOException $e) {
-            throw new \RuntimeException(sprintf('PDOException was thrown when trying to delete call pickup : %s', $e->getMessage()), 0, $e);
+            throw new \ADException(sprintf('PDOException was thrown when trying to delete ringgroup : %s', $e->getMessage()), 0, $e);
             return false;
         }
 		
@@ -241,27 +249,37 @@ class RigngroupAD {
 	public static function check_numberinfo($customer_id, $ringgroup_num, $userkey = '') {
 		try {
             self::setPDO();
-			$sql = "SELECT * FROM tp_numberinfo WHERE number_info='".$ringgroup_num."' AND customer_id=:customer_id";
+			
+			$sql = "SELECT * FROM tp_numberinfo WHERE customer_id=? AND number_info=?";
 			
 			if ($userkey) {
 				$sql .= ' AND table_id<>'.$userkey;
 			}
 			
+			 $values = array(
+				$customer_id,
+				$ringgroup_num
+			);
+			
             $qry = self::$pdo->prepare($sql);
-            $qry->execute(array($customer_id));
-            return $qry->fetchAll();
+            $qry->execute($values);
+
+			if ($qry->fetch()) {
+				return false;
+			}
 			
         } catch (\PDOException $e) {
-            throw new \RuntimeException(sprintf('PDOException was thrown when trying to delete call pickup : %s', $e->getMessage()), 0, $e);
+            throw new \ADException(sprintf('PDOException was thrown when trying to delete ringgroup : %s', $e->getMessage()), 0, $e);
             return false;
         }
 		
-        return false;
+        return true;
 	}
 	
 	public static function add_numberinfo($customer_id, $ringgroup_num, $module, $table_id, $userkey = '') {
 		try {
 			self::setPDO();
+			
 			$sql = 'INSERT INTO tp_numberinfo (customer_id, number_info, app, table_id, user_key, create_dttm) VALUES (?, ?, ?, ?, ?, now())';
 
             $values = array(
@@ -278,7 +296,7 @@ class RigngroupAD {
 			return true;
 			
 		} catch (\PDOException $e) {
-			throw new \RuntimeException(sprintf('PDOException was thrown when trying to add ringgroup : %s', $e -> getMessage()), 0, $e);
+			throw new \ADException(sprintf('PDOException was thrown when trying to add ringgroup : %s', $e -> getMessage()), 0, $e);
 			return false;
 		}
 		
@@ -288,15 +306,23 @@ class RigngroupAD {
 	public static function delete_numberinfo($customer_id, $table_id, $module) {
 		try {
             self::setPDO();
-            $qry = self::$pdo->prepare("DELETE FROM tp_numberinfo WHERE customer_id=? AND table_id=? AND app=?");
 			
-            $qry->execute(array($customer_id, $table_id, $module));
-            $affected_rows = $qry->rowCount();
+            $sql = 'DELETE FROM tp_numberinfo WHERE customer_id=? AND table_id=? AND app=?';
+			
+			$values = array(
+				$customer_id,
+				$table_id,
+				$module
+			);
+			
+			$qry = self::$pdo->prepare($sql);
+            $qry->execute($values);
+            // $affected_rows = $qry->rowCount();
 			
             return true;
 			
         } catch (\PDOException $e) {
-            throw new \RuntimeException(sprintf('PDOException was thrown when trying to delete call pickup : %s', $e->getMessage()), 0, $e);
+            throw new \ADException(sprintf('PDOException was thrown when trying to delete ringgroup : %s', $e->getMessage()), 0, $e);
             return false;
         }
 		
@@ -308,7 +334,7 @@ class RigngroupAD {
 		$response = array();
 		try {
 			self::setPDO();
-			$sql =  'SELECT * FROM tp_ringgrouplist WHERE ringgroup_id = :ringgroup_id ';
+			$sql = 'SELECT * FROM tp_ringgrouplist WHERE ringgroup_id = :ringgroup_id ';
 			
 			$param = array(':ringgroup_id' => $ringgroup_id);
 			
@@ -340,7 +366,7 @@ class RigngroupAD {
 			$response['total'] 		= 0;
 			$response['message'] 	= sprintf('PDOException was thrown when trying to get ringgroup: %s', $e->getMessage());
 			//return $response;
-			throw new \RuntimeException(sprintf('PDOException was thrown when trying to get ring grouup: %s', $e->getMessage()), 0, $e);
+			throw new \ADException(sprintf('PDOException was thrown when trying to get ringgroup: %s', $e->getMessage()), 0, $e);
 		}
 		
 		return $response;
@@ -350,21 +376,24 @@ class RigngroupAD {
 		try {
 			self::setPDO();
 
-			$qry = self::$pdo->prepare('UPDATE tp_ringgrouplist SET extentype=?, dst_number=? WHERE ringgrouplist_id=? AND ringgroup_id= (SELECT ringgroup_id FROM tp_ringgroup WHERE ringgroup_id=? AND customer_id=?)');
+			$sql = 'UPDATE tp_ringgrouplist SET extentype=?, dst_number=? 
+					WHERE ringgrouplist_id=? AND ringgroup_id= (SELECT ringgroup_id FROM tp_ringgroup WHERE ringgroup_id=? AND customer_id=?)';
+					
 			$values = array(
 				$data['extentype'], 
 				$data['dst_number'], 
 				$data['ringgrouplist_id'], 
-				$data['list_ringgroup_id'], 
+				$data['ringgroup_id'], 
 				$data['customer_id']
 			);
 			
+			$qry = self::$pdo->prepare($sql);
 			$qry->execute($values);
 			
 			return true;
 			
 		} catch (\PDOException $e) {
-			throw new \RuntimeException(sprintf('PDOException was thrown when trying to update ringgroup : %s', $e -> getMessage()), 0, $e);
+			throw new \ADException(sprintf('PDOException was thrown when trying to update ringgroup : %s', $e -> getMessage()), 0, $e);
 			return false;
 		}
 		
@@ -374,10 +403,11 @@ class RigngroupAD {
 	public static function createList($data) {
 		try {
 			self::setPDO();
+			
 			$sql = 'INSERT INTO tp_ringgrouplist (ringgroup_id, extentype, dst_number, user_key, create_dttm) VALUES (?, ?, ?, ?, now())';
 
             $values = array(
-				$data['list_ringgroup_id'], 
+				$data['ringgroup_id'], 
                 $data['extentype'],
                 $data['dst_number'], 
                 $data['user_key']
@@ -397,7 +427,7 @@ class RigngroupAD {
 			return $last_id[0];
 			
 		} catch (\PDOException $e) {
-			throw new \RuntimeException(sprintf('PDOException was thrown when trying to add ringgroup : %s', $e -> getMessage()), 0, $e);
+			throw new \ADException(sprintf('PDOException was thrown when trying to add ringgroup : %s', $e -> getMessage()), 0, $e);
 			return false;
 		}
 		
@@ -408,17 +438,22 @@ class RigngroupAD {
         try {
             self::setPDO();
 			
-			$sql = 'DELETE FROM tp_ringgrouplist WHERE ringgroup_id=(SELECT ringgroup_id FROM tp_ringgroup WHERE ringgroup_id=:ringgroup_id AND customer_id=:customer_id LIMIT 1)';
-			$param = array(':ringgroup_id' => $ringgroup_id, ':customer_id' => $customer_id);
+			$sql = 'DELETE FROM tp_ringgrouplist 
+					WHERE ringgroup_id=(SELECT ringgroup_id FROM tp_ringgroup WHERE customer_id=? AND ringgroup_id=? LIMIT 1)';
+			
+			$values = array(
+				$customer_id,
+				$ringgroup_id				
+            );
 			
             $qry = self::$pdo->prepare($sql);
-			$qry->execute($param);
-            $affected_rows = $qry->rowCount();
-
-            return $affected_rows;
+			$qry->execute($values);
+            // return $qry->rowCount();
+			
+			return true;
 			
         } catch (\PDOException $e) {
-            throw new \RuntimeException(sprintf('PDOException was thrown when trying to delete call pickup : %s', $e->getMessage()), 0, $e);
+            throw new \ADException(sprintf('PDOException was thrown when trying to delete ringgroup : %s', $e->getMessage()), 0, $e);
             return false;
         }
 		
@@ -428,15 +463,19 @@ class RigngroupAD {
 	public static function deleteListOne($ringgrouplist_id) {
         try {
             self::setPDO();
+			
+			$sql = 'DELETE FROM tp_ringgrouplist WHERE ringgrouplist_id=?';
+			
+			$values = array($ringgrouplist_id);
+			
+            $qry = self::$pdo->prepare($sql);
+			$qry->execute($values);
+			// return $qry->rowCount();
 
-            $qry = self::$pdo->prepare('DELETE FROM tp_ringgrouplist WHERE ringgrouplist_id=?');
-			$qry->execute(array($ringgrouplist_id));
-            $affected_rows = $qry->rowCount();
-
-            return $affected_rows;
+            return true;
 			
         } catch (\PDOException $e) {
-            throw new \RuntimeException(sprintf('PDOException was thrown when trying to delete call pickup : %s', $e->getMessage()), 0, $e);
+            throw new \ADException(sprintf('PDOException was thrown when trying to delete ringgroup : %s', $e->getMessage()), 0, $e);
             return false;
         }
 		

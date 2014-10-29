@@ -16,7 +16,7 @@
 		<div class="tab_content">
 			
 			<!-- Extenstion Form -->
-			<form name="frmExtension" id="frmExtension">
+			<form name="frmExtension" id="frmExtension" class="validate">
 			<input type="hidden" name="account_id" id="account_id" value="" />
 			<input type="hidden" id="before_name" name="before_name" value = ""/>
 			<input type="hidden" id="exten_hdcallgrp" name="exten_hdcallgrp" value = "" />

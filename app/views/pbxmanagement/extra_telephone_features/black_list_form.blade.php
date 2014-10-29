@@ -11,7 +11,7 @@
 			@include('layout.sfield_open')
 				
 				<!-- Callgroup Form -->
-				<form name="frmBlacklist" id="frmBlacklist">
+				<form name="frmBlacklist" id="frmBlacklist" class="validate">
 				<input type="hidden" name="blacklist_id" id="blacklist_id" value="" />
 				<div class="col_wide">
 					<?php 

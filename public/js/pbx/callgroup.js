@@ -36,13 +36,17 @@ $(document).ready(function() {
             name : "required",
             description : "required",
             code : "required",
-        }
+        },errorPlacement: function(error, element){
+			error.appendTo(element.parents('.crow'));
+		}
     });
 	
 	$("#frmCallpickup").validate({
         rules : {
             exten : "required"
-        }
+        },errorPlacement: function(error, element){
+			error.appendTo(element.parents('.crow'));
+		}
     });
 
     $('#sbtAddBtn').click(function() {

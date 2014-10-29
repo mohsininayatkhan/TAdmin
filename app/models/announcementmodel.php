@@ -3,7 +3,7 @@ use Forge\Validator;
 class AnnouncementModel extends \Model\Base {    
     
 	 private static $rules = array(
-        'name' => 'required|alpha', 
+        'name' => 'required|name', 
         'number' => 'required|numeric', 
         'description' => 'required'
     );

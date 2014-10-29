@@ -142,12 +142,11 @@ class AnnouncementAd {
 				':path' 				=> $data['path'],
 				':desc' 				=> $data['description'],
 				':user_key' 			=> $data['userkey'],
-				':create_dttm' 			=> '2013-09-30 23:38:57',
 				':extennumber' 			=> ''
             );
 			
 			$sql = 'INSERT INTO tp_announcement (`customer_id`, `announcement_number`, `name`, `file`, `path`, `desc`, `user_key`, `create_dttm`, `extennumber`	) 
-				VALUES ( :customer_id, :announcement_number, :name, :file, :path, :desc, :user_key, :create_dttm, :extennumber)';
+				VALUES ( :customer_id, :announcement_number, :name, :file, :path, :desc, :user_key, now(), :extennumber)';
 					
             $qry = self::$pdo->prepare($sql);
             $qry -> execute($values);

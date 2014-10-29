@@ -4,10 +4,10 @@ use Forge\Validator;
 class CallgroupModel extends \Model\Base {
 
      private static $rules = array(
-        'customer_id' => 'required', 
+        'customer_id' => 'required|numeric', 
         'code' => 'required', 
         'description' => 'required', 
-        'name' => 'required'
+        'name' => 'required|name'
     );
 	
     public static function getAll($customer, $callpickup_id = '', $page = NULL, $keywords = '') {

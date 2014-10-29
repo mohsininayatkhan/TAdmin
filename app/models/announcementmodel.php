@@ -48,6 +48,13 @@ class AnnouncementModel extends \Model\Base {
 	
     public static function update($data) {
 		
+		$validator = new Validator($data, self::$rules);
+
+        if ($validator->fails()) {
+            throw new \ValidationException($validator->all());
+            return array('status' => 'ERROR', 'message' => 'Validation error');
+        }
+		
 		self::$rules['announcement_id'] = 'required|numeric';
 		
 		if (isset($data['file'])) {
@@ -75,6 +82,13 @@ class AnnouncementModel extends \Model\Base {
 
     public static function create($data) {
 	
+		$validator = new Validator($data, self::$rules);
+
+        if ($validator->fails()) {
+            throw new \ValidationException($validator->all());
+            return array('status' => 'ERROR', 'message' => 'Validation error');
+        }
+	
 		if (isset($data['file'])) {
 			$res = self::upload($data['file']);
 			
@@ -85,8 +99,6 @@ class AnnouncementModel extends \Model\Base {
 			$data['path'] = $res['path'];
 		}
 		$data['userkey'] = self::$userkey;
-		
-		
 		
 		if (\AD\Pbx\NumberAD::alreadyExists($data['customer_id'], $data['number'])) {
             return array('status' => "ERROR", 'message' => 'The number ' . $data['number'] . ' is already being used!');

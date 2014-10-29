@@ -4,7 +4,7 @@ use Forge\Validator;
 class BlacklistModel extends \Model\Base {
 
      private static $rules = array(
-        'exten' 		=> 'required', 
+        'exten' 		=> 'required|extension', 
         'phonenumber' 	=> 'required|numeric'
     );
 	
@@ -49,6 +49,11 @@ class BlacklistModel extends \Model\Base {
 	
     public static function update($data) {
 	
+		if (isset($data['exten']) && $data['exten'] == 'ALL') {
+			 unset(self::$rules['exten']);
+			 $data['exten'] = 'NULL';
+		}
+		
 		self::$rules['blacklist_id'] = 'required|numeric';
 		
 		$validator = new Validator($data, self::$rules);
@@ -68,6 +73,11 @@ class BlacklistModel extends \Model\Base {
 	
 	
     public static function create($data) {
+	
+		if (isset($data['exten']) && $data['exten'] == 'ALL') {
+			 unset(self::$rules['exten']);
+			 $data['exten'] = 'NULL';
+		}
 	
 		$validator = new Validator($data, self::$rules);
 
